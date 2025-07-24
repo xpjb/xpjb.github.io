@@ -1,32 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Silly Unicode Name Generator</title>
-</head>
-<body>
-    <h1>Silly Unicode Name Generator</h1>
-    <p>Enter your name to get a silly unicode version!</p>
-    <input type="text" id="nameInput" placeholder="Enter your name">
-    <button onclick="generateSillyName()">Generate</button>
-    <p id="result"></p>
+---
+layout: default
+title: Silly Unicode Name Generator
+---
+<h1>Silly Unicode Name Generator</h1>
+<p>Enter your name to get a silly unicode version!</p>
+<input type="text" id="nameInput" placeholder="Enter your name">
+<label for="cursedness">Cursedness:</label>
+<input type="range" id="cursedness" min="1" max="10" value="3">
+<button onclick="generateSillyName()">Generate</button>
+<p id="result"></p>
 
-    <script>
-        const sillyCharacters = {
-            'a': 'ᗩ', 'b': 'ᗷ', 'c': 'ᑕ', 'd': 'ᗪ', 'e': 'E', 'f': 'ᖴ',
-            'g': 'G', 'h': 'ᕼ', 'i': 'I', 'j': 'ᒍ', 'k': 'K', 'l': 'ᒪ',
-            'm': 'ᗰ', 'n': 'ᑎ', 'o': 'O', 'p': 'ᑭ', 'q': 'ᑫ', 'r': 'ᖇ',
-            's': 'ᔕ', 't': 'T', 'u': 'ᑌ', 'v': 'ᐯ', 'w': 'ᗯ', 'x': '᙭',
-            'y': 'Y', 'z': 'ᘔ'
-        };
+<script>
+    const combiningDiacritics = [
+        '\\u0300', '\\u0301', '\\u0302', '\\u0303', '\\u0304', '\\u0305', '\\u0306', '\\u0307', '\\u0308',
+        '\\u0309', '\\u030a', '\\u030b', '\\u030c', '\\u030d', '\\u030e', '\\u030f', '\\u0310', '\\u0311',
+        '\\u0312', '\\u0313', '\\u0314', '\\u0315', '\\u0316', '\\u0317', '\\u0318', '\\u0319', '\\u031a',
+        '\\u031b', '\\u031c', '\\u031d', '\\u031e', '\\u031f', '\\u0320', '\\u0321', '\\u0322', '\\u0323',
+        '\\u0324', '\\u0325', '\\u0326', ' \\u0327', '\\u0328', '\\u0329', '\\u032a', '\\u032b', '\\u032c',
+        '\\u032d', '\\u032e', '\\u032f', '\\u0330', '\\u0331', '\\u0332', '\\u0333', '\\u0334', '\\u0335',
+        '\\u0336', '\\u0337', '\\u0338', '\\u0339', '\\u033a', '\\u033b', '\\u033c', '\\u033d', '\\u033e',
+        '\\u033f', '\\u0340', '\\u0341', '\\u0342', '\\u0343', '\\u0344', '\\u0345', '\\u0346', '\\u0347',
+        '\\u0348', '\\u0349', '\\u034a', '\\u034b', '\\u034c', '\\u034d', '\\u034e', '\\u034f', '\\u0350',
+        '\\u0351', '\\u0352', '\\u0353', '\\u0354', '\\u0355', '\\u0356', '\\u0357', '\\u0358', '\\u0359',
+        '\\u035a', '\\u035b', '\\u035c', '\\u035d', '\\u035e', '\\u035f', '\\u0360', '\\u0361', '\\u0362',
+        '\\u0363', '\\u0364', '\\u0365', '\\u0366', '\\u0367', '\\u0368', '\\u0369', '\\u036a', '\\u036b',
+        '\\u036c', '\\u036d', '\\u036e', '\\u036f'
+    ];
 
-        function generateSillyName() {
-            const name = document.getElementById('nameInput').value.toLowerCase();
-            let sillyName = '';
-            for (let char of name) {
-                sillyName += sillyCharacters[char] || char;
+    function generateSillyName() {
+        const name = document.getElementById('nameInput').value;
+        const cursedness = parseInt(document.getElementById('cursedness').value, 10);
+        let sillyName = '';
+        for (let char of name) {
+            if (char.trim() === '') {
+                sillyName += char;
+                continue;
             }
-            document.getElementById('result').innerText = sillyName;
+            let cursedChar = char;
+            for (let i = 0; i < cursedness; i++) {
+                const randomDiacritic = combiningDiacritics[Math.floor(Math.random() * combiningDiacritics.length)];
+                cursedChar += String.fromCharCode(parseInt(randomDiacritic.substring(2), 16));
+            }
+            sillyName += cursedChar;
         }
-    </script>
-</body>
-</html> 
+        document.getElementById('result').innerText = sillyName;
+    }
+</script> 
