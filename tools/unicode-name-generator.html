@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Silly Unicode Name Generator</title>
+</head>
+<body>
+    <h1>Silly Unicode Name Generator</h1>
+    <p>Enter your name to get a silly unicode version!</p>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="generateSillyName()">Generate</button>
+    <p id="result"></p>
+
+    <script>
+        const sillyCharacters = {
+            'a': 'ᗩ', 'b': 'ᗷ', 'c': 'ᑕ', 'd': 'ᗪ', 'e': 'E', 'f': 'ᖴ',
+            'g': 'G', 'h': 'ᕼ', 'i': 'I', 'j': 'ᒍ', 'k': 'K', 'l': 'ᒪ',
+            'm': 'ᗰ', 'n': 'ᑎ', 'o': 'O', 'p': 'ᑭ', 'q': 'ᑫ', 'r': 'ᖇ',
+            's': 'ᔕ', 't': 'T', 'u': 'ᑌ', 'v': 'ᐯ', 'w': 'ᗯ', 'x': '᙭',
+            'y': 'Y', 'z': 'ᘔ'
+        };
+
+        function generateSillyName() {
+            const name = document.getElementById('nameInput').value.toLowerCase();
+            let sillyName = '';
+            for (let char of name) {
+                sillyName += sillyCharacters[char] || char;
+            }
+            document.getElementById('result').innerText = sillyName;
+        }
+    </script>
+</body>
+</html> 

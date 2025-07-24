@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Case Converter</title>
+</head>
+<body>
+    <h1>Case Converter</h1>
+    <textarea id="text" rows="10" cols="50" placeholder="Enter text here..."></textarea><br>
+    <button onclick="toUpperCase()">To Upper Case</button>
+    <button onclick="toLowerCase()">To Lower Case</button>
+    <button onclick="toSentenceCase()">To Sentence Case</button>
+    <button onclick="toTitleCase()">To Title Case</button>
+
+    <script>
+        function toUpperCase() {
+            var text = document.getElementById("text");
+            text.value = text.value.toUpperCase();
+        }
+
+        function toLowerCase() {
+            var text = document.getElementById("text");
+            text.value = text.value.toLowerCase();
+        }
+
+        function toSentenceCase() {
+            var text = document.getElementById("text");
+            text.value = text.value.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, function(c) {
+                return c.toUpperCase();
+            });
+        }
+
+        function toTitleCase() {
+            var text = document.getElementById("text");
+            text.value = text.value.toLowerCase().split(' ').map(function(word) {
+                return word.replace(word[0], word[0].toUpperCase());
+            }).join(' ');
+        }
+    </script>
+</body>
+</html> 
