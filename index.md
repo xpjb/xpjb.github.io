@@ -3,8 +3,8 @@ Hello
 
 ## Reference
 
-* [Archlinux Install Guide](./reference/archlinux_install_guide.html)
-* [Rust Setup](./reference/rust_setup.html)
+* [Archlinux Install Guide](./reference/archlinux_install_guide.md)
+* [Rust Setup](./reference/rust_setup.md)
 
 ## Tools
 * [QR Code Generator](./tools/qr-code-generator.html)

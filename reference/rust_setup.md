@@ -1,9 +1,14 @@
-Git bash
-Rustup
-Visual c++ dependencies
+# Rust Setup Guide
 
-Ssh keys
+## Prerequisites
+- Git bash
+- Rustup
+- Visual C++ dependencies
+- SSH keys
 
-Rustup default nightly
+## Installation
+To set up the nightly toolchain with `rustc-codegen-cranelift-preview`, run the following commands:
+```bash
 rustup default nightly
 rustup component add rustc-codegen-cranelift-preview --toolchain nightly
+```
