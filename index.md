@@ -9,6 +9,9 @@ Hello
 
 * [Archlinux Install Guide](./reference/archlinux_install_guide.md)
 * [Rust Setup](./reference/rust_setup.md)
+* [External Resources](./reference/external_resources.md/)
+* (Todo RNG reference)
+
 
 ## Tools
 * [QR Code Generator](./tools/qr-code-generator.html)
