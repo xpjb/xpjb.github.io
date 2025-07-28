@@ -73,13 +73,4 @@ ul {
 
 li {
     margin-bottom: 10px;
-}
-
-.highlight .k { color: #c586c0; font-weight: bold; } /* Keyword */
-.highlight .s { color: #ce9178; } /* String */
-.highlight .c { color: #6a9955; font-style: italic; } /* Comment */
-.highlight .mi { color: #b5cea8; } /* Number */
-.highlight .p { color: #d4d4d4; } /* Punctuation */
-.highlight .cp { color: #9b9b9b; } /* Preprocessor */
-.highlight .nf { color: #dcdcaa; } /* Function name */
-.highlight .nb { color: #4ec9b0; } /* Built-in name */ 
+} 
