@@ -2,7 +2,7 @@
 
 ## Hash
 ### Crappy Float Hash
-```glsl
+```c
 float hash11(float p) {
     return fract(sin(p * 12.9898) * 43758.5453);
 }
@@ -35,7 +35,7 @@ vec3 hash33(vec3 p) {
 ```
 
 ### Unsigned Hash
-```glsl
+```c
 uint uhash(uint h) {
     h = (h ^ 2747636419u) * 2654435769u;
     h = (h ^ (h >> 16)) * 2654435769u;
@@ -48,7 +48,7 @@ uint uhash(uint h) {
 
 ## Noise
 ### Value Noise
-```glsl
+```c
 float smooth_hash31(vec3 uv)
 {
  	vec3 lower	= floor(uv);
@@ -56,24 +56,24 @@ float smooth_hash31(vec3 uv)
     vec3 f = frac*frac*(3.0-2.0*frac);
     
     return mix( // Z
-        	mix( // Y
-                mix( // X
-                    hash31(lower+vec3(0.0, 0.0, 0.0)), hash31(lower+vec3(1.0, 0.0, 0.0)), f.x),
-                mix( // X
-                    hash31(lower+vec3(0.0, 1.0, 0.0)), hash31(lower+vec3(1.0, 1.0, 0.0)), f.x),
-                f.y),
-        	mix( // Y
-                mix( // X
-                    hash31(lower+vec3(0.0, 0.0, 1.0)), hash31(lower+vec3(1.0, 0.0, 1.0)), f.x),
-                mix( // X
-                    hash31(lower+vec3(0.0, 1.0, 1.0)), hash31(lower+vec3(1.0, 1.0, 1.0)), f.x),
-                f.y),
-        	f.z);
+        mix( // Y
+            mix( // X
+                hash31(lower+vec3(0.0, 0.0, 0.0)), hash31(lower+vec3(1.0, 0.0, 0.0)), f.x),
+            mix( // X
+                hash31(lower+vec3(0.0, 1.0, 0.0)), hash31(lower+vec3(1.0, 1.0, 0.0)), f.x),
+            f.y),
+        mix( // Y
+            mix( // X
+                hash31(lower+vec3(0.0, 0.0, 1.0)), hash31(lower+vec3(1.0, 0.0, 1.0)), f.x),
+            mix( // X
+                hash31(lower+vec3(0.0, 1.0, 1.0)), hash31(lower+vec3(1.0, 1.0, 1.0)), f.x),
+            f.y),
+        f.z);
 }
 ```
 ## Distance
 ### Line Segment
-```glsl
+```c
 float dseg(vec2 p, vec2 a, vec2 b) {
     vec2 pa = p - a;
     vec2 ba = b - a;
