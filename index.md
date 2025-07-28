@@ -10,6 +10,7 @@ Hello
 * [Archlinux Install Guide](./reference/archlinux_install_guide.md)
 * [Rust Setup](./reference/rust_setup.md)
 * [External Resources](./reference/external_resources.md/)
+* [Shadertoy Reference](./reference/shadertoy.md)
 * (Todo RNG reference)
 
 
