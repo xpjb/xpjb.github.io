@@ -1,3 +1,5 @@
 theme: jekyll-theme-minimal
 title: Pat's Website
 description: A collection of tools and references. 
+markdown: GFM
+highlighter: rouge 
