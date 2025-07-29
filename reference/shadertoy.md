@@ -82,7 +82,14 @@ float dseg(vec2 p, vec2 a, vec2 b) {
 }
 ```
 
+## Other
+```c
+#define TAU 6.283185307179586476925286766559
 
+float utof(uint a) {
+    return float(a) / 4294967295.0;
+}
+```
 
 
 
