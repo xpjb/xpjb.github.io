@@ -93,7 +93,17 @@ nmcli device wifi connect "SSID" password "yourpassword"
 sudo pacman -S xorg-xinit xorg-server
 ```
 
----
+### Sound
+User must be added to the sound group. Probably was enough to get stuff working with ALSA but also theresmore stuff you can do for pipewire
+
+### AUR Manager
+This is needed. Paru in rust
+```bash
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+```
+
 
 ## Appendix 1: Repository Manager
 

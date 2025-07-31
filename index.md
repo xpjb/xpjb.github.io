@@ -11,6 +11,7 @@ Hello
 * [Rust Setup](./reference/rust_setup.md)
 * [External Resources](./reference/external_resources.md/)
 * [Shadertoy Reference](./reference/shadertoy.md)
+* [3D Camera Math](./reference/matrix.md)
 * (Todo RNG reference)
 
 
