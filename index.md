@@ -5,6 +5,9 @@ title: Home
 # Pats Website
 Hello
 
+## Blog
+* [2025/08/07] - [Speak 4 Ways](./blog/speak.md) 
+
 ## Reference
 
 * [Archlinux Install Guide](./reference/archlinux_install_guide.md)
