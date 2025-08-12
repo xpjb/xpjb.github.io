@@ -112,6 +112,20 @@ reboot
 
 ## Post-installation
 
+### Recommended Softwares:
+* openssh
+* networkmanager
+* less
+#### X Stuffs (eg to build DWM)
+* xorg-xinit
+* xorg-server
+* libxinerama
+* fontconfig
+* libxft
+#### Nvidia
+* nvidia nvidia-utils nvidia-settings
+
+nb suckless way is it copies itself to /usr/local/bin/whatever
 
 ### Second Reboot - Internet & repo folder
 
@@ -123,6 +137,11 @@ nmcli device wifi list
 nmcli con show
 nmcli device wifi connect "SSID" password "yourpassword"
 ```
+
+#### Me also
+* dwm from my repo
+* dmenu from suckless git
+* alacritty (wanna try wezterm tho)
 
 > Ok well i have internet now
 
@@ -141,6 +160,7 @@ sudo pacman -S xorg-xinit xorg-server
 User must be added to the sound group. Probably was enough to get stuff working with ALSA but also theresmore stuff you can do for pipewire
 
 ### AUR Manager
+(or yay, 1 less letter lmao)
 This is needed. Paru in rust
 ```bash
 git clone https://aur.archlinux.org/paru.git
