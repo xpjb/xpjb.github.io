@@ -6,7 +6,7 @@ title: Home
 Hello Surfer,
 Welcome to my blog!
 
-I'm Patrick. If I'm known for anything so far its probably just programming the game !['Gnomes'](https://store.steampowered.com/app/3133060/Gnomes/)
+I'm Patrick. If I'm known for anything so far its probably just programming the game ['Gnomes'](https://store.steampowered.com/app/3133060/Gnomes/)
 
 ## Blog
 * [Coming Soon] - C Curriculum
