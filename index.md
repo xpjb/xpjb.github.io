@@ -9,8 +9,9 @@ Welcome to my blog!
 I'm Patrick. If I'm known for anything so far its probably just programming the game !['Gnomes'](https://store.steampowered.com/app/3133060/Gnomes/)
 
 ## Blog
+* [Coming Soon] - C Curriculum
 * [Coming Soon] - Gnomes leaderboard website!
-* [Coming Soon] - Real people on the Internet
+* [Coming Soon] - [Real people on the Internet](./blog/people.md)
 * [2025/08/18] - [Complicit](./blog/complicit.md)
 * [2025/08/07] - [Speak 4 Ways](./blog/speak.md) 
 
