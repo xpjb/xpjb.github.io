@@ -3,13 +3,18 @@ layout: default
 title: Home
 ---
 # Pats Website
-Hello
+Hello Surfer,
+Welcome to my blog!
+
+I'm Patrick. If I'm known for anything so far its probably just programming the game !['Gnomes'](https://store.steampowered.com/app/3133060/Gnomes/)
 
 ## Blog
+* [Coming Soon] - Gnomes leaderboard website!
+* [Coming Soon] - Real people on the Internet
+* [2025/08/18] - [Complicit](./blog/complicit.md)
 * [2025/08/07] - [Speak 4 Ways](./blog/speak.md) 
 
 ## Reference
-
 * [Archlinux Install Guide](./reference/archlinux_install_guide.md)
 * [Rust Setup](./reference/rust_setup.md)
 * [External Resources](./reference/external_resources.md/)
