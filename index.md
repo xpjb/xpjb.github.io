@@ -8,6 +8,10 @@ Welcome to my blog!
 
 I'm Patrick. If I'm known for anything so far its probably just programming the game ['Gnomes'](https://store.steampowered.com/app/3133060/Gnomes/)
 
+## Welcome to Programming Series
+For the homies who are learning to code
+* [Introduction // Languages Tier List](./blog/programming1.md)
+
 ## Blog
 * [Coming Soon] - C Curriculum
 * [Coming Soon] - Gnomes leaderboard website!
