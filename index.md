@@ -32,3 +32,5 @@ For the homies who are learning to code
 * [QR Code Generator](./tools/qr-code-generator.html)
 * [Case Converter](./tools/case-converter.html)
 * [Silly Unicode Name Generator](./tools/unicode-name-generator.html)
+* [HTML Syntax Highlighter](./tools/syntax.html)
+* [Palette Viewer](./tools/palette.html)
