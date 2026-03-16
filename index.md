@@ -4,9 +4,9 @@ You have found the website of Patrick Burke. I am an Australian games programmer
 
 Email: xpjb@oortic.net
 
-Github: https://github.com/xpjb
+Github: [https://github.com/xpjb](https://github.com/xpjb)
 
-Shadertoy: https://www.shadertoy.com/user/ShadeWhizz
+Shadertoy: [https://www.shadertoy.com/user/ShadeWhizz](https://www.shadertoy.com/user/ShadeWhizz)
 
 I do like to make friends with other developers so if you are inclined, feel free to reach out.
 
