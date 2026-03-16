@@ -1,36 +1,24 @@
----
-layout: default
-title: Home
----
-# Pats Website
-Hello Surfer,
-Welcome to my blog!
+## Patrick Burke Australian Game Developer Website
 
-I'm Patrick. If I'm known for anything so far its probably just programming the game ['Gnomes'](https://store.steampowered.com/app/3133060/Gnomes/)
+You have found the website of Patrick Burke. I am an Australian games programmer based in Melbourne.
 
-## Welcome to Programming Series
-For the homies who are learning to code
-* [Introduction // Languages Tier List](./blog/programming1.md)
+Email: xpjb@oortic.net
 
-## Blog
-* [Coming Soon] - C Curriculum
-* [Coming Soon] - Gnomes leaderboard website!
-* [Coming Soon] - [Real people on the Internet](./blog/people.md)
-* [2025/08/18] - [Complicit](./blog/complicit.md)
-* [2025/08/07] - [Speak 4 Ways](./blog/speak.md) 
+Github: https://github.com/xpjb
 
-## Reference
-* [Archlinux Install Guide](./reference/archlinux_install_guide.md)
-* [Rust Setup](./reference/rust_setup.md)
-* [External Resources](./reference/external_resources.md/)
-* [Shadertoy Reference](./reference/shadertoy.md)
-* [3D Camera Math](./reference/matrix.md)
-* (Todo RNG reference)
+Shadertoy: https://www.shadertoy.com/user/ShadeWhizz
 
+I do like to make friends with other developers so if you are inclined, feel free to reach out.
 
-## Tools
-* [QR Code Generator](./tools/qr-code-generator.html)
-* [Case Converter](./tools/case-converter.html)
-* [Silly Unicode Name Generator](./tools/unicode-name-generator.html)
-* [HTML Syntax Highlighter](./tools/syntax.html)
-* [Palette Viewer](./tools/palette.html)
+I may be amenable to certain types of contracts that line up with what I do, again, feel free to reach out.
+
+## My work:
+ * Gnomes - as one half of Dystopian and in charge of the technical side of things. Shipped the game in under 1 year using a custom engine written in Rust. The game is successful at 70k units sold and a 95% positive rating on steam. [Check out the steam page here.](https://store.steampowered.com/app/3133060/Gnomes/)
+
+* Gnomes Leaderboard - nothing special but its a mirror of the leaderboard for Gnomes, static site served with Rust, [check it out here.](https://gnomes-leaderboard.live/date/2026-03-16)
+
+* Oortic.net - just something I'm having a bit of fun with. It contains perplexing demos using the best of web and GPU technologies (often including Raymarching), backend in Rust of course once again. [Check it out here.](https://oortic/net)
+
+* Shadertoy Shaders - creating one shader a day is highly recommended for one's mental health. These include some other ones I've made. [Check them out here.](https://www.shadertoy.com/user/ShadeWhizz)
+
+* Card Game - Under active development. an io-style, multiplayer web based cardgame, you can play with your friends now and give me feedback. Made with vanilla web technologies and Rust backend. [Check it out here](https://oortic.net/ocg)
