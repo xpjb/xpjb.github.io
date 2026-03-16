@@ -17,8 +17,8 @@ I may be amenable to certain types of contracts that line up with what I do, aga
 
 * Gnomes Leaderboard - nothing special but its a mirror of the leaderboard for Gnomes, static site served with Rust, [check it out here.](https://gnomes-leaderboard.live/date/2026-03-16)
 
-* Oortic.net - just something I'm having a bit of fun with. It contains perplexing demos using the best of web and GPU technologies (often including Raymarching), backend in Rust of course once again. [Check it out here.](https://oortic/net)
+* Oortic.net - just something I'm having a bit of fun with. It contains perplexing demos using the best of web and GPU technologies (often including Raymarching), backend in Rust of course once again. [Check it out here.](https://oortic.net)
 
 * Shadertoy Shaders - creating one shader a day is highly recommended for one's mental health. These include some other ones I've made. [Check them out here.](https://www.shadertoy.com/user/ShadeWhizz)
 
-* Card Game - Under active development. an io-style, multiplayer web based cardgame, you can play with your friends now and give me feedback. Made with vanilla web technologies and Rust backend. [Check it out here](https://oortic.net/ocg)
+* Card Game - Under active development. An io-style, multiplayer web based cardgame, you can play with your friends now and give me feedback. Made with vanilla web technologies and Rust backend. [Check it out here](https://oortic.net/ocg)
