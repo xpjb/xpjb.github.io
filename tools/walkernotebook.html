@@ -110,7 +110,7 @@
 
     <section id="sec-dijkstra" aria-labelledby="title-dijkstra">
       <h2 id="title-dijkstra">Noise weights → Dijkstra → dilate → path walkers</h2>
-      <p class="desc">Random edge start/end (min separation), shortest path, dilated corridor, then walkers spawn along the path and wander randomly while carving.</p>
+      <p class="desc">Random edge start/end (min separation), shortest path, dilated corridor, then walkers spawn every K steps along the path starting after K (not from the first cell) and wander randomly while carving.</p>
       <div class="row-actions">
         <label style="flex:1; min-width:8rem; max-width:12rem">Seed
           <input type="number" id="d-seed" value="1" step="1" />
@@ -154,7 +154,7 @@
 
     <section id="sec-hier" aria-labelledby="title-hier">
       <h2 id="title-hier">Hierarchical walkers</h2>
-      <p class="desc">Parents start at the center (3×3 carve, own colour); children carve smaller with a second colour. Separate step limits and turn rates per generation.</p>
+      <p class="desc">Parents stamp a 3×3 each step; children stamp a single cell (1×1). Two colours distinguish generations. All parents start at the center. Separate step limits and turn rates per generation.</p>
       <div class="row-actions">
         <label style="flex:1; min-width:8rem; max-width:12rem">Seed
           <input type="number" id="h-seed" value="2" step="1" />
@@ -201,19 +201,51 @@
           <input type="range" id="v-size" min="32" max="192" value="96" step="1" />
         </label>
         <label>Walkers <span class="val" id="v-n-v"></span>
-          <input type="range" id="v-n" min="1" max="12" value="4" step="1" />
+          <input type="range" id="v-n" min="1" max="12" value="1" step="1" />
         </label>
         <label>Starting volatility <span class="val" id="v-v0-v"></span>
           <input type="range" id="v-v0" min="0" max="100" value="30" step="1" />
         </label>
         <label>VoV (jump scale) <span class="val" id="v-vov-v"></span>
-          <input type="range" id="v-vov" min="0.01" max="2" value="0.12" step="0.01" />
+          <input type="range" id="v-vov" min="0.01" max="2" value="0.02" step="0.01" />
         </label>
         <label>Steps per walker <span class="val" id="v-steps-v"></span>
           <input type="range" id="v-steps" min="1" max="2000" value="500" step="1" />
         </label>
       </div>
       <canvas id="v-canvas" width="320" height="320" aria-label="Volatility of volatility walker map"></canvas>
+    </section>
+
+    <section id="sec-lerp" aria-labelledby="title-lerp">
+      <h2 id="title-lerp">Lerp walker</h2>
+      <p class="desc">Starts at the centre. Each step, brush radius and turn probability (volatility) are linearly interpolated from start→end over the run. Carves a disk of the current radius, then may turn (with current volatility), then moves one cell.</p>
+      <div class="row-actions">
+        <label style="flex:1; min-width:8rem; max-width:12rem">Seed
+          <input type="number" id="l-seed" value="4" step="1" />
+        </label>
+        <button type="button" id="l-regen">Regenerate</button>
+      </div>
+      <div class="controls">
+        <label>Grid size <span class="val" id="l-size-v"></span>
+          <input type="range" id="l-size" min="32" max="192" value="96" step="1" />
+        </label>
+        <label>Steps <span class="val" id="l-steps-v"></span>
+          <input type="range" id="l-steps" min="1" max="2000" value="400" step="1" />
+        </label>
+        <label>Start radius <span class="val" id="l-r0-v"></span>
+          <input type="range" id="l-r0" min="0" max="16" value="0.5" step="0.25" />
+        </label>
+        <label>End radius <span class="val" id="l-r1-v"></span>
+          <input type="range" id="l-r1" min="0" max="16" value="4" step="0.25" />
+        </label>
+        <label>Start volatility <span class="val" id="l-v0-v"></span>
+          <input type="range" id="l-v0" min="0" max="100" value="20" step="1" />
+        </label>
+        <label>End volatility <span class="val" id="l-v1-v"></span>
+          <input type="range" id="l-v1" min="0" max="100" value="90" step="1" />
+        </label>
+      </div>
+      <canvas id="l-canvas" width="320" height="320" aria-label="Lerp walker map"></canvas>
     </section>
   </main>
 
@@ -548,12 +580,13 @@
       [0, -1],
     ];
 
-    for (let s = 0; s < path.length; s += spacing) {
+    for (let s = spacing; s < path.length; s += spacing) {
       const si = path[s];
       let px = si % w;
       let py = (si / w) | 0;
-      let dx = rng() < 0.5 ? 1 : 0;
-      let dy = dx === 1 ? 0 : 1;
+      const d0 = (rng() * 4) | 0;
+      let dx = dirs[d0][0];
+      let dy = dirs[d0][1];
       for (let step = 0; step < maxWSteps; step++) {
         if (rng() < turnProb) {
           const pick = (rng() * 4) | 0;
@@ -594,6 +627,12 @@
     }
   }
 
+  function stampCarve1x1(cells, w, h, cx, cy, mark) {
+    if (cx < 0 || cx >= w || cy < 0 || cy >= h) return;
+    const i = cy * w + cx;
+    cells[i] = Math.max(cells[i], mark);
+  }
+
   function runHierSection() {
     const seed = parseInt(document.getElementById('h-seed').value, 10) || 0;
     const rng = makeRng(seed);
@@ -625,13 +664,12 @@
     stampCarve(cells, w, h, rx, ry, parentMark);
 
     for (let p = 0; p < nParents; p++) {
-      const dx = rng() < 0.5 ? 1 : 0;
-      const dy = dx === 1 ? 0 : 1;
+      const d0 = (rng() * 4) | 0;
       queue.push({
         x: rx,
         y: ry,
-        dx: dx,
-        dy: dy,
+        dx: dirs[d0][0],
+        dy: dirs[d0][1],
         left: parentSteps,
         child: false,
       });
@@ -695,7 +733,11 @@
 
       wk.x = nx;
       wk.y = ny;
-      stampCarve(cells, w, h, wk.x, wk.y, mark);
+      if (wk.child) {
+        stampCarve1x1(cells, w, h, wk.x, wk.y, mark);
+      } else {
+        stampCarve(cells, w, h, wk.x, wk.y, mark);
+      }
       finishStep();
     }
 
@@ -767,13 +809,12 @@
     const queue = [];
     for (let p = 0; p < nWalkers; p++) {
       const wr = makeRng(vovWalkerSeed(seed, p));
-      const dx = wr() < 0.5 ? 1 : 0;
-      const dy = dx === 1 ? 0 : 1;
+      const d0 = (wr() * 4) | 0;
       queue.push({
         x: cx,
         y: cy,
-        dx: dx,
-        dy: dy,
+        dx: dirs[d0][0],
+        dy: dirs[d0][1],
         vol: startVol,
         wid: p,
         rng: wr,
@@ -831,6 +872,88 @@
     );
   }
 
+  const PAL_L = {
+    wall: [18, 20, 28],
+    floor: [210, 125, 255],
+  };
+  const PAL_L_ARR = [PAL_L.wall, PAL_L.floor];
+
+  function stampLerpDisk(cells, w, h, cx, cy, radius) {
+    if (radius <= 0) {
+      if (cx >= 0 && cx < w && cy >= 0 && cy < h) {
+        cells[cy * w + cx] = 1;
+      }
+      return;
+    }
+    const r2 = radius * radius;
+    const rr = Math.ceil(radius + 1e-6);
+    for (let dy = -rr; dy <= rr; dy++) {
+      for (let dx = -rr; dx <= rr; dx++) {
+        if (dx * dx + dy * dy > r2) {
+          continue;
+        }
+        const x = cx + dx;
+        const y = cy + dy;
+        if (x < 0 || x >= w || y < 0 || y >= h) {
+          continue;
+        }
+        cells[y * w + x] = 1;
+      }
+    }
+  }
+
+  function runLerpSection() {
+    const seed = parseInt(document.getElementById('l-seed').value, 10) || 0;
+    const rng = makeRng(seed);
+    const size = parseInt(document.getElementById('l-size').value, 10);
+    const steps = parseInt(document.getElementById('l-steps').value, 10);
+    const r0 = parseFloat(document.getElementById('l-r0').value);
+    const r1 = parseFloat(document.getElementById('l-r1').value);
+    const v0 = parseInt(document.getElementById('l-v0').value, 10) / 100;
+    const v1 = parseInt(document.getElementById('l-v1').value, 10) / 100;
+
+    const w = size;
+    const h = size;
+    const cells = new Uint8Array(w * h);
+
+    const dirs = [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ];
+
+    const cx = (w / 2) | 0;
+    const cy = (h / 2) | 0;
+    let px = cx;
+    let py = cy;
+    const d0 = (rng() * 4) | 0;
+    let dx = dirs[d0][0];
+    let dy = dirs[d0][1];
+
+    for (let i = 0; i < steps; i++) {
+      const t = steps <= 1 ? 0 : i / (steps - 1);
+      const rad = r0 + (r1 - r0) * t;
+      const vol = v0 + (v1 - v0) * t;
+      stampLerpDisk(cells, w, h, px, py, rad);
+
+      if (rng() < vol) {
+        const pick = (rng() * 4) | 0;
+        dx = dirs[pick][0];
+        dy = dirs[pick][1];
+      }
+      const nx = px + dx;
+      const ny = py + dy;
+      if (nx < 0 || nx >= w || ny < 0 || ny >= h) {
+        continue;
+      }
+      px = nx;
+      py = ny;
+    }
+
+    drawGrid(document.getElementById('l-canvas'), w, h, cells, PAL_L_ARR);
+  }
+
   function bindLabel(rangeId, labelId, fmt) {
     const r = document.getElementById(rangeId);
     const v = document.getElementById(labelId);
@@ -881,6 +1004,21 @@
   });
   bindLabel('v-steps', 'v-steps-v');
 
+  bindLabel('l-size', 'l-size-v');
+  bindLabel('l-steps', 'l-steps-v');
+  bindLabel('l-r0', 'l-r0-v', function (x) {
+    return String(Math.round(Number(x) * 100) / 100);
+  });
+  bindLabel('l-r1', 'l-r1-v', function (x) {
+    return String(Math.round(Number(x) * 100) / 100);
+  });
+  bindLabel('l-v0', 'l-v0-v', function (x) {
+    return x + '%';
+  });
+  bindLabel('l-v1', 'l-v1-v', function (x) {
+    return x + '%';
+  });
+
   function randomSeed() {
     const a = new Uint32Array(1);
     if (typeof crypto !== 'undefined' && crypto.getRandomValues) crypto.getRandomValues(a);
@@ -899,6 +1037,10 @@
   document.getElementById('v-regen').addEventListener('click', function () {
     document.getElementById('v-seed').value = String(randomSeed());
     runVolSection();
+  });
+  document.getElementById('l-regen').addEventListener('click', function () {
+    document.getElementById('l-seed').value = String(randomSeed());
+    runLerpSection();
   });
 
   [
@@ -941,9 +1083,22 @@
     document.getElementById(id).addEventListener('input', runVolSection);
   });
 
+  [
+    'l-seed',
+    'l-size',
+    'l-steps',
+    'l-r0',
+    'l-r1',
+    'l-v0',
+    'l-v1',
+  ].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', runLerpSection);
+  });
+
   runDijkstraSection();
   runHierSection();
   runVolSection();
+  runLerpSection();
 })();
   </script>
 </body>
