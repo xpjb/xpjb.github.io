@@ -45,6 +45,8 @@ pub enum GameEvent {
 ```
 
 And the specific code for the Camera Controller (its a real camera controller):
+
+```rust
 use crate::*; // Assuming Vec2, vec2, Dir, etc. are here
 
 pub struct Cam2D {
