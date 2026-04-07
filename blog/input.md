@@ -237,6 +237,7 @@ impl Cam2D {
     // More impls for this camera incude proj(&self) -> [f32; 16] (projection matrix)
     // also stuff like inverse proj for picking and screen bounds for culling etc etc
 }
+```
 
 # What are the benefits of this
 In a structured way it handles
