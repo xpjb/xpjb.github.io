@@ -271,7 +271,7 @@ impl LevelContext {
 ```
 
 # Remarks
-Basically we are thinking like a JS developer for the settings ('but what if it was just a hashmap with string keys'). This is just the finished solution but you can think for yourself through the other alternatives. I'm told that this is what engines do for their 'property system'. At least I'm catching up.
+Basically we are thinking like a JS developer for the settings ('but what if it was just a hashmap with string keys'). This is just the finished solution but you can think for yourself through the other alternatives and their shortcomings. I'm told that this is what engines do for their 'property system'. At least I'm catching up.
 
 Later im probably striking out the english name from the schemas because thats got to be loaded from the text registry in whatever language but we can save that rabbithole for another time. Minor detail.
 
