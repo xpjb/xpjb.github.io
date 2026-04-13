@@ -1,6 +1,6 @@
 ## Patrick Burke Australian Game Developer Website
 
-[Tools](./tools.md) • [Writings](./writings.md)
+[Tools](./tools.md) • [Writings](./writings.md) • [Webring](./webring.md)
 
 You have found the website of Patrick Burke. I am an Australian games programmer based in Melbourne.
 
