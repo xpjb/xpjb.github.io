@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wheel of Fortune</title>
+  <style>
+    :root {
+      --bg: #1a1d26;
+      --panel: #252a36;
+      --text: #e8eaef;
+      --muted: #8b93a7;
+      --accent: #5b9fd4;
+      --accent-dim: #3d7aad;
+      --danger: #c45c5c;
+      --input-bg: #1e232e;
+      --border: #3a4254;
+      font-family: system-ui, Segoe UI, Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.25rem;
+    }
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      letter-spacing: 0.02em;
+    }
+    .layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 900px;
+      width: 100%;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      min-width: 220px;
+      flex: 1 1 260px;
+    }
+    .panel h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 0.75rem;
+      font-weight: 600;
+    }
+    #item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    #item-list input[type="text"] {
+      width: 100%;
+      padding: 0.5rem 0.65rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--input-bg);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    #item-list input:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+    .wheel-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .canvas-container {
+      position: relative;
+      width: min(90vw, 420px);
+      max-width: 100%;
+    }
+    #wheel {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 280px;
+    }
+    button#spin {
+      padding: 0.65rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-dim));
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(91, 159, 212, 0.35);
+    }
+    button#spin:hover:not(:disabled) {
+      filter: brightness(1.08);
+    }
+    button#spin:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      margin: 0;
+    }
+    #result {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      min-height: 1.5em;
+      color: var(--accent);
+    }
+    #result.empty {
+      color: var(--muted);
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+  <h1>Wheel of Fortune</h1>
+  <div class="layout">
+    <div class="panel">
+      <h2>Items</h2>
+      <div id="item-list" aria-label="Wheel segments"></div>
+      <p class="hint">Type in the last row to add another. Backspace on an empty row removes it.</p>
+    </div>
+    <div class="panel wheel-wrap">
+      <h2>Wheel</h2>
+      <div class="canvas-container">
+        <canvas id="wheel" width="600" height="600" aria-label="Spinning wheel"></canvas>
+      </div>
+      <div class="controls">
+        <button type="button" id="spin">Spin</button>
+        <p id="result" class="empty">Add at least two items.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+(function () {
+  const itemList = document.getElementById('item-list');
+  const canvas = document.getElementById('wheel');
+  const ctx = canvas.getContext('2d');
+  const spinBtn = document.getElementById('spin');
+  const resultEl = document.getElementById('result');
+
+  /** Wheel rotation (rad), CCW positive. Segments drawn from top: slice i spans [-π/2 + i·2π/n, …). */
+  let theta = 0;
+  let omega = 0;
+  let isSpinning = false;
+  let rafId = null;
+  let lastTickIndex = -1;
+  let lastFrameTime = 0;
+
+  /** Per-frame multiplier when dt ≈ 1/60 s (stronger = higher friction). */
+  const DAMPING_PER_SEC = 0.996;
+  const MIN_OMEGA = 0.008;
+  const OMEGA_MIN_START = 56;
+  const OMEGA_MAX_START = 78;
+
+  let audioCtx = null;
+
+  function ensureAudio() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  function playTick(intensity) {
+    if (!audioCtx) return;
+    const t = audioCtx.currentTime;
+    const vol = Math.min(0.48, 0.14 + intensity * 0.22);
+    const dur = 0.019 + Math.random() * 0.006;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(1180 + Math.random() * 420, t);
+
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.linearRampToValueAtTime(vol, t + 0.0015);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(t);
+    osc.stop(t + dur + 0.01);
+
+    const click = audioCtx.createOscillator();
+    const g2 = audioCtx.createGain();
+    click.type = 'triangle';
+    click.frequency.setValueAtTime(2400 + Math.random() * 400, t);
+    g2.gain.setValueAtTime(vol * 0.35, t);
+    g2.gain.exponentialRampToValueAtTime(0.0001, t + dur * 0.65);
+    click.connect(g2);
+    g2.connect(audioCtx.destination);
+    click.start(t);
+    click.stop(t + dur + 0.01);
+  }
+
+  function getItems() {
+    const inputs = itemList.querySelectorAll('input[type="text"]');
+    const out = [];
+    inputs.forEach((inp) => {
+      const s = inp.value.trim();
+      if (s) out.push(s);
+    });
+    return out;
+  }
+
+  function ensureTrailingEmpty() {
+    const inputs = itemList.querySelectorAll('input[type="text"]');
+    if (inputs.length === 0) {
+      addInput('');
+      return;
+    }
+    const last = inputs[inputs.length - 1];
+    if (last.value.trim() !== '') {
+      addInput('');
+    }
+  }
+
+  function addInput(value) {
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    inp.setAttribute('autocomplete', 'off');
+    inp.setAttribute('aria-label', 'Wheel segment');
+    inp.value = value;
+    inp.addEventListener('input', onInput);
+    inp.addEventListener('keydown', onKeydown);
+    itemList.appendChild(inp);
+  }
+
+  function onInput(e) {
+    ensureTrailingEmpty();
+    updateSpinState();
+    drawWheel();
+  }
+
+  function onKeydown(e) {
+    if (e.key !== 'Backspace') return;
+    const inp = e.target;
+    if (inp.value !== '') return;
+    const inputs = [...itemList.querySelectorAll('input[type="text"]')];
+    const idx = inputs.indexOf(inp);
+    if (idx <= 0) return;
+    e.preventDefault();
+    inp.remove();
+    const prev = itemList.querySelectorAll('input[type="text"]')[idx - 1];
+    if (prev) {
+      prev.focus();
+      const len = prev.value.length;
+      prev.setSelectionRange(len, len);
+    }
+    ensureTrailingEmpty();
+    updateSpinState();
+    drawWheel();
+  }
+
+  function updateSpinState() {
+    const items = getItems();
+    const ok = items.length >= 2;
+    spinBtn.disabled = !ok || isSpinning;
+    if (!ok && !isSpinning) {
+      resultEl.textContent = 'Add at least two items.';
+      resultEl.classList.add('empty');
+    }
+  }
+
+  /**
+   * Pointer fixed at top (−π/2). Wheel local angle α at top: α + θ = −π/2 → α = −π/2 − θ.
+   * Segment i covers [−π/2 + i·2π/n, −π/2 + (i+1)·2π/n).
+   */
+  function segmentIndexAtPointer(angle, n) {
+    if (n < 1) return 0;
+    let local = (-Math.PI / 2 - angle) % (Math.PI * 2);
+    if (local < 0) local += Math.PI * 2;
+    let offset = (local + Math.PI / 2) % (Math.PI * 2);
+    let idx = Math.floor(offset / ((Math.PI * 2) / n));
+    if (idx >= n) idx = n - 1;
+    if (idx < 0) idx = 0;
+    return idx;
+  }
+
+  /**
+   * One line along the slice bisector (text extends radially inward from textR).
+   * measureText().width is along that radius — compare to (textR - rHub), not to sin(slice/2).
+   * The sin formula is tangential chord at the rim; using it for radial width broke n=1 (sin(π)=0 → instant "…").
+   */
+  function drawSegmentLabel(ctx, rawLabel, r, slice, dpr) {
+    const label = rawLabel.trim() || ' ';
+    const textR = r * 0.88;
+    const rHub = r * 0.12;
+    const pad = 6 * dpr;
+    const maxW = Math.max(8 * dpr, textR - rHub - pad);
+
+    const half = slice / 2;
+    const sinHalf = Math.sin(half);
+    let fontMax = Math.min(34 * dpr, r * 0.1);
+    if (slice < Math.PI - 1e-6 && sinHalf > 1e-6) {
+      const tangentialAtRim = 2 * textR * sinHalf;
+      const capFromWedge = (tangentialAtRim * 0.88) / 1.25;
+      fontMax = Math.min(fontMax, capFromWedge);
+    }
+
+    const fontMin = Math.max(12 * dpr, r * 0.026);
+    fontMax = Math.max(fontMin, fontMax);
+
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = 'rgba(255,255,255,0.95)';
+
+    for (let fs = fontMax; fs >= fontMin; fs -= 1) {
+      ctx.font = `600 ${fs}px system-ui, Segoe UI, sans-serif`;
+      if (ctx.measureText(label).width <= maxW) {
+        ctx.fillText(label, textR, 0);
+        return;
+      }
+    }
+
+    ctx.font = `600 ${fontMin}px system-ui, Segoe UI, sans-serif`;
+    let s = label;
+    while (s.length > 0) {
+      const tryText = s.length < label.length ? s + '…' : s;
+      if (ctx.measureText(tryText).width <= maxW) {
+        ctx.fillText(tryText, textR, 0);
+        return;
+      }
+      s = s.slice(0, -1);
+    }
+    ctx.fillText('…', textR, 0);
+  }
+
+  function drawWheel() {
+    const items = getItems();
+    const n = items.length;
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    const size = Math.min(rect.width, rect.height) || 400;
+    const px = Math.round(size * dpr);
+    if (canvas.width !== px || canvas.height !== px) {
+      canvas.width = px;
+      canvas.height = px;
+    }
+    const cx = px / 2;
+    const cy = px / 2;
+    const r = px * 0.42;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, px, px);
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(theta);
+
+    if (n === 0) {
+      ctx.fillStyle = '#3a4254';
+      ctx.beginPath();
+      ctx.arc(0, 0, r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+      drawPointer(cx, cy, r, dpr);
+      return;
+    }
+
+    const slice = (Math.PI * 2) / n;
+    for (let i = 0; i < n; i++) {
+      const start = -Math.PI / 2 + i * slice;
+      const hue = (i * (360 / Math.max(n, 1))) % 360;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, r, start, start + slice);
+      ctx.closePath();
+      ctx.fillStyle = `hsl(${hue}, 72%, 52%)`;
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0,0,0,0.25)';
+      ctx.lineWidth = 1.5 * dpr;
+      ctx.stroke();
+
+      ctx.save();
+      ctx.rotate(start + slice / 2);
+      drawSegmentLabel(ctx, items[i], r, slice, dpr);
+      ctx.restore();
+    }
+
+    ctx.beginPath();
+    ctx.arc(0, 0, r * 0.12, 0, Math.PI * 2);
+    ctx.fillStyle = '#2a3142';
+    ctx.fill();
+    ctx.strokeStyle = '#5b6578';
+    ctx.lineWidth = 2 * dpr;
+    ctx.stroke();
+
+    ctx.restore();
+
+    drawPointer(cx, cy, r, dpr);
+  }
+
+  function drawPointer(cx, cy, r, dpr) {
+    const tipY = cy - r - 8 * dpr;
+    const w = 18 * dpr;
+    const h = 28 * dpr;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.beginPath();
+    ctx.moveTo(cx, tipY + h);
+    ctx.lineTo(cx - w / 2, tipY);
+    ctx.lineTo(cx + w / 2, tipY);
+    ctx.closePath();
+    ctx.fillStyle = '#e8eaef';
+    ctx.strokeStyle = '#1a1d26';
+    ctx.lineWidth = 2 * dpr;
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function spinLoop(now) {
+    if (!isSpinning) return;
+    const dt = lastFrameTime ? Math.min(0.05, (now - lastFrameTime) / 1000) : 1 / 60;
+    lastFrameTime = now;
+
+    theta += omega * dt;
+    omega *= Math.pow(DAMPING_PER_SEC, dt * 60);
+
+    const items = getItems();
+    const n = items.length;
+    if (n >= 2) {
+      const idx = segmentIndexAtPointer(theta, n);
+      if (idx !== lastTickIndex && lastTickIndex >= 0) {
+        playTick(Math.min(1, omega / OMEGA_MAX_START));
+      }
+      lastTickIndex = idx;
+    }
+
+    drawWheel();
+
+    if (Math.abs(omega) < MIN_OMEGA) {
+      omega = 0;
+      isSpinning = false;
+      lastFrameTime = 0;
+      spinBtn.disabled = false;
+      const finalIdx = n >= 1 ? segmentIndexAtPointer(theta, n) : 0;
+      if (n >= 2) {
+        resultEl.textContent = 'Winner: ' + items[finalIdx];
+        resultEl.classList.remove('empty');
+      }
+      updateSpinState();
+      return;
+    }
+
+    rafId = requestAnimationFrame(spinLoop);
+  }
+
+  function startSpin() {
+    const items = getItems();
+    if (items.length < 2) return;
+
+    ensureAudio();
+
+    if (rafId) cancelAnimationFrame(rafId);
+    isSpinning = true;
+    lastTickIndex = segmentIndexAtPointer(theta, items.length);
+    omega = OMEGA_MIN_START + Math.random() * (OMEGA_MAX_START - OMEGA_MIN_START);
+    if (Math.random() < 0.5) omega = -omega;
+
+    spinBtn.disabled = true;
+    resultEl.textContent = '…';
+    resultEl.classList.add('empty');
+    lastFrameTime = 0;
+    rafId = requestAnimationFrame(spinLoop);
+  }
+
+  spinBtn.addEventListener('click', startSpin);
+
+  let resizeTimer;
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => drawWheel(), 100);
+  }
+  window.addEventListener('resize', onResize);
+
+  addInput('');
+  updateSpinState();
+  requestAnimationFrame(() => drawWheel());
+})();
+  </script>
+</body>
+</html>
