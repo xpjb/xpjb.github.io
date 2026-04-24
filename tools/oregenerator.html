@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ore Distribution Test App</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111318;
+      --panel: #1a1f28;
+      --panel-2: #232a36;
+      --text: #d9e1eb;
+      --muted: #9aa8b9;
+      --border: #374456;
+      --accent: #66a8ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 560px 1fr;
+      grid-template-rows: auto 1fr;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    .viewport {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      border-left: 1px solid var(--border);
+      background: #0a0d12;
+      grid-column: 2;
+      grid-row: 1 / 3;
+    }
+
+    #worldCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .hud {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(17, 22, 30, 0.88);
+      font-size: 12px;
+      line-height: 1.35;
+      white-space: pre;
+      pointer-events: none;
+    }
+
+    .panel {
+      padding: 12px;
+      background: var(--panel);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .worldPanel {
+      grid-column: 1;
+      grid-row: 1;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .orePanel {
+      grid-column: 1;
+      grid-row: 2;
+      overflow: hidden;
+      border-right: 1px solid var(--border);
+      min-height: 0;
+    }
+
+    .section {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--panel-2);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .section h3 {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .worldColors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    input, button {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #151b24;
+      color: var(--text);
+      padding: 6px 7px;
+      font-size: 12px;
+      font-family: inherit;
+    }
+
+    input[type="color"] {
+      height: 32px;
+      padding: 2px;
+    }
+
+    button {
+      cursor: pointer;
+      background: #1a2330;
+    }
+
+    button:hover { border-color: var(--accent); }
+
+    .ore {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 8px;
+      background: #141b24;
+      min-width: 0;
+    }
+
+    .oreCurve {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .oreControls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .oreHeader {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      grid-column: 1 / 3;
+    }
+
+    .oreHeader .nameLabel {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .oreNameInput {
+      flex: 1;
+      min-width: 120px;
+      max-width: 280px;
+    }
+
+    .oreColorInput {
+      width: 42px;
+      min-width: 42px;
+      padding: 2px;
+      height: 28px;
+    }
+
+    .btnMini {
+      padding: 4px 6px;
+      font-size: 11px;
+      min-width: 28px;
+    }
+
+    .help {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .curveEditor {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #0f141c;
+      width: 210px;
+      height: 120px;
+      display: block;
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    .sliderWrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .sliderTop {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .sliderVal {
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      min-width: 42px;
+      text-align: right;
+    }
+
+    #oreList {
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-right: 4px;
+      flex: 1;
+    }
+
+    .orePanel .section {
+      height: 100%;
+      min-height: 0;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="panel worldPanel">
+      <div class="section">
+        <h3>World</h3>
+        <div class="worldColors">
+          <label>Dirt color
+            <input id="dirtColor" type="color" value="#7a5638">
+          </label>
+          <label>Rock color
+            <input id="rockColor" type="color" value="#666b77">
+          </label>
+        </div>
+        <div class="sliderWrap">
+          <div class="sliderTop"><span>Dirt depth (tiles)</span><span id="dirtDepthVal" class="sliderVal">5</span></div>
+          <input id="dirtDepth" type="range" min="0" max="64" step="1" value="5">
+        </div>
+        <div class="sliderWrap">
+          <div class="sliderTop"><span>Global seed</span><span id="globalSeedVal" class="sliderVal">1337</span></div>
+          <input id="globalSeed" type="range" min="0" max="1000000" step="1" value="1337">
+        </div>
+      </div>
+    </aside>
+
+    <div class="viewport">
+      <canvas id="worldCanvas"></canvas>
+      <div id="hud" class="hud"></div>
+    </div>
+
+    <section class="panel orePanel">
+      <div class="section">
+        <h3>Ores</h3>
+        <div class="help">Resolved top-to-bottom. First matching ore wins.</div>
+        <button id="addOreBtn" type="button">Add ore</button>
+        <div id="oreList"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    "use strict";
+
+    const TILE_SIZE = 128;
+    const SKY_COLOR = "#88b6ff";
+    const GRADIENT_TABLE = [
+      [ 1, 0], [-1, 0], [0, 1], [0, -1],
+      [ 0.7071, 0.7071], [-0.7071, 0.7071], [0.7071, -0.7071], [-0.7071, -0.7071],
+      [ 1, 1], [-1, 1], [1, -1], [-1, -1],
+      [ 0.9239, 0.3827], [-0.9239, 0.3827], [0.3827, -0.9239], [-0.3827, -0.9239]
+    ];
+
+    const canvas = document.getElementById("worldCanvas");
+    const ctx = canvas.getContext("2d", { alpha: false });
+    const hudEl = document.getElementById("hud");
+    const oreListEl = document.getElementById("oreList");
+
+    const worldInputs = {
+      dirtColor: document.getElementById("dirtColor"),
+      rockColor: document.getElementById("rockColor"),
+      dirtDepth: document.getElementById("dirtDepth"),
+      globalSeed: document.getElementById("globalSeed"),
+      addOreBtn: document.getElementById("addOreBtn")
+    };
+    const dirtDepthValEl = document.getElementById("dirtDepthVal");
+    const globalSeedValEl = document.getElementById("globalSeedVal");
+
+    let oreIdCounter = 3;
+    const state = {
+      world: {
+        dirtColor: "#7a5638",
+        rockColor: "#666b77",
+        dirtDepth: 5,
+        globalSeed: 1337
+      },
+      ores: [
+        defaultOre("Ore 1", "#89a8ff", 1001)
+      ]
+    };
+
+    const camera = {
+      originX: 0,
+      originY: 0,
+      zoom: 1,
+      minZoom: 0.08,
+      maxZoom: 8.0,
+      zoomSensitivity: 0.12,
+      speed: 950,
+      held: { up: false, down: false, left: false, right: false },
+      mouseX: 0,
+      mouseY: 0,
+      dragStartMouseX: 0,
+      dragStartMouseY: 0,
+      dragStartOriginX: 0,
+      dragStartOriginY: 0,
+      dragging: false
+    };
+
+    const pointer = {
+      worldX: 0,
+      worldY: 0,
+      tileX: 0,
+      tileY: 0
+    };
+
+    const curveDrag = {
+      active: false,
+      oreId: "",
+      handle: "",
+      canvas: null
+    };
+
+    let rafHandle = 0;
+    let previousTime = performance.now();
+    let forceRender = true;
+
+    function defaultOre(name, color, seed) {
+      return {
+        id: `ore-${oreIdCounter++}`,
+        name,
+        color,
+        seed: seed >>> 0,
+        scale: 0.045,
+        prewarpAmount: 0.55,
+        prewarpScale: 0.12,
+        distanceThreshold: 0.2,
+        depthScale: 16,
+        bezier: {
+          x0: 0.0, y0: 0.0,
+          x1: 0.25, y1: 0.20,
+          x2: 0.75, y2: 0.80,
+          x3: 1.0, y3: 1.0
+        }
+      };
+    }
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    function smoothstep(t) {
+      return t * t * (3 - 2 * t);
+    }
+
+    function toUInt32(n) {
+      return n >>> 0;
+    }
+
+    function hashU32(x) {
+      let a = toUInt32(x);
+      a = Math.imul((a ^ 2747636419) >>> 0, 2654435769) >>> 0;
+      a = Math.imul((a ^ (a >>> 16)) >>> 0, 2654435769) >>> 0;
+      a = Math.imul((a ^ (a >>> 16)) >>> 0, 2654435769) >>> 0;
+      return a >>> 0;
+    }
+
+    function hash2D(x, y, seed) {
+      const ux = toUInt32(x | 0);
+      const uy = toUInt32(y | 0);
+      let h = toUInt32(seed);
+      h ^= Math.imul(ux, 0x27d4eb2d) >>> 0;
+      h = hashU32(h);
+      h ^= Math.imul(uy, 0x85ebca6b) >>> 0;
+      return hashU32(h);
+    }
+
+    function rand01FromHash(h) {
+      return (toUInt32(h) / 4294967295);
+    }
+
+    function gradientAt(ix, iy, seed) {
+      const idx = hash2D(ix, iy, seed) & 15;
+      return GRADIENT_TABLE[idx];
+    }
+
+    function gradNoiseSigned(x, y, seed) {
+      const x0 = Math.floor(x);
+      const y0 = Math.floor(y);
+      const x1 = x0 + 1;
+      const y1 = y0 + 1;
+
+      const ux = x - x0;
+      const uy = y - y0;
+
+      const g00 = gradientAt(x0, y0, seed);
+      const g10 = gradientAt(x1, y0, seed);
+      const g01 = gradientAt(x0, y1, seed);
+      const g11 = gradientAt(x1, y1, seed);
+
+      const d00 = g00[0] * ux + g00[1] * uy;
+      const d10 = g10[0] * (ux - 1) + g10[1] * uy;
+      const d01 = g01[0] * ux + g01[1] * (uy - 1);
+      const d11 = g11[0] * (ux - 1) + g11[1] * (uy - 1);
+
+      const fx = smoothstep(ux);
+      const fy = smoothstep(uy);
+      const nx0 = lerp(d00, d10, fx);
+      const nx1 = lerp(d01, d11, fx);
+      return lerp(nx0, nx1, fy);
+    }
+
+    function cubicBezier2(p0, p1, p2, p3, t) {
+      const u = 1 - t;
+      const b0 = u * u * u;
+      const b1 = 3 * u * u * t;
+      const b2 = 3 * u * t * t;
+      const b3 = t * t * t;
+      return {
+        x: b0 * p0.x + b1 * p1.x + b2 * p2.x + b3 * p3.x,
+        y: b0 * p0.y + b1 * p1.y + b2 * p2.y + b3 * p3.y
+      };
+    }
+
+    function solveTForBezierX(x, p0, p1, p2, p3) {
+      let lo = 0;
+      let hi = 1;
+      const targetX = clamp(x, 0, 1);
+      for (let i = 0; i < 14; i++) {
+        const mid = 0.5 * (lo + hi);
+        const mx = cubicBezier2(p0, p1, p2, p3, mid).x;
+        if (mx < targetX) lo = mid;
+        else hi = mid;
+      }
+      return 0.5 * (lo + hi);
+    }
+
+    function remapDepthCurve(x, ore) {
+      const p0 = { x: clamp(ore.bezier.x0, 0, 1), y: clamp(ore.bezier.y0, 0, 1) };
+      const p1 = { x: clamp(ore.bezier.x1, 0, 1), y: clamp(ore.bezier.y1, 0, 1) };
+      const p2 = { x: clamp(ore.bezier.x2, 0, 1), y: clamp(ore.bezier.y2, 0, 1) };
+      const p3 = { x: clamp(ore.bezier.x3, 0, 1), y: clamp(ore.bezier.y3, 0, 1) };
+      const t = solveTForBezierX(x, p0, p1, p2, p3);
+      const y = cubicBezier2(p0, p1, p2, p3, t).y;
+      return clamp(y, 0, 1);
+    }
+
+    function cameraScreenToWorld(px, py) {
+      const w = canvas.width;
+      const h = canvas.height;
+      const worldX = camera.originX + (px - w * 0.5) / camera.zoom;
+      const worldY = camera.originY - (py - h * 0.5) / camera.zoom;
+      return { x: worldX, y: worldY };
+    }
+
+    function cameraWorldToScreen(wx, wy) {
+      const w = canvas.width;
+      const h = canvas.height;
+      const sx = (wx - camera.originX) * camera.zoom + w * 0.5;
+      const sy = (camera.originY - wy) * camera.zoom + h * 0.5;
+      return { x: sx, y: sy };
+    }
+
+    function visibleTileBounds() {
+      const halfW = canvas.width / (2 * camera.zoom);
+      const halfH = canvas.height / (2 * camera.zoom);
+      const minX = camera.originX - halfW;
+      const maxX = camera.originX + halfW;
+      const minY = camera.originY - halfH;
+      const maxY = camera.originY + halfH;
+      return {
+        minTileX: Math.floor(minX / TILE_SIZE) - 1,
+        maxTileX: Math.floor(maxX / TILE_SIZE) + 1,
+        minTileY: Math.floor(minY / TILE_SIZE) - 1,
+        maxTileY: Math.floor(maxY / TILE_SIZE) + 1
+      };
+    }
+
+    function deriveOreSeed(ore, index) {
+      const g = toUInt32(state.world.globalSeed);
+      const base = hashU32(toUInt32(ore.seed) ^ hashU32(index + 1));
+      return hashU32(g ^ base ^ 0x9e3779b9);
+    }
+
+    function worleyNearest(wx, wy, oreSeed) {
+      const cellX = Math.floor(wx);
+      const cellY = Math.floor(wy);
+      let bestDist = Infinity;
+      let bestCellX = 0;
+      let bestCellY = 0;
+      let bestFeatureHash = 0;
+      let bestFeatureX = 0;
+      let bestFeatureY = 0;
+
+      for (let oy = -1; oy <= 1; oy++) {
+        for (let ox = -1; ox <= 1; ox++) {
+          const cx = cellX + ox;
+          const cy = cellY + oy;
+          const h = hash2D(cx, cy, oreSeed);
+          const fx = cx + rand01FromHash(hashU32(h ^ 0x68bc21eb));
+          const fy = cy + rand01FromHash(hashU32(h ^ 0x02e5be93));
+          const dx = wx - fx;
+          const dy = wy - fy;
+          const dist = Math.hypot(dx, dy);
+          if (dist < bestDist) {
+            bestDist = dist;
+            bestCellX = cx;
+            bestCellY = cy;
+            bestFeatureHash = h;
+            bestFeatureX = fx;
+            bestFeatureY = fy;
+          }
+        }
+      }
+
+      return {
+        dist: bestDist,
+        cellX: bestCellX,
+        cellY: bestCellY,
+        featureHash: bestFeatureHash,
+        featureX: bestFeatureX,
+        featureY: bestFeatureY
+      };
+    }
+
+    function oreHitsTile(tileX, tileY, ore, index) {
+      const oreSeed = deriveOreSeed(ore, index);
+      const sampleX = tileX * ore.scale;
+      const sampleY = tileY * ore.scale;
+      const preX = sampleX * ore.prewarpScale;
+      const preY = sampleY * ore.prewarpScale;
+
+      const warpX = gradNoiseSigned(preX, preY, hashU32(oreSeed ^ 0xa24baed4));
+      const warpY = gradNoiseSigned(preX + 47.123, preY - 13.817, hashU32(oreSeed ^ 0x9f35de71));
+
+      const warpedX = sampleX + warpX * ore.prewarpAmount;
+      const warpedY = sampleY + warpY * ore.prewarpAmount;
+
+      const nearest = worleyNearest(warpedX, warpedY, oreSeed);
+      if (nearest.dist > ore.distanceThreshold) return false;
+
+      const featureTileY = nearest.featureY / Math.max(ore.scale, 0.0001);
+      const depth = Math.max(0, -featureTileY);
+      const depthInput = clamp(depth / Math.max(ore.depthScale, 0.0001), 0, 1);
+      const chance = remapDepthCurve(depthInput, ore);
+      const roll = rand01FromHash(hashU32(nearest.featureHash ^ 0x7f4a7c15));
+      return roll < chance;
+    }
+
+    function resolveTileMaterial(tileX, tileY) {
+      const depth = -tileY;
+      if (depth < 0) {
+        return SKY_COLOR;
+      }
+
+      if (depth < state.world.dirtDepth) {
+        return state.world.dirtColor;
+      }
+
+      let color = state.world.rockColor;
+      for (let i = 0; i < state.ores.length; i++) {
+        const ore = state.ores[i];
+        if (oreHitsTile(tileX, tileY, ore, i)) {
+          color = ore.color;
+          break;
+        }
+      }
+      return color;
+    }
+
+    function drawWorld() {
+      const bounds = visibleTileBounds();
+      const minX = bounds.minTileX;
+      const maxX = bounds.maxTileX;
+      const minY = bounds.minTileY;
+      const maxY = bounds.maxTileY;
+
+      ctx.fillStyle = "#0a0d12";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let ty = minY; ty <= maxY; ty++) {
+        for (let tx = minX; tx <= maxX; tx++) {
+          const worldX = tx * TILE_SIZE;
+          const worldY = ty * TILE_SIZE;
+          const screen = cameraWorldToScreen(worldX, worldY + TILE_SIZE);
+          const tilePx = TILE_SIZE * camera.zoom;
+
+          if (
+            screen.x > canvas.width + tilePx ||
+            screen.y > canvas.height + tilePx ||
+            screen.x < -tilePx ||
+            screen.y < -tilePx
+          ) {
+            continue;
+          }
+
+          ctx.fillStyle = resolveTileMaterial(tx, ty);
+          ctx.fillRect(screen.x, screen.y, tilePx + 1, tilePx + 1);
+        }
+      }
+
+      if (camera.zoom >= 0.35) {
+        drawGrid(bounds);
+      }
+    }
+
+    function drawGrid(bounds) {
+      const alpha = clamp((camera.zoom - 0.35) / 1.2, 0, 0.4);
+      if (alpha <= 0) return;
+      ctx.strokeStyle = `rgba(35, 43, 56, ${alpha})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+
+      for (let tx = bounds.minTileX; tx <= bounds.maxTileX; tx++) {
+        const wx = tx * TILE_SIZE;
+        const a = cameraWorldToScreen(wx, bounds.minTileY * TILE_SIZE);
+        const b = cameraWorldToScreen(wx, (bounds.maxTileY + 1) * TILE_SIZE);
+        ctx.moveTo(Math.round(a.x) + 0.5, Math.round(a.y) + 0.5);
+        ctx.lineTo(Math.round(b.x) + 0.5, Math.round(b.y) + 0.5);
+      }
+
+      for (let ty = bounds.minTileY; ty <= bounds.maxTileY; ty++) {
+        const wy = ty * TILE_SIZE;
+        const a = cameraWorldToScreen(bounds.minTileX * TILE_SIZE, wy);
+        const b = cameraWorldToScreen((bounds.maxTileX + 1) * TILE_SIZE, wy);
+        ctx.moveTo(Math.round(a.x) + 0.5, Math.round(a.y) + 0.5);
+        ctx.lineTo(Math.round(b.x) + 0.5, Math.round(b.y) + 0.5);
+      }
+
+      ctx.stroke();
+    }
+
+    function updateHud() {
+      hudEl.textContent =
+        `origin: ${camera.originX.toFixed(1)}, ${camera.originY.toFixed(1)}\n` +
+        `zoom:   ${camera.zoom.toFixed(3)}\n` +
+        `mouse:  ${pointer.worldX.toFixed(1)}, ${pointer.worldY.toFixed(1)}\n` +
+        `tile:   ${pointer.tileX}, ${pointer.tileY}`;
+    }
+
+    function syncWorldInputsFromState() {
+      worldInputs.dirtColor.value = state.world.dirtColor;
+      worldInputs.rockColor.value = state.world.rockColor;
+      worldInputs.dirtDepth.value = String(state.world.dirtDepth);
+      worldInputs.globalSeed.value = String(state.world.globalSeed >>> 0);
+      dirtDepthValEl.textContent = String(state.world.dirtDepth);
+      globalSeedValEl.textContent = String(state.world.globalSeed >>> 0);
+    }
+
+    function renderOreList() {
+      oreListEl.innerHTML = "";
+
+      state.ores.forEach((ore, index) => {
+        const wrap = document.createElement("div");
+        wrap.className = "ore";
+        wrap.innerHTML = `
+          <div class="oreHeader">
+            <span class="nameLabel">#${index + 1}</span>
+            <input class="oreNameInput" type="text" data-field="name" data-id="${ore.id}" value="${escapeHtmlAttr(ore.name)}">
+            <input class="oreColorInput" type="color" data-field="color" data-id="${ore.id}" value="${ore.color}">
+            <button type="button" class="btnMini" data-action="up" data-id="${ore.id}">↑</button>
+            <button type="button" class="btnMini" data-action="down" data-id="${ore.id}">↓</button>
+            <button type="button" class="btnMini" data-action="remove" data-id="${ore.id}">x</button>
+          </div>
+          <div class="oreCurve">
+            <canvas class="curveEditor" width="250" height="120" data-id="${ore.id}"></canvas>
+          </div>
+          <div class="oreControls">
+            <label class="sliderWrap">
+              <div class="sliderTop"><span>Seed</span><span class="sliderVal">${ore.seed >>> 0}</span></div>
+              <input type="range" min="0" max="1000000" step="1" data-field="seed" data-id="${ore.id}" value="${ore.seed >>> 0}">
+            </label>
+            <label class="sliderWrap">
+              <div class="sliderTop"><span>Scale</span><span class="sliderVal">${ore.scale.toFixed(3)}</span></div>
+              <input type="range" min="0.005" max="0.25" step="0.001" data-field="scale" data-id="${ore.id}" value="${ore.scale}">
+            </label>
+            <label class="sliderWrap">
+              <div class="sliderTop"><span>Prewarp amount</span><span class="sliderVal">${ore.prewarpAmount.toFixed(2)}</span></div>
+              <input type="range" min="0" max="2.5" step="0.01" data-field="prewarpAmount" data-id="${ore.id}" value="${ore.prewarpAmount}">
+            </label>
+            <label class="sliderWrap">
+              <div class="sliderTop"><span>Prewarp scale</span><span class="sliderVal">${ore.prewarpScale.toFixed(3)}</span></div>
+              <input type="range" min="0.01" max="0.6" step="0.001" data-field="prewarpScale" data-id="${ore.id}" value="${ore.prewarpScale}">
+            </label>
+            <label class="sliderWrap">
+              <div class="sliderTop"><span>Distance threshold</span><span class="sliderVal">${ore.distanceThreshold.toFixed(3)}</span></div>
+              <input type="range" min="0.01" max="0.6" step="0.001" data-field="distanceThreshold" data-id="${ore.id}" value="${ore.distanceThreshold}">
+            </label>
+            <label class="sliderWrap">
+              <div class="sliderTop"><span title="Depth is divided by this value before depth chance curve lookup">Depth scale</span><span class="sliderVal">${ore.depthScale.toFixed(1)}</span></div>
+              <input type="range" min="1" max="512" step="1" data-field="depthScale" data-id="${ore.id}" value="${ore.depthScale}" title="Depth is divided by this value before depth chance curve lookup">
+            </label>
+          </div>
+        `;
+        oreListEl.appendChild(wrap);
+      });
+
+      drawAllCurveEditors();
+    }
+
+    function escapeHtml(value) {
+      return value
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    function escapeHtmlAttr(value) {
+      return escapeHtml(value).replaceAll("\"", "&quot;");
+    }
+
+    function onWorldInput() {
+      state.world.dirtColor = worldInputs.dirtColor.value;
+      state.world.rockColor = worldInputs.rockColor.value;
+      state.world.dirtDepth = Math.max(0, Number(worldInputs.dirtDepth.value) | 0);
+      state.world.globalSeed = toUInt32(Number(worldInputs.globalSeed.value) || 0);
+      dirtDepthValEl.textContent = String(state.world.dirtDepth);
+      globalSeedValEl.textContent = String(state.world.globalSeed);
+      syncWorldInputsFromState();
+      forceRender = true;
+    }
+
+    function getOreById(id) {
+      return state.ores.find((o) => o.id === id);
+    }
+
+    function onOreListInput(event) {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement)) return;
+      const id = target.dataset.id;
+      const field = target.dataset.field;
+      if (!id || !field) return;
+
+      const ore = getOreById(id);
+      if (!ore) return;
+
+      if (field === "name") {
+        ore.name = target.value.trim() || "Ore";
+      } else if (field === "color") {
+        ore.color = target.value;
+      } else if (field === "seed") {
+        ore.seed = toUInt32(Number(target.value) || 0);
+      } else if (field === "scale") {
+        ore.scale = clamp(Number(target.value) || 0.001, 0.0001, 10);
+      } else if (field === "prewarpAmount") {
+        ore.prewarpAmount = clamp(Number(target.value) || 0, 0, 10);
+      } else if (field === "prewarpScale") {
+        ore.prewarpScale = clamp(Number(target.value) || 0.001, 0.0001, 10);
+      } else if (field === "distanceThreshold") {
+        ore.distanceThreshold = clamp(Number(target.value) || 0, 0, 2);
+      } else if (field === "depthScale") {
+        ore.depthScale = clamp(Number(target.value) || 1, 1, 512);
+      }
+
+      forceRender = true;
+      const sliderWrap = target.closest(".sliderWrap");
+      if (sliderWrap) {
+        const valEl = sliderWrap.querySelector(".sliderVal");
+        if (valEl) {
+          const num = Number(target.value);
+          if (field === "seed") valEl.textContent = String(Math.round(num));
+          else if (field === "prewarpAmount") valEl.textContent = num.toFixed(2);
+          else if (field === "depthScale") valEl.textContent = num.toFixed(1);
+          else valEl.textContent = num.toFixed(3);
+        }
+      }
+      if (field === "name" || field === "color") {
+        renderOreList();
+      } else {
+        drawAllCurveEditors();
+      }
+    }
+
+    function drawAllCurveEditors() {
+      const canvases = oreListEl.querySelectorAll("canvas.curveEditor");
+      canvases.forEach((curveCanvas) => {
+        if (!(curveCanvas instanceof HTMLCanvasElement)) return;
+        const ore = getOreById(curveCanvas.dataset.id || "");
+        if (!ore) return;
+        drawCurveEditor(curveCanvas, ore);
+      });
+    }
+
+    function curveCanvasPoint(canvas, x, y) {
+      return { x: x * canvas.width, y: (1 - y) * canvas.height };
+    }
+
+    function curveValueFromCanvasPoint(canvas, px, py) {
+      return {
+        x: clamp(px / canvas.width, 0, 1),
+        y: clamp(1 - py / canvas.height, 0, 1)
+      };
+    }
+
+    function drawCurveEditor(curveCanvas, ore) {
+      const cctx = curveCanvas.getContext("2d");
+      if (!cctx) return;
+
+      cctx.clearRect(0, 0, curveCanvas.width, curveCanvas.height);
+      cctx.fillStyle = "#0f141c";
+      cctx.fillRect(0, 0, curveCanvas.width, curveCanvas.height);
+
+      cctx.strokeStyle = "rgba(138, 154, 175, 0.22)";
+      cctx.lineWidth = 1;
+      for (let i = 1; i < 4; i++) {
+        const x = (curveCanvas.width * i) / 4;
+        const y = (curveCanvas.height * i) / 4;
+        cctx.beginPath();
+        cctx.moveTo(x, 0);
+        cctx.lineTo(x, curveCanvas.height);
+        cctx.stroke();
+        cctx.beginPath();
+        cctx.moveTo(0, y);
+        cctx.lineTo(curveCanvas.width, y);
+        cctx.stroke();
+      }
+
+      const p0 = curveCanvasPoint(curveCanvas, ore.bezier.x0, ore.bezier.y0);
+      const p1 = curveCanvasPoint(curveCanvas, ore.bezier.x1, ore.bezier.y1);
+      const p2 = curveCanvasPoint(curveCanvas, ore.bezier.x2, ore.bezier.y2);
+      const p3 = curveCanvasPoint(curveCanvas, ore.bezier.x3, ore.bezier.y3);
+
+      cctx.strokeStyle = "rgba(130, 170, 220, 0.45)";
+      cctx.lineWidth = 1.5;
+      cctx.beginPath();
+      cctx.moveTo(p0.x, p0.y);
+      cctx.lineTo(p1.x, p1.y);
+      cctx.lineTo(p2.x, p2.y);
+      cctx.lineTo(p3.x, p3.y);
+      cctx.stroke();
+
+      cctx.strokeStyle = ore.color;
+      cctx.lineWidth = 2;
+      cctx.beginPath();
+      cctx.moveTo(p0.x, p0.y);
+      for (let i = 1; i <= 64; i++) {
+        const t = i / 64;
+        const p = cubicBezier2(
+          { x: ore.bezier.x0, y: ore.bezier.y0 },
+          { x: ore.bezier.x1, y: ore.bezier.y1 },
+          { x: ore.bezier.x2, y: ore.bezier.y2 },
+          { x: ore.bezier.x3, y: ore.bezier.y3 },
+          t
+        );
+        const pp = curveCanvasPoint(curveCanvas, p.x, p.y);
+        cctx.lineTo(pp.x, pp.y);
+      }
+      cctx.stroke();
+
+      drawCurveHandle(cctx, p0, "#86d5ff");
+      drawCurveHandle(cctx, p1, "#8fc7ff");
+      drawCurveHandle(cctx, p2, "#ffb997");
+      drawCurveHandle(cctx, p3, "#ffd787");
+    }
+
+    function drawCurveHandle(cctx, p, color) {
+      cctx.fillStyle = color;
+      cctx.beginPath();
+      cctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
+      cctx.fill();
+      cctx.strokeStyle = "#0d1117";
+      cctx.lineWidth = 1;
+      cctx.stroke();
+    }
+
+    function getCurveCanvasLocalPos(curveCanvas, event) {
+      const rect = curveCanvas.getBoundingClientRect();
+      const px = ((event.clientX - rect.left) / rect.width) * curveCanvas.width;
+      const py = ((event.clientY - rect.top) / rect.height) * curveCanvas.height;
+      return { px, py };
+    }
+
+    function onCurvePointerDown(event) {
+      const target = event.target;
+      if (!(target instanceof HTMLCanvasElement)) return;
+      if (!target.classList.contains("curveEditor")) return;
+      const oreId = target.dataset.id || "";
+      const ore = getOreById(oreId);
+      if (!ore) return;
+
+      const { px, py } = getCurveCanvasLocalPos(target, event);
+      const h0 = curveCanvasPoint(target, ore.bezier.x0, ore.bezier.y0);
+      const h1 = curveCanvasPoint(target, ore.bezier.x1, ore.bezier.y1);
+      const h2 = curveCanvasPoint(target, ore.bezier.x2, ore.bezier.y2);
+      const h3 = curveCanvasPoint(target, ore.bezier.x3, ore.bezier.y3);
+      const d0 = Math.hypot(px - h0.x, py - h0.y);
+      const d1 = Math.hypot(px - h1.x, py - h1.y);
+      const d2 = Math.hypot(px - h2.x, py - h2.y);
+      const d3 = Math.hypot(px - h3.x, py - h3.y);
+      const radius = 16;
+      const handles = [
+        { key: "p0", dist: d0 },
+        { key: "p1", dist: d1 },
+        { key: "p2", dist: d2 },
+        { key: "p3", dist: d3 }
+      ].sort((a, b) => a.dist - b.dist);
+      if (handles[0].dist > radius) return;
+
+      curveDrag.active = true;
+      curveDrag.oreId = oreId;
+      curveDrag.handle = handles[0].key;
+      curveDrag.canvas = target;
+      target.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    }
+
+    function onCurvePointerMove(event) {
+      if (!curveDrag.active || !(curveDrag.canvas instanceof HTMLCanvasElement)) return;
+      const ore = getOreById(curveDrag.oreId);
+      if (!ore) return;
+
+      const { px, py } = getCurveCanvasLocalPos(curveDrag.canvas, event);
+      const uv = curveValueFromCanvasPoint(curveDrag.canvas, px, py);
+      if (curveDrag.handle === "p0") {
+        ore.bezier.x0 = clamp(uv.x, 0, ore.bezier.x1);
+        ore.bezier.y0 = uv.y;
+      } else if (curveDrag.handle === "p1") {
+        ore.bezier.x1 = clamp(uv.x, ore.bezier.x0, ore.bezier.x2);
+        ore.bezier.y1 = uv.y;
+      } else if (curveDrag.handle === "p2") {
+        ore.bezier.x2 = clamp(uv.x, ore.bezier.x1, ore.bezier.x3);
+        ore.bezier.y2 = uv.y;
+      } else if (curveDrag.handle === "p3") {
+        ore.bezier.x3 = clamp(uv.x, ore.bezier.x2, 1);
+        ore.bezier.y3 = uv.y;
+      }
+
+      drawCurveEditor(curveDrag.canvas, ore);
+      forceRender = true;
+      event.preventDefault();
+    }
+
+    function onCurvePointerUp() {
+      if (!curveDrag.active) return;
+      curveDrag.active = false;
+      curveDrag.oreId = "";
+      curveDrag.handle = "";
+      curveDrag.canvas = null;
+    }
+
+    function onOreListClick(event) {
+      const target = event.target;
+      if (!(target instanceof HTMLButtonElement)) return;
+      const action = target.dataset.action;
+      const id = target.dataset.id;
+      if (!action || !id) return;
+
+      const idx = state.ores.findIndex((o) => o.id === id);
+      if (idx < 0) return;
+
+      if (action === "remove") {
+        state.ores.splice(idx, 1);
+      } else if (action === "up" && idx > 0) {
+        const temp = state.ores[idx - 1];
+        state.ores[idx - 1] = state.ores[idx];
+        state.ores[idx] = temp;
+      } else if (action === "down" && idx < state.ores.length - 1) {
+        const temp = state.ores[idx + 1];
+        state.ores[idx + 1] = state.ores[idx];
+        state.ores[idx] = temp;
+      }
+
+      renderOreList();
+      forceRender = true;
+    }
+
+    function addOre() {
+      const nextSeed = hashU32(state.world.globalSeed ^ (state.ores.length + 1) ^ 0x5f3759df);
+      const ore = defaultOre(`Ore ${state.ores.length + 1}`, "#89a8ff", nextSeed);
+      state.ores.push(ore);
+      renderOreList();
+      forceRender = true;
+    }
+
+    function resizeCanvasToDisplaySize() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const nextWidth = Math.round(rect.width * dpr);
+      const nextHeight = Math.round(rect.height * dpr);
+      if (canvas.width !== nextWidth || canvas.height !== nextHeight) {
+        canvas.width = nextWidth;
+        canvas.height = nextHeight;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        forceRender = true;
+      }
+    }
+
+    function updatePointerFromMouse(clientX, clientY) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const px = (clientX - rect.left) * scaleX;
+      const py = (clientY - rect.top) * scaleY;
+      camera.mouseX = px;
+      camera.mouseY = py;
+
+      const world = cameraScreenToWorld(px, py);
+      pointer.worldX = world.x;
+      pointer.worldY = world.y;
+      pointer.tileX = Math.floor(world.x / TILE_SIZE);
+      pointer.tileY = Math.floor(world.y / TILE_SIZE);
+    }
+
+    function installInputHandlers() {
+      canvas.addEventListener("contextmenu", (event) => event.preventDefault());
+
+      canvas.addEventListener("mousedown", (event) => {
+        updatePointerFromMouse(event.clientX, event.clientY);
+        if (event.button === 2 || event.button === 0) {
+          camera.dragging = true;
+          camera.dragStartMouseX = camera.mouseX;
+          camera.dragStartMouseY = camera.mouseY;
+          camera.dragStartOriginX = camera.originX;
+          camera.dragStartOriginY = camera.originY;
+          forceRender = true;
+        }
+      });
+
+      window.addEventListener("mouseup", (event) => {
+        if (event.button === 2 || event.button === 0) {
+          camera.dragging = false;
+          forceRender = true;
+        }
+      });
+
+      window.addEventListener("mousemove", (event) => {
+        updatePointerFromMouse(event.clientX, event.clientY);
+        if (camera.dragging) {
+          const dx = camera.mouseX - camera.dragStartMouseX;
+          const dy = camera.mouseY - camera.dragStartMouseY;
+          camera.originX = camera.dragStartOriginX - dx / camera.zoom;
+          camera.originY = camera.dragStartOriginY + dy / camera.zoom;
+          forceRender = true;
+        }
+      });
+
+      canvas.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        updatePointerFromMouse(event.clientX, event.clientY);
+
+        const oldZoom = camera.zoom;
+        const factor = Math.pow(2, Math.sign(event.deltaY) * -camera.zoomSensitivity);
+        const nextZoom = clamp(oldZoom * factor, camera.minZoom, camera.maxZoom);
+        if (Math.abs(nextZoom - oldZoom) < 1e-6) return;
+
+        const before = cameraScreenToWorld(camera.mouseX, camera.mouseY);
+        camera.zoom = nextZoom;
+        const after = cameraScreenToWorld(camera.mouseX, camera.mouseY);
+
+        camera.originX += before.x - after.x;
+        camera.originY += before.y - after.y;
+        forceRender = true;
+      }, { passive: false });
+
+      window.addEventListener("keydown", (event) => {
+        const k = event.key.toLowerCase();
+        if (k === "w" || event.key === "ArrowUp") camera.held.up = true;
+        if (k === "s" || event.key === "ArrowDown") camera.held.down = true;
+        if (k === "a" || event.key === "ArrowLeft") camera.held.left = true;
+        if (k === "d" || event.key === "ArrowRight") camera.held.right = true;
+      });
+
+      window.addEventListener("keyup", (event) => {
+        const k = event.key.toLowerCase();
+        if (k === "w" || event.key === "ArrowUp") camera.held.up = false;
+        if (k === "s" || event.key === "ArrowDown") camera.held.down = false;
+        if (k === "a" || event.key === "ArrowLeft") camera.held.left = false;
+        if (k === "d" || event.key === "ArrowRight") camera.held.right = false;
+      });
+
+      oreListEl.addEventListener("pointerdown", onCurvePointerDown);
+      window.addEventListener("pointermove", onCurvePointerMove, { passive: false });
+      window.addEventListener("pointerup", onCurvePointerUp);
+    }
+
+    function updateCameraFromKeys(dt) {
+      const speed = camera.speed * dt / camera.zoom;
+      let moved = false;
+      if (camera.held.up) { camera.originY += speed; moved = true; }
+      if (camera.held.down) { camera.originY -= speed; moved = true; }
+      if (camera.held.left) { camera.originX -= speed; moved = true; }
+      if (camera.held.right) { camera.originX += speed; moved = true; }
+      if (moved) forceRender = true;
+    }
+
+    function frame(timeMs) {
+      const dt = Math.min(0.05, Math.max(0.001, (timeMs - previousTime) / 1000));
+      previousTime = timeMs;
+
+      resizeCanvasToDisplaySize();
+      updateCameraFromKeys(dt);
+      if (forceRender) {
+        drawWorld();
+        updateHud();
+        forceRender = false;
+      }
+      rafHandle = requestAnimationFrame(frame);
+    }
+
+    function init() {
+      syncWorldInputsFromState();
+      renderOreList();
+      installInputHandlers();
+      window.addEventListener("resize", () => { forceRender = true; });
+
+      worldInputs.dirtColor.addEventListener("input", onWorldInput);
+      worldInputs.rockColor.addEventListener("input", onWorldInput);
+      worldInputs.dirtDepth.addEventListener("input", onWorldInput);
+      worldInputs.globalSeed.addEventListener("input", onWorldInput);
+      worldInputs.addOreBtn.addEventListener("click", addOre);
+
+      oreListEl.addEventListener("input", onOreListInput);
+      oreListEl.addEventListener("click", onOreListClick);
+
+      forceRender = true;
+      if (rafHandle) cancelAnimationFrame(rafHandle);
+      previousTime = performance.now();
+      rafHandle = requestAnimationFrame(frame);
+    }
+
+    init();
+  </script>
+</body>
+</html>
