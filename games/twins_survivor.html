@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Twins Survivor</title>
+<style>
+  html, body { margin:0; padding:0; height:100%; background:#04060c; color:#cfe; font-family: ui-monospace, Menlo, Consolas, monospace; overflow:hidden; }
+  #c { display:block; width:100vw; height:100vh; image-rendering:auto; cursor:none; }
+  #help { position:fixed; left:8px; bottom:6px; font-size:11px; opacity:.55; pointer-events:none; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="help">P0: WASD &nbsp; P1: Arrows &nbsp; Allocate: Z X C V B &nbsp; Pause: Esc &nbsp; Skip wave: P &nbsp; Restart: R</div>
+<script>
+"use strict";
+
+// ============================================================
+// Stats / constants  (mirrors crates/twins_survivor/src/*)
+// ============================================================
+const PLAYER_RADIUS = 0.5;
+const PLAYER_MASS = 1.0;
+const PLAYER_IFRAME_DURATION = 0.5;
+const TETHER_KNOCKBACK_STRENGTH = 0.5;
+
+const STATIC_CHANCE = 0.1;
+const STATIC_FIELD_AMOUNT = 16.0;
+const PLAYER_DISABLED_TIME = 5.0;
+const STATIC_VISIBLE_RADIUS = 0.2;
+const STATIC_T_POW = 0.5;
+
+const KNOCKBACK_STRENGTH_BASE = 0.5;
+
+const SPAWN_INTERVAL_MAX = 3.0;
+const SPAWN_INTERVAL_MIN = 0.3;
+const MIN_SPAWN_DISTANCE_FROM_PLAYER = 5.0;
+
+const CAMERA_PADDING_FACTOR = 0.75;
+const CAMERA_MIN_ZOOM = 0.08;
+const CAMERA_MAX_ZOOM = 0.14;
+
+const ARENA_SIZE = 34.0;
+const RUN_DURATION_SECONDS = 30.0 * 60.0;
+
+const FRICTION_ENEMY = 0.9;
+const FRICTION_BOID = 0.99;
+const FRICTION_PLAYER = 0.5;
+
+const XP_ORB_RADIUS = 0.2;
+const XP_COLLECT_DISTANCE = 0.3;
+const XP_PER_ENEMY = 1.0;
+const XP_TO_LEVEL_BASE = 1.2;
+const XP_TO_LEVEL_INITIAL = 10.0;
+const XP_SPEED = 10.0;
+
+const STATS_PER_LEVEL = 1;
+const SLOW_T_TIME = 0.75;
+
+// ============================================================
+// Stats
+// ============================================================
+const STAT_NAMES = ["MoveSpeed","XP","BeamDamage","BeamLength","Health"];
+const STAT_LABELS = ["movement speed","experience rate","beam damage","beam length","max health"];
+const STAT_KEYS = ["Z","X","C","V","B"];
+function getStat(idx, level) {
+  switch(idx) {
+    case 0: return 2.0 + level * 0.2;       // move speed
+    case 1: return 1.0 + level * 0.2;       // xp rate
+    case 2: return 0.34 + level * 0.15;     // beam damage
+    case 3: return 8.0 + level * 1.0;       // beam length
+    case 4: return 100.0 + level * 20.0;    // health
+  }
+}
+
+// ============================================================
+// Enemy prototypes
+// ============================================================
+const ENEMY_PROTOS = {
+  weak:      { radius:0.48, speed:0.24, health:0.33333334, damage:8.0,  mass:0.7, colour:[0.9,0.5,0.2], xp_dropped:1 },
+  normal:    { radius:0.40, speed:0.30, health:0.80,       damage:10.0, mass:0.7, colour:[0.8,0.2,0.8], xp_dropped:2 },
+  small_fast:{ radius:0.28, speed:0.45, health:0.50,       damage:6.0,  mass:0.5, colour:[0.2,0.8,0.9], xp_dropped:2 },
+  big_slow:  { radius:0.72, speed:0.15, health:3.0,        damage:15.0, mass:2.5, colour:[0.6,0.2,0.1], xp_dropped:4 },
+  strong:    { radius:0.44, speed:0.39, health:6.0,        damage:15.0, mass:1.3, colour:[1.0,0.3,0.3], xp_dropped:4 },
+  elite:     { radius:0.44, speed:0.39, health:12.0,       damage:20.0, mass:1.4, colour:[1.0,0.3,0.3], xp_dropped:4 },
+  boids:     { radius:0.36, speed:0.05, health:0.7,        damage:7.0,  mass:0.1, colour:[0.3,0.9,0.4], xp_dropped:2,
+               boid_params: { separation:0.02, alignment:0.02, cohesion:0.025,
+                              separation_range:1.0, alignment_range:2.5, cohesion_range:8.0,
+                              max_speed:99999.0, min_speed:0.0001 } },
+};
+
+// ============================================================
+// Spawn schedule  (duration_seconds, kind, spawn_period)
+// ============================================================
+const SPAWN_SCHEDULE = [
+  [7.0,  "weak",       1.0 ],
+  [20.0, "normal",     1.0 ],
+  [4.0,  "boids",      0.5 ],
+  [20.0, "normal",     1.8 ],
+  [1.0,  "small_fast", 0.05],
+  [10.0, "normal",     1.8 ],
+  [20.0, "small_fast", 0.8 ],
+  [1.0,  "boids",      0.05],
+  [25.0, "big_slow",   2.0 ],
+  [12.0, "normal",     1.8 ],
+  [12.0, "normal",     0.75],
+  [4.0,  "strong",     1.0 ],
+  [1.0,  "boids",      0.05],
+  [7.0,  "strong",     1.0 ],
+  [25.0, "big_slow",   2.0 ],
+  [7.0,  "strong",     1.0 ],
+  [10.0, "elite",      2.0 ],
+  [1.0,  "boids",      0.05],
+  [10.0, "elite",      2.0 ],
+  [1.0,  "boids",      0.05],
+  [10.0, "elite",      1.0 ],
+  [1.0,  "boids",      0.05],
+  [20.0, "elite",      0.5 ],
+  [1.0,  "boids",      0.05],
+  [40.0, "elite",      0.25],
+  [5.0,  "boids",      0.05],
+  [999.0,"elite",      0.25],
+];
+const SPAWN_CUMULATIVE = (() => {
+  let t = 0; const a = [];
+  for (const [dur,k,p] of SPAWN_SCHEDULE) { a.push([t,k,p]); t += dur; }
+  return a;
+})();
+
+// ============================================================
+// RNG (xorshift32)
+// ============================================================
+function makeRng(seed) {
+  let s = seed >>> 0; if (s === 0) s = 0x9E3779B9;
+  return () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 0x100000000; };
+}
+function chance(rng, p) { return rng() < p; }
+
+// ============================================================
+// Vec2 helpers (just use {x,y} object literals)
+// ============================================================
+const V = (x,y)=>({x,y});
+const vadd=(a,b)=>({x:a.x+b.x,y:a.y+b.y});
+const vsub=(a,b)=>({x:a.x-b.x,y:a.y-b.y});
+const vmul=(a,s)=>({x:a.x*s,y:a.y*s});
+const vlen2=(a)=>a.x*a.x+a.y*a.y;
+const vlen =(a)=>Math.hypot(a.x,a.y);
+const vunit=(a)=>{ const l=vlen(a); return l<1e-6?{x:0,y:0}:{x:a.x/l,y:a.y/l}; };
+const vclampLen=(a,m)=>{ const l=vlen(a); if (l<1e-6) return a; if (l<=m) return a; return {x:a.x*m/l,y:a.y*m/l}; };
+
+// ============================================================
+// Closest-point on segment (point–segment collision normal)
+// Returns {dist, normal} if inside `radius`, else null.
+// ============================================================
+function pointToSegment(p, a, b, radius) {
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const len = Math.hypot(dx,dy);
+  if (len < 1e-3) {
+    const ex = p.x - a.x, ey = p.y - a.y;
+    const d = Math.hypot(ex,ey);
+    if (d < radius) {
+      const n = d > 1e-3 ? {x:ex/d,y:ey/d} : {x:1,y:0};
+      return { dist:d, normal:n };
+    }
+    return null;
+  }
+  const ux = dx/len, uy = dy/len;
+  const tx = p.x - a.x, ty = p.y - a.y;
+  let t = (tx*ux + ty*uy) / len;
+  t = Math.max(0, Math.min(1, t));
+  const cx = a.x + ux * (t * len), cy = a.y + uy * (t * len);
+  const ex = p.x - cx, ey = p.y - cy;
+  const d = Math.hypot(ex,ey);
+  if (d < radius && d > 1e-3) {
+    return { dist:d, normal:{x:ex/d,y:ey/d} };
+  }
+  return null;
+}
+
+// ============================================================
+// Game state
+// ============================================================
+function newLevel(seed) {
+  const rng = makeRng(seed);
+  return {
+    rng,
+    time: 0,
+    timeRemaining: RUN_DURATION_SECONDS,
+    spawnCooldown: 0,
+    statLevels: [0,0,0,0,0],
+    phase: "playing", // playing | allocating | dead | paused
+    slowT: 0,         // 1..0 used to ease back into normal time
+    players: {
+      pos:[V(0,-2),V(0,2)],
+      prev:[V(0,-2),V(0,2)],
+      vel:[V(0,0),V(0,0)],
+      dirHeld:[[false,false,false,false],[false,false,false,false]],
+      health: getStat(4, 0),
+      xp: 0, level: 1,
+      disabledTime: 0,
+      mass: PLAYER_MASS,
+      iframeTimer:[0,0],
+      statPoints: 0,
+    },
+    maxHealth: getStat(4, 0),
+    enemies: [], // each: {protoName, pos, prev, vel, health, currentHealth, radius, speed, damage, mass, colour:[r,g,b], xpDropped, remainingStatic, startingStatic, boidParams|null, active}
+    xpOrbs: [],  // {pos, value, active}
+  };
+}
+
+function elapsedTime(L) { return Math.min(Math.max(RUN_DURATION_SECONDS - L.timeRemaining, 0), RUN_DURATION_SECONDS); }
+function currentSpawnInterval(L) {
+  const e = elapsedTime(L);
+  let p = SPAWN_CUMULATIVE[0][2];
+  for (const [t,_k,sp] of SPAWN_CUMULATIVE) { if (e >= t) p = sp; else break; }
+  return Math.max(SPAWN_INTERVAL_MIN, Math.min(SPAWN_INTERVAL_MAX, p));
+}
+function currentEnemyKind(L) {
+  const e = elapsedTime(L);
+  let k = SPAWN_CUMULATIVE[0][1];
+  for (const [t,kk] of SPAWN_CUMULATIVE) { if (e >= t) k = kk; else break; }
+  return k;
+}
+function nextSpawnTime(L) {
+  const e = elapsedTime(L);
+  for (const [t] of SPAWN_CUMULATIVE) if (t > e) return t;
+  return null;
+}
+function skipToNextEnemyType(L) {
+  const t = nextSpawnTime(L);
+  if (t == null) return;
+  const dt = t - elapsedTime(L);
+  L.timeRemaining = Math.max(0, L.timeRemaining - dt);
+  L.time += dt;
+}
+function formattedTimeRemaining(L) {
+  const tot = Math.ceil(Math.max(0, L.timeRemaining));
+  const m = Math.floor(tot / 60), s = tot % 60;
+  return String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+}
+
+function randEdgePos(L) {
+  const edge = ARENA_SIZE * 0.5;
+  const side = Math.floor(L.rng() * 4);
+  switch(side) {
+    case 0: return V(L.rng()*ARENA_SIZE - edge,  edge);
+    case 1: return V(L.rng()*ARENA_SIZE - edge, -edge);
+    case 2: return V( edge, L.rng()*ARENA_SIZE - edge);
+    default:return V(-edge, L.rng()*ARENA_SIZE - edge);
+  }
+}
+function spawnPosIsSafe(L, p) {
+  for (const pp of L.players.pos)
+    if (vlen(vsub(pp,p)) < MIN_SPAWN_DISTANCE_FROM_PLAYER) return false;
+  return true;
+}
+function spawnEnemy(L) {
+  if (L.timeRemaining <= 0) return;
+  let p = randEdgePos(L);
+  for (let i=0; i<8 && !spawnPosIsSafe(L, p); i++) p = randEdgePos(L);
+  const kind = currentEnemyKind(L);
+  const proto = ENEMY_PROTOS[kind];
+  const e = {
+    protoName: kind,
+    pos: {...p}, prev: {...p}, vel: V(0,0),
+    health: proto.health, currentHealth: proto.health,
+    radius: proto.radius, speed: proto.speed,
+    damage: proto.damage, mass: proto.mass,
+    colour: proto.colour.slice(),
+    xpDropped: proto.xp_dropped,
+    remainingStatic: 0, startingStatic: 0,
+    boidParams: proto.boid_params || null,
+    active: true,
+  };
+  if (chance(L.rng, STATIC_CHANCE)) {
+    e.remainingStatic = STATIC_FIELD_AMOUNT;
+    e.startingStatic = STATIC_FIELD_AMOUNT;
+  }
+  L.enemies.push(e);
+}
+
+// ============================================================
+// Stats helpers
+// ============================================================
+const moveSpeed   = (L)=>getStat(0, L.statLevels[0]);
+const xpRate      = (L)=>getStat(1, L.statLevels[1]);
+const beamDamage  = (L)=>getStat(2, L.statLevels[2]);
+const beamLength  = (L)=>getStat(3, L.statLevels[3]);
+const maxHealthFromStats = (L)=>getStat(4, L.statLevels[4]);
+function xpForNextLevel(L) { return XP_TO_LEVEL_INITIAL * Math.pow(XP_TO_LEVEL_BASE, L.players.level - 1); }
+function allocateStat(L, idx) {
+  if (L.players.statPoints <= 0) return;
+  L.statLevels[idx]++;
+  L.players.statPoints--;
+  if (idx === 4) {
+    L.players.health = getStat(4, L.statLevels[4]);
+    L.maxHealth = L.players.health;
+  }
+  if (L.players.statPoints <= 0) {
+    L.phase = "playing";
+    L.slowT = 1.0;
+  }
+}
+
+// ============================================================
+// Spatial hash (uniform grid over the arena)
+//   cellSize = 2 * max enemy radius — tightest size where a single
+//   3x3-cell query is guaranteed to contain every collision pair.
+//   Boids cohesion (8.0) iterates a wider neighborhood of cells.
+// ============================================================
+const MAX_ENEMY_RADIUS = (() => {
+  let m = 0;
+  for (const k in ENEMY_PROTOS) if (ENEMY_PROTOS[k].radius > m) m = ENEMY_PROTOS[k].radius;
+  return m;
+})();
+const GRID_CELL = MAX_ENEMY_RADIUS * 2.0; // 1.44 with current prototypes
+const GRID_HALF = ARENA_SIZE * 0.5 + 1.0;
+const GRID_DIM  = Math.ceil((GRID_HALF * 2) / GRID_CELL);
+function gridIdx(x, y) {
+  const ix = Math.max(0, Math.min(GRID_DIM-1, Math.floor((x + GRID_HALF) / GRID_CELL)));
+  const iy = Math.max(0, Math.min(GRID_DIM-1, Math.floor((y + GRID_HALF) / GRID_CELL)));
+  return iy * GRID_DIM + ix;
+}
+let GRID = null; // Array<Array<enemyIndex>> length GRID_DIM*GRID_DIM
+function rebuildGrid(L) {
+  if (!GRID || GRID.length !== GRID_DIM*GRID_DIM) GRID = new Array(GRID_DIM*GRID_DIM);
+  for (let i=0; i<GRID.length; i++) GRID[i] = null;
+  for (let i=0; i<L.enemies.length; i++) {
+    const e = L.enemies[i];
+    if (!e.active) continue;
+    const k = gridIdx(e.pos.x, e.pos.y);
+    if (GRID[k] === null) GRID[k] = [];
+    GRID[k].push(i);
+  }
+}
+// Iterate a square of cells of half-extent `r` around (x,y), calling fn(idx).
+function forEachNearby(x, y, r, fn) {
+  const cells = Math.ceil(r / GRID_CELL);
+  const cx = Math.floor((x + GRID_HALF) / GRID_CELL);
+  const cy = Math.floor((y + GRID_HALF) / GRID_CELL);
+  const x0 = Math.max(0, cx - cells), x1 = Math.min(GRID_DIM-1, cx + cells);
+  const y0 = Math.max(0, cy - cells), y1 = Math.min(GRID_DIM-1, cy + cells);
+  for (let yy=y0; yy<=y1; yy++) {
+    const base = yy * GRID_DIM;
+    for (let xx=x0; xx<=x1; xx++) {
+      const bucket = GRID[base + xx];
+      if (bucket) for (let k=0; k<bucket.length; k++) fn(bucket[k]);
+    }
+  }
+}
+
+// ============================================================
+// Update
+// ============================================================
+const DIR_VEC = [V(0,1),V(1,0),V(0,-1),V(-1,0)]; // up,right,down,left
+
+function smoothstep01(t) { t = Math.max(0, Math.min(1,t)); return t*t*(3-2*t); }
+function smoothstep(a,b,x) { const t = Math.max(0, Math.min(1, (x-a)/(b-a))); return t*t*(3-2*t); }
+
+function shouldGameUpdate(L) { return L.phase === "playing"; }
+function getTimeMult(L) { return smoothstep01(1 - L.slowT); }
+
+function updateLevel(L, dt) {
+  if (!shouldGameUpdate(L)) return;
+  L.slowT = Math.max(0, L.slowT - dt / SLOW_T_TIME);
+  dt *= getTimeMult(L);
+  L.time += dt;
+  if (L.timeRemaining > 0) L.timeRemaining = Math.max(0, L.timeRemaining - dt);
+
+  if (L.timeRemaining > 0) {
+    L.spawnCooldown -= dt;
+    while (L.spawnCooldown <= 0) {
+      spawnEnemy(L);
+      L.spawnCooldown += currentSpawnInterval(L);
+    }
+  }
+
+  runSystems(L, dt);
+}
+
+function runSystems(L, dt) {
+  // i-frames countdown
+  for (let p=0; p<2; p++)
+    if (L.players.iframeTimer[p] > 0) L.players.iframeTimer[p] = Math.max(0, L.players.iframeTimer[p] - dt);
+
+  // static field countdown
+  for (const e of L.enemies)
+    if (e.remainingStatic > 0) e.remainingStatic = Math.max(0, e.remainingStatic - dt);
+
+  // beam regen
+  if (L.players.disabledTime > 0)
+    L.players.disabledTime = Math.max(0, L.players.disabledTime - dt);
+
+  // note positions
+  for (const e of L.enemies) if (e.active) e.prev = {...e.pos};
+  for (let p=0; p<2; p++) L.players.prev[p] = {...L.players.pos[p]};
+
+  // apply player velocity (PBD-ish: friction-scaled velocity push)
+  for (let p=0; p<2; p++) {
+    L.players.pos[p].x += L.players.vel[p].x * dt * FRICTION_PLAYER;
+    L.players.pos[p].y += L.players.vel[p].y * dt * FRICTION_PLAYER;
+  }
+  // apply enemy velocity
+  for (const e of L.enemies) {
+    if (!e.active) continue;
+    const fr = e.boidParams ? FRICTION_BOID : FRICTION_ENEMY;
+    e.pos.x += e.vel.x * dt * fr;
+    e.pos.y += e.vel.y * dt * fr;
+  }
+
+  // move enemies toward nearest player (pos += speed*dt*unitToPlayer)
+  for (const e of L.enemies) {
+    if (!e.active) continue;
+    const d0 = vlen2(vsub(L.players.pos[0], e.pos));
+    const d1 = vlen2(vsub(L.players.pos[1], e.pos));
+    const tgt = d0 < d1 ? L.players.pos[0] : L.players.pos[1];
+    const u = vunit(vsub(tgt, e.pos));
+    e.pos.x += e.speed * dt * u.x;
+    e.pos.y += e.speed * dt * u.y;
+  }
+
+  // (re)build spatial hash before any neighborhood query
+  rebuildGrid(L);
+
+  // boids
+  doBoids(L, dt);
+
+  // player input
+  const ms = moveSpeed(L);
+  for (let p=0; p<2; p++) {
+    for (let d=0; d<4; d++) {
+      if (L.players.dirHeld[p][d]) {
+        L.players.pos[p].x += DIR_VEC[d].x * ms * dt;
+        L.players.pos[p].y += DIR_VEC[d].y * ms * dt;
+      }
+    }
+  }
+
+  // beam spring
+  beamTension(L);
+
+  // snap to map
+  const halfP = ARENA_SIZE * 0.5 - PLAYER_RADIUS;
+  for (let p=0; p<2; p++) {
+    L.players.pos[p].x = Math.max(-halfP, Math.min(halfP, L.players.pos[p].x));
+    L.players.pos[p].y = Math.max(-halfP, Math.min(halfP, L.players.pos[p].y));
+  }
+  for (const e of L.enemies) {
+    if (!e.active) continue;
+    const h = ARENA_SIZE * 0.5 - e.radius;
+    e.pos.x = Math.max(-h, Math.min(h, e.pos.x));
+    e.pos.y = Math.max(-h, Math.min(h, e.pos.y));
+  }
+
+  // collide enemies-enemies
+  rebuildGrid(L); // positions changed since boids
+  collideEnemiesEnemies(L);
+
+  // collide enemies-beam
+  collideEnemiesBeam(L);
+
+  // collide enemies-player
+  collideEnemiesPlayer(L);
+
+  // xp move
+  for (const o of L.xpOrbs) {
+    if (!o.active) continue;
+    const d0 = vlen2(vsub(L.players.pos[0], o.pos));
+    const d1 = vlen2(vsub(L.players.pos[1], o.pos));
+    const tgt = d0 < d1 ? L.players.pos[0] : L.players.pos[1];
+    const u = vunit(vsub(tgt, o.pos));
+    o.pos.x += XP_SPEED * dt * u.x;
+    o.pos.y += XP_SPEED * dt * u.y;
+  }
+  // collect
+  collectXP(L);
+
+  // set velocities
+  for (let p=0; p<2; p++) {
+    L.players.vel[p].x = (L.players.pos[p].x - L.players.prev[p].x) / dt;
+    L.players.vel[p].y = (L.players.pos[p].y - L.players.prev[p].y) / dt;
+  }
+  for (const e of L.enemies) {
+    if (!e.active) continue;
+    e.vel.x = (e.pos.x - e.prev.x) / dt;
+    e.vel.y = (e.pos.y - e.prev.y) / dt;
+  }
+
+  // cleanup
+  L.enemies = L.enemies.filter(e => e.active);
+  L.xpOrbs  = L.xpOrbs.filter(o => o.active);
+}
+
+function beamTension(L) {
+  const delta = vsub(L.players.pos[1], L.players.pos[0]);
+  const len = vlen(delta);
+  const max = beamLength(L);
+  if (len < 1e-3) return;
+  const start = max * 0.8;
+  const overshoot = len - start;
+  if (overshoot > 0) {
+    const n = vmul(delta, 1/len);
+    const k = 0.1;
+    const correction = overshoot * overshoot * k / max;
+    L.players.pos[0].x += n.x * correction * 0.5;
+    L.players.pos[0].y += n.y * correction * 0.5;
+    L.players.pos[1].x -= n.x * correction * 0.5;
+    L.players.pos[1].y -= n.y * correction * 0.5;
+  }
+}
+
+function doBoids(L, dt) {
+  for (let i=0; i<L.enemies.length; i++) {
+    const ei = L.enemies[i];
+    if (!ei.active || !ei.boidParams) continue;
+    const bp = ei.boidParams;
+    let sx=0,sy=0, cx=0,cy=0, ax=0,ay=0;
+    forEachNearby(ei.pos.x, ei.pos.y, bp.cohesion_range, (j) => {
+      if (j === i) return;
+      const ej = L.enemies[j];
+      if (!ej.active) return;
+      const dx = ej.pos.x - ei.pos.x, dy = ej.pos.y - ei.pos.y;
+      const d = Math.hypot(dx, dy);
+      if (d < 1e-6) return;
+      const sepDist = bp.separation_range + ej.radius + ei.radius;
+      const ux = dx/d, uy = dy/d;
+      if (d < sepDist) {
+        sx -= ux * bp.separation * dt;
+        sy -= uy * bp.separation * dt;
+      } else if (d < bp.cohesion_range) {
+        cx += ux * bp.cohesion * dt;
+        cy += uy * bp.cohesion * dt;
+      }
+      if (d < bp.alignment_range) {
+        ax += ej.vel.x * bp.alignment * dt;
+        ay += ej.vel.y * bp.alignment * dt;
+      }
+    });
+    // clamp each component to its respective max
+    const csep = bp.separation * dt, ccoh = bp.cohesion * dt, cali = bp.alignment * dt;
+    let m = Math.hypot(sx,sy); if (m > csep) { sx = sx*csep/m; sy = sy*csep/m; }
+        m = Math.hypot(cx,cy); if (m > ccoh) { cx = cx*ccoh/m; cy = cy*ccoh/m; }
+        m = Math.hypot(ax,ay); if (m > cali) { ax = ax*cali/m; ay = ay*cali/m; }
+    ei.pos.x += sx + cx + ax;
+    ei.pos.y += sy + cy + ay;
+  }
+}
+
+function collideEnemiesEnemies(L) {
+  for (let i=0; i<L.enemies.length; i++) {
+    const a = L.enemies[i]; if (!a.active) continue;
+    const searchR = a.radius + MAX_ENEMY_RADIUS;
+    forEachNearby(a.pos.x, a.pos.y, searchR, (j) => {
+      if (j <= i) return; // each pair once + skip self
+      const b = L.enemies[j]; if (!b.active) return;
+      const minD = a.radius + b.radius;
+      const dx = b.pos.x - a.pos.x, dy = b.pos.y - a.pos.y;
+      const d = Math.hypot(dx,dy);
+      if (d < minD && d > 0) {
+        const pen = minD - d;
+        const nx = dx/d, ny = dy/d;
+        const total = a.mass + b.mass;
+        const ra = b.mass / total, rb = a.mass / total;
+        a.pos.x -= nx * pen * ra; a.pos.y -= ny * pen * ra;
+        b.pos.x += nx * pen * rb; b.pos.y += ny * pen * rb;
+      }
+    });
+  }
+}
+
+function collideEnemiesBeam(L) {
+  const p0 = L.players.pos[0], p1 = L.players.pos[1];
+  const len = vlen(vsub(p1, p0));
+  if (len < 1e-3 || L.players.disabledTime > 0) return;
+  const tetherR = 0.15;
+  const dmg = beamDamage(L);
+  for (const e of L.enemies) {
+    if (!e.active) continue;
+    const r = pointToSegment(e.pos, p0, p1, e.radius + tetherR);
+    if (!r) continue;
+    if (e.remainingStatic > 0) {
+      L.players.disabledTime = PLAYER_DISABLED_TIME;
+      sound.beamDeactivate();
+      break;
+    }
+    e.currentHealth -= dmg;
+    if (e.currentHealth <= 0) {
+      e.active = false;
+      spawnXpOrbs(L, e.pos, e.xpDropped);
+      sound.kill();
+      continue;
+    } else {
+      sound.hit();
+    }
+    e.pos.x += r.normal.x * TETHER_KNOCKBACK_STRENGTH / e.mass;
+    e.pos.y += r.normal.y * TETHER_KNOCKBACK_STRENGTH / e.mass;
+  }
+}
+
+function collideEnemiesPlayer(L) {
+  const playerR = PLAYER_RADIUS;
+  for (const e of L.enemies) {
+    if (!e.active) continue;
+    const minD = playerR + e.radius;
+    for (let p=0; p<2; p++) {
+      const dx = L.players.pos[p].x - e.pos.x;
+      const dy = L.players.pos[p].y - e.pos.y;
+      const d = Math.hypot(dx,dy);
+      if (d < minD && d > 0) {
+        const pen = minD - d;
+        const nx = dx/d, ny = dy/d;
+        const total = L.players.mass + e.mass;
+        const pr = e.mass / total, er = L.players.mass / total;
+        const vulnerable = L.players.iframeTimer[p] <= 0;
+        const k = KNOCKBACK_STRENGTH_BASE * (vulnerable ? 1.0 : 0.25);
+        L.players.pos[p].x += nx * pr * k;
+        L.players.pos[p].y += ny * pr * k;
+        e.pos.x -= nx * er * k;
+        e.pos.y -= ny * er * k;
+        if (vulnerable) {
+          L.players.health -= e.damage;
+          sound.takeDamage();
+          L.players.iframeTimer[p] = PLAYER_IFRAME_DURATION;
+          if (L.players.health <= 0) {
+            L.phase = "dead";
+            sound.die();
+          }
+        }
+      }
+    }
+  }
+}
+
+function spawnXpOrbs(L, pos, count) {
+  if (count <= 0) return;
+  if (count === 1) { L.xpOrbs.push({ pos:{...pos}, value:XP_PER_ENEMY, active:true }); return; }
+  const step = (Math.PI * 2) / count;
+  const r = 0.3;
+  for (let i=0; i<count; i++) {
+    const a = step * i;
+    L.xpOrbs.push({ pos:{x:pos.x + Math.cos(a)*r, y:pos.y + Math.sin(a)*r}, value:XP_PER_ENEMY, active:true });
+  }
+}
+
+function collectXP(L) {
+  const rate = xpRate(L);
+  let gained = 0;
+  for (const o of L.xpOrbs) {
+    if (!o.active) continue;
+    for (let p=0; p<2; p++) {
+      if (vlen(vsub(o.pos, L.players.pos[p])) < XP_COLLECT_DISTANCE) {
+        gained += o.value * rate;
+        o.active = false;
+        break;
+      }
+    }
+  }
+  if (gained > 0) {
+    L.players.xp += gained;
+    sound.xp();
+    while (true) {
+      const need = xpForNextLevel(L);
+      if (L.players.xp < need) break;
+      L.players.xp -= need;
+      L.players.level++;
+      L.maxHealth = maxHealthFromStats(L);
+      L.players.health = L.maxHealth;
+      L.players.statPoints += STATS_PER_LEVEL;
+      L.phase = "allocating";
+      sound.levelup();
+    }
+  }
+}
+
+// ============================================================
+// Sound — tiny WebAudio synth
+// ============================================================
+const sound = (() => {
+  let ctx = null;
+  function ensure() {
+    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+    return ctx;
+  }
+  function tone(freq, dur, type="sine", gain=0.07, slideTo=null) {
+    if (!ctx) return;
+    const t = ctx.currentTime;
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(freq, t);
+    if (slideTo != null) o.frequency.exponentialRampToValueAtTime(Math.max(20, slideTo), t + dur);
+    g.gain.setValueAtTime(gain, t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g).connect(ctx.destination);
+    o.start(t); o.stop(t + dur + 0.02);
+  }
+  function noise(dur, gain=0.04) {
+    if (!ctx) return;
+    const sr = ctx.sampleRate;
+    const buf = ctx.createBuffer(1, sr * dur, sr);
+    const ch = buf.getChannelData(0);
+    for (let i=0; i<ch.length; i++) ch[i] = (Math.random()*2-1) * (1 - i/ch.length);
+    const src = ctx.createBufferSource();
+    const g = ctx.createGain();
+    g.gain.value = gain;
+    src.buffer = buf;
+    src.connect(g).connect(ctx.destination);
+    src.start();
+  }
+  return {
+    init() { ensure(); if (ctx.state === "suspended") ctx.resume(); },
+    hit() { tone(880, 0.03, "square", 0.025); },
+    kill() { tone(440, 0.12, "sawtooth", 0.04, 110); },
+    takeDamage() { tone(180, 0.18, "square", 0.06, 60); noise(0.08, 0.05); },
+    xp() { tone(1320, 0.05, "triangle", 0.04); },
+    levelup() { tone(660, 0.08, "triangle", 0.07); setTimeout(()=>tone(990, 0.12, "triangle", 0.07), 70); setTimeout(()=>tone(1320, 0.16, "triangle", 0.07), 160); },
+    die() { tone(220, 0.6, "sawtooth", 0.1, 40); noise(0.4, 0.06); },
+    beamDeactivate() { tone(440, 0.18, "square", 0.06, 90); noise(0.18, 0.05); setTimeout(()=>tone(330, 0.4, "triangle", 0.05, 880), 200); },
+  };
+})();
+
+// ============================================================
+// Input
+// ============================================================
+let level = newLevel((Math.random() * 0xffffffff) >>> 0);
+
+const KEY_TO_DIR = {
+  KeyW:[0,0], KeyD:[0,1], KeyS:[0,2], KeyA:[0,3],
+  ArrowUp:[1,0], ArrowRight:[1,1], ArrowDown:[1,2], ArrowLeft:[1,3],
+};
+const KEY_TO_STAT = { KeyZ:0, KeyX:1, KeyC:2, KeyV:3, KeyB:4 };
+
+window.addEventListener("keydown", (e) => {
+  sound.init();
+  if (e.code in KEY_TO_DIR) {
+    const [p,d] = KEY_TO_DIR[e.code];
+    level.players.dirHeld[p][d] = true;
+    e.preventDefault();
+    return;
+  }
+  if (e.code in KEY_TO_STAT && level.phase === "allocating") {
+    allocateStat(level, KEY_TO_STAT[e.code]);
+    return;
+  }
+  if (e.code === "Escape") {
+    if (level.phase === "playing") level.phase = "paused";
+    else if (level.phase === "paused") { level.phase = "playing"; level.slowT = 1.0; }
+  } else if (e.code === "KeyR") {
+    level = newLevel((Math.random() * 0xffffffff) >>> 0);
+  } else if (e.code === "KeyP") {
+    if (level.phase === "playing") skipToNextEnemyType(level);
+  }
+});
+window.addEventListener("keyup", (e) => {
+  if (e.code in KEY_TO_DIR) {
+    const [p,d] = KEY_TO_DIR[e.code];
+    level.players.dirHeld[p][d] = false;
+  }
+});
+window.addEventListener("blur", () => {
+  for (let p=0; p<2; p++) for (let d=0; d<4; d++) level.players.dirHeld[p][d] = false;
+});
+
+// ============================================================
+// Render — neon canvas
+// ============================================================
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+let DPR = window.devicePixelRatio || 1;
+
+// Bloom: render scene flat to main canvas, then copy it (downscaled) into
+// the bloom buffers with `ctx.filter = "blur(...)"`, then composite them
+// back additively. Two passes — tight halo + wide atmospheric glow.
+const bloomBuf  = document.createElement("canvas"); // half-res, tight halo
+const bloomCtx  = bloomBuf.getContext("2d");
+const bloomBuf2 = document.createElement("canvas"); // quarter-res, wide glow
+const bloomCtx2 = bloomBuf2.getContext("2d");
+
+const BLOOM_DOWNSCALE   = 2;
+const BLOOM_BLUR_PX     = 6;    // tight pass blur radius (in half-res px)
+const BLOOM2_DOWNSCALE  = 4;
+const BLOOM2_BLUR_PX    = 10;   // wide pass blur radius (in quarter-res px)
+const BLOOM2_ALPHA      = 0.30; // intensity of the wide pass
+
+function resize() {
+  DPR = window.devicePixelRatio || 1;
+  canvas.width  = Math.floor(window.innerWidth  * DPR);
+  canvas.height = Math.floor(window.innerHeight * DPR);
+  canvas.style.width  = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+  bloomBuf.width   = Math.max(1, Math.floor(canvas.width  / BLOOM_DOWNSCALE));
+  bloomBuf.height  = Math.max(1, Math.floor(canvas.height / BLOOM_DOWNSCALE));
+  bloomBuf2.width  = Math.max(1, Math.floor(canvas.width  / BLOOM2_DOWNSCALE));
+  bloomBuf2.height = Math.max(1, Math.floor(canvas.height / BLOOM2_DOWNSCALE));
+}
+
+function applyBloom() {
+  // Tight halo
+  bloomCtx.clearRect(0, 0, bloomBuf.width, bloomBuf.height);
+  bloomCtx.filter = `blur(${BLOOM_BLUR_PX}px)`;
+  bloomCtx.drawImage(canvas, 0, 0, bloomBuf.width, bloomBuf.height);
+  bloomCtx.filter = "none";
+
+  // Wide atmospheric glow (sample from the already-blurred tight pass — cheaper
+  // and gives a smoother falloff than re-sampling the main canvas)
+  bloomCtx2.clearRect(0, 0, bloomBuf2.width, bloomBuf2.height);
+  bloomCtx2.filter = `blur(${BLOOM2_BLUR_PX}px)`;
+  bloomCtx2.drawImage(bloomBuf, 0, 0, bloomBuf2.width, bloomBuf2.height);
+  bloomCtx2.filter = "none";
+
+  ctx.save();
+  ctx.globalCompositeOperation = "lighter";
+  ctx.imageSmoothingEnabled = true;
+  ctx.drawImage(bloomBuf, 0, 0, canvas.width, canvas.height);
+  ctx.globalAlpha = BLOOM2_ALPHA;
+  ctx.drawImage(bloomBuf2, 0, 0, canvas.width, canvas.height);
+  ctx.restore();
+}
+window.addEventListener("resize", resize);
+resize();
+
+function rgbaStr(c, a=1.0) {
+  const r = Math.round(Math.min(1,Math.max(0,c[0]))*255);
+  const g = Math.round(Math.min(1,Math.max(0,c[1]))*255);
+  const b = Math.round(Math.min(1,Math.max(0,c[2]))*255);
+  return `rgba(${r},${g},${b},${a})`;
+}
+function brighten(c, m=1.6) { return [Math.min(1,c[0]*m), Math.min(1,c[1]*m), Math.min(1,c[2]*m)]; }
+
+function cameraInfo() {
+  const W = canvas.width, H = canvas.height;
+  const aim = vmul(vadd(level.players.pos[0], level.players.pos[1]), 0.5);
+  const playerDist = vlen(vsub(level.players.pos[1], level.players.pos[0]));
+  let zoom = 1.0 / Math.max(0.001, playerDist * CAMERA_PADDING_FACTOR);
+  zoom = Math.max(CAMERA_MIN_ZOOM, Math.min(CAMERA_MAX_ZOOM, zoom));
+  // pixels per world unit (so visible vertical world span = H / pixelsPerUnit)
+  const pixelsPerUnit = (H * 0.5) * zoom;
+  return { W, H, aim, pixelsPerUnit };
+}
+
+// world-space drawing helpers (assume current transform maps world→pixels with y flipped)
+// Bright flat shapes — no per-shape shadowBlur. The full-screen bloom pass
+// adds the glow once globally.
+function neonStrokeCircle(x, y, r, color, lineW, _glow) {
+  ctx.lineWidth = lineW;
+  ctx.strokeStyle = rgbaStr(brighten(color, 1.5), 1.0);
+  ctx.fillStyle   = rgbaStr(color, 0.30);
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI*2);
+  ctx.fill();
+  ctx.stroke();
+}
+function neonFilledCircle(x, y, r, color, _glow) {
+  ctx.fillStyle = rgbaStr(brighten(color, 1.3), 1.0);
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI*2);
+  ctx.fill();
+  ctx.fillStyle = "rgba(255,255,255,0.9)";
+  ctx.beginPath();
+  ctx.arc(x, y, r * 0.45, 0, Math.PI*2);
+  ctx.fill();
+}
+function rectFill(x, y, w, h, color, glow=0) {
+  ctx.save();
+  if (glow > 0) { ctx.shadowColor = color; ctx.shadowBlur = glow; }
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, w, h);
+  ctx.restore();
+}
+
+function drawArena(W, H, ppu) {
+  const half = ARENA_SIZE * 0.5;
+  // grid (dim cyan) — bloom pass adds the soft glow
+  ctx.strokeStyle = "rgba(80,160,200,0.45)";
+  ctx.lineWidth = 1 / ppu * Math.max(1, ppu*0.04);
+  ctx.beginPath();
+  for (let x=-half; x<=half+0.001; x+=2.0) {
+    ctx.moveTo(x, -half); ctx.lineTo(x, half);
+  }
+  for (let y=-half; y<=half+0.001; y+=2.0) {
+    ctx.moveTo(-half, y); ctx.lineTo(half, y);
+  }
+  ctx.stroke();
+
+  // border
+  ctx.strokeStyle = "rgba(180,255,255,1.0)";
+  ctx.lineWidth = 0.18;
+  ctx.strokeRect(-half, -half, ARENA_SIZE, ARENA_SIZE);
+}
+
+function drawBeam() {
+  const p0 = level.players.pos[0], p1 = level.players.pos[1];
+  const delta = vsub(p1, p0);
+  const len = vlen(delta);
+  if (len < 1e-3) return;
+  const dir = vmul(delta, 1/len);
+  const perp = V(-dir.y, dir.x);
+
+  const tTension = smoothstep(0.8, 1.0, beamLength(level) / len);
+
+  let mult = 1.0;
+  const tt = (PLAYER_DISABLED_TIME - level.players.disabledTime) / PLAYER_DISABLED_TIME;
+  const wBlow = 0.03;
+  if (level.players.disabledTime !== 0) {
+    if (tt < wBlow) {
+      const bt = tt / wBlow;
+      mult = Math.exp(bt * 2.0);
+    } else {
+      const rt = (tt - wBlow) / (1.0 - wBlow);
+      mult = (1.0/15.0) + (Math.pow(rt, 6.0) / (14.0/15.0));
+    }
+  }
+  mult *= tTension/2 + 0.5;
+
+  const thickness = 0.15 * mult;
+  ctx.lineCap = "round";
+
+  // wide soft red layer
+  ctx.strokeStyle = "rgba(255,40,40,0.7)";
+  ctx.lineWidth = thickness * 2.0;
+  ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
+
+  // mid pink
+  ctx.strokeStyle = "rgba(255,180,180,1.0)";
+  ctx.lineWidth = thickness * 0.9;
+  ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
+
+  // bright white core
+  ctx.strokeStyle = "rgba(255,255,255,1.0)";
+  ctx.lineWidth = Math.max(thickness * 0.25, 0.02);
+  ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
+  void perp;
+}
+
+function drawPlayers() {
+  // i-frame pulse outline
+  for (let p=0; p<2; p++) {
+    const a = Math.max(0, Math.min(1, level.players.iframeTimer[p] / PLAYER_IFRAME_DURATION));
+    if (a > 0) {
+      ctx.strokeStyle = `rgba(255,255,255,${0.85 * a})`;
+      ctx.lineWidth = 0.06;
+      ctx.beginPath();
+      ctx.arc(level.players.pos[p].x, level.players.pos[p].y, PLAYER_RADIUS + 0.08, 0, Math.PI*2);
+      ctx.stroke();
+    }
+  }
+  // P0 red
+  neonFilledCircle(level.players.pos[0].x, level.players.pos[0].y, PLAYER_RADIUS, [1.0,0.15,0.15], 22);
+  // P1 blue
+  neonFilledCircle(level.players.pos[1].x, level.players.pos[1].y, PLAYER_RADIUS, [0.2,0.4,1.0], 22);
+
+  // HP bars (above each player)
+  const w = 1.5, h = 0.15, off = 1.0;
+  for (let p=0; p<2; p++) {
+    const ratio = Math.max(0, Math.min(1, level.players.health / level.maxHealth));
+    const yTop = level.players.pos[p].y + PLAYER_RADIUS + off;
+    drawHpBar(level.players.pos[p].x, yTop, w, h, ratio);
+  }
+}
+
+function drawHpBar(cx, yBottom, w, h, ratio) {
+  ctx.fillStyle = "rgba(40,40,40,0.85)";
+  ctx.fillRect(cx - w*0.5, yBottom, w, h);
+  if (ratio > 0) {
+    const r = Math.max(0, Math.min(1, ratio));
+    ctx.fillStyle = `rgba(${Math.round((1-r)*255)},${Math.round(r*255)},60,1.0)`;
+    ctx.fillRect(cx - w*0.5, yBottom, w * r, h);
+  }
+}
+
+function drawStaticShield(pos, baseR, t) {
+  // baseR = enemy outer extent. Shield sits with a small gap outside, and
+  // grows further as the field charge depletes.
+  const gap  = 0.18;
+  const wave = t * 0.45;
+  const r    = baseR + gap + wave;
+  // outer bright ring
+  ctx.lineWidth   = 0.10;
+  ctx.strokeStyle = "rgba(180,255,255,1.0)";
+  ctx.fillStyle   = "rgba(0,200,255,0.10)";
+  ctx.beginPath();
+  ctx.arc(pos.x, pos.y, r, 0, Math.PI*2);
+  ctx.fill();
+  ctx.stroke();
+  // inner softer ring — gives the field a thicker, "force-field" feel
+  ctx.lineWidth   = 0.04;
+  ctx.strokeStyle = "rgba(0,220,255,0.7)";
+  ctx.beginPath();
+  ctx.arc(pos.x, pos.y, r - 0.07, 0, Math.PI*2);
+  ctx.stroke();
+}
+
+function drawEnemies(view) {
+  // view = { minX, maxX, minY, maxY } in world space, already padded.
+  for (const e of level.enemies) {
+    if (!e.active) continue;
+    if (e.pos.x < view.minX || e.pos.x > view.maxX ||
+        e.pos.y < view.minY || e.pos.y > view.maxY) continue;
+    let outerR = e.radius;
+    if (e.boidParams) {
+      const v = e.vel;
+      let dir = V(1,0);
+      const vn = vlen(v);
+      if (vn > 0.01) dir = vmul(v, 1/vn);
+      drawNeonTriangle(e.pos, dir, e.radius * 0.6, e.radius * 1.5, e.colour);
+      outerR = e.radius * 1.5; // longest dimension of the kite
+    } else {
+      neonStrokeCircle(e.pos.x, e.pos.y, e.radius, e.colour, 0.07, 14);
+    }
+    if (e.remainingStatic > 0) {
+      const t = Math.pow(e.remainingStatic / e.startingStatic, STATIC_T_POW);
+      drawStaticShield(e.pos, outerR, t);
+    }
+    const w = 0.8, h = 0.1, off = 0.7;
+    const ratio = Math.max(0, Math.min(1, e.currentHealth / e.health));
+    drawHpBar(e.pos.x, e.pos.y + e.radius + off, w, h, ratio);
+  }
+}
+
+function drawNeonTriangle(pos, dir, halfW, halfH, color, _isStatic=false) {
+  const fx = dir.x, fy = dir.y;
+  const px = -dir.y, py = dir.x;
+  const tip   = { x: pos.x + fx*halfH, y: pos.y + fy*halfH };
+  const left  = { x: pos.x - fx*halfH*0.5 + px*halfW, y: pos.y - fy*halfH*0.5 + py*halfW };
+  const right = { x: pos.x - fx*halfH*0.5 - px*halfW, y: pos.y - fy*halfH*0.5 - py*halfW };
+  ctx.lineJoin = "round";
+  ctx.lineWidth = 0.07;
+  ctx.strokeStyle = rgbaStr(brighten(color, 1.5), 1.0);
+  ctx.fillStyle   = rgbaStr(color, 0.32);
+  ctx.beginPath();
+  ctx.moveTo(tip.x, tip.y);
+  ctx.lineTo(left.x, left.y);
+  ctx.lineTo(right.x, right.y);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+}
+
+function drawXP(view) {
+  ctx.fillStyle = "rgba(180,240,255,1.0)";
+  for (const o of level.xpOrbs) {
+    if (!o.active) continue;
+    if (o.pos.x < view.minX || o.pos.x > view.maxX ||
+        o.pos.y < view.minY || o.pos.y > view.maxY) continue;
+    ctx.beginPath();
+    ctx.arc(o.pos.x, o.pos.y, XP_ORB_RADIUS, 0, Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function drawWorld() {
+  const { W, H, aim, pixelsPerUnit } = cameraInfo();
+
+  // background gradient + vignette
+  const bg = ctx.createRadialGradient(W*0.5, H*0.5, 0, W*0.5, H*0.5, Math.hypot(W,H)*0.6);
+  bg.addColorStop(0, "#08101a");
+  bg.addColorStop(1, "#02040a");
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // world transform: translate to screen center, scale (with y flip), translate by -aim
+  ctx.save();
+  ctx.translate(W*0.5, H*0.5);
+  ctx.scale(pixelsPerUnit, -pixelsPerUnit);
+  ctx.translate(-aim.x, -aim.y);
+
+  // No per-shape additive blending — the bloom pass produces the glow.
+  // view rect in world space (padded by largest renderable extent)
+  const halfW_w = (W * 0.5) / pixelsPerUnit;
+  const halfH_w = (H * 0.5) / pixelsPerUnit;
+  const pad = MAX_ENEMY_RADIUS + 1.0; // include hp bars / static field puff
+  const view = {
+    minX: aim.x - halfW_w - pad, maxX: aim.x + halfW_w + pad,
+    minY: aim.y - halfH_w - pad, maxY: aim.y + halfH_w + pad,
+  };
+
+  drawArena(W, H, pixelsPerUnit);
+  drawXP(view);
+  drawBeam();
+  drawEnemies(view);
+  drawPlayers();
+
+  ctx.restore();
+}
+
+// ============================================================
+// HUD
+// ============================================================
+function drawHUD() {
+  const W = canvas.width, H = canvas.height;
+  // XP bar across top
+  const barH = Math.max(8, H * 0.025);
+  ctx.save();
+  ctx.fillStyle = "rgba(30,40,60,0.85)";
+  ctx.fillRect(0, 0, W, barH);
+  const ratio = Math.max(0, Math.min(1, level.players.xp / xpForNextLevel(level)));
+  ctx.shadowColor = "rgba(0,255,255,0.95)";
+  ctx.shadowBlur = 14;
+  ctx.fillStyle = "rgba(0,255,255,1.0)";
+  ctx.fillRect(0, 0, W * ratio, barH);
+  ctx.restore();
+
+  // text
+  const fontSize = Math.max(12, Math.floor(barH * 0.7));
+  ctx.save();
+  ctx.font = `${fontSize}px ui-monospace, Menlo, Consolas, monospace`;
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = "rgba(220,255,255,0.95)";
+  ctx.shadowColor = "rgba(0,200,255,0.7)";
+  ctx.shadowBlur = 6;
+  ctx.fillText(`Lv ${level.players.level}`, 10, barH * 0.5);
+  const right = `Time ${formattedTimeRemaining(level)}    Wave: ${currentEnemyKind(level)}`;
+  ctx.textAlign = "right";
+  ctx.fillText(right, W - 10, barH * 0.5);
+  ctx.restore();
+
+  // damage indicator (low HP)
+  const hpRatio = Math.max(0, Math.min(1, level.players.health / level.maxHealth));
+  if (hpRatio < 0.4) {
+    ctx.save();
+    const a = (0.4 - hpRatio) / 0.4 * 0.3;
+    const grad = ctx.createRadialGradient(W*0.5, H*0.5, Math.min(W,H)*0.3, W*0.5, H*0.5, Math.hypot(W,H)*0.6);
+    grad.addColorStop(0, "rgba(255,0,0,0)");
+    grad.addColorStop(1, `rgba(255,0,0,${a})`);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+    ctx.restore();
+  }
+}
+
+function drawCenterText(lines, opts={}) {
+  const W = canvas.width, H = canvas.height;
+  const baseSize = opts.baseSize || Math.max(18, H * 0.035);
+  const lineGap = baseSize * 1.4;
+  ctx.save();
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  let y = H * (opts.startY || 0.32);
+  for (const l of lines) {
+    const size = Math.max(12, baseSize * (l.size || 1));
+    ctx.font = `${size}px ui-monospace, Menlo, Consolas, monospace`;
+    ctx.shadowColor = l.glow || "rgba(0,200,255,0.8)";
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = l.color || "rgba(220,255,255,1.0)";
+    ctx.fillText(l.text, W*0.5, y);
+    y += size * 1.3;
+  }
+  ctx.restore();
+}
+
+function drawAllocateOverlay() {
+  const W = canvas.width, H = canvas.height;
+  ctx.save();
+  ctx.fillStyle = "rgba(0,0,0,0.55)";
+  ctx.fillRect(0,0,W,H);
+  ctx.restore();
+
+  const lines = [
+    { text:"ALLOCATE STAT POINTS", size:1.4, color:"rgba(230,255,255,1)", glow:"rgba(0,200,255,0.95)" },
+    { text:`points remaining: ${level.players.statPoints}`, size:1.0, color:"rgba(255,240,160,1)", glow:"rgba(255,180,40,0.7)" },
+    { text:"", size:0.5 },
+  ];
+  for (let i=0; i<5; i++) {
+    const lvl = level.statLevels[i];
+    const v = getStat(i, lvl);
+    lines.push({
+      text: `[${STAT_KEYS[i]}]  ${STAT_LABELS[i]}  —  level ${lvl}  (${v.toFixed(2)})`,
+      size: 0.95,
+      color: "rgba(200,230,255,1)",
+      glow: "rgba(0,150,200,0.6)",
+    });
+  }
+  lines.push({ text:"", size:0.5 });
+  lines.push({ text:"press Z X C V B to spend", size:0.85, color:"rgba(200,200,200,1)", glow:"rgba(0,80,120,0.5)" });
+  drawCenterText(lines, { startY:0.18 });
+}
+
+function drawDeathOverlay() {
+  const W = canvas.width, H = canvas.height;
+  ctx.save();
+  ctx.fillStyle = "rgba(0,0,0,0.7)";
+  ctx.fillRect(0,0,W,H);
+  ctx.restore();
+
+  const elapsed = elapsedTime(level);
+  const m = Math.floor(elapsed/60), s = Math.floor(elapsed) % 60;
+  const lines = [
+    { text:"GAME OVER", size:1.8, color:"rgba(255,80,80,1)", glow:"rgba(255,30,30,0.95)" },
+    { text:"", size:0.6 },
+    { text:`level reached: ${level.players.level}`, size:1.0, color:"rgba(220,240,255,1)", glow:"rgba(80,180,255,0.7)" },
+    { text:`time survived: ${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`, size:1.0, color:"rgba(220,240,255,1)", glow:"rgba(80,180,255,0.7)" },
+    { text:"", size:0.6 },
+  ];
+  for (let i=0; i<5; i++) {
+    lines.push({
+      text:`${STAT_LABELS[i]}: ${level.statLevels[i]}`,
+      size: 0.85, color:"rgba(190,210,240,1)", glow:"rgba(40,80,140,0.5)",
+    });
+  }
+  lines.push({ text:"", size:0.6 });
+  lines.push({ text:"press R to restart", size:1.1, color:"rgba(255,240,160,1)", glow:"rgba(255,180,40,0.7)" });
+  drawCenterText(lines, { startY:0.18 });
+}
+
+function drawPauseOverlay() {
+  const W = canvas.width, H = canvas.height;
+  ctx.save();
+  ctx.fillStyle = "rgba(0,0,0,0.6)";
+  ctx.fillRect(0,0,W,H);
+  ctx.restore();
+  drawCenterText([
+    { text:"PAUSED", size:1.8, color:"rgba(255,240,160,1)", glow:"rgba(255,180,40,0.9)" },
+    { text:"", size:0.5 },
+    { text:"esc to resume", size:1.0, color:"rgba(220,230,240,1)", glow:"rgba(60,100,160,0.6)" },
+    { text:"R to restart", size:0.9, color:"rgba(180,200,220,1)", glow:"rgba(60,100,160,0.5)" },
+  ], { startY:0.32 });
+}
+
+// ============================================================
+// Main loop with fixed timestep
+// ============================================================
+const FIXED_DT = 1/60;
+let last = performance.now();
+let acc = 0;
+
+function frame(now) {
+  const elapsedMs = now - last; last = now;
+  acc += elapsedMs / 1000;
+  // clamp catch-up to avoid spiral of death
+  if (acc > 0.25) acc = 0.25;
+  while (acc >= FIXED_DT) {
+    updateLevel(level, FIXED_DT);
+    acc -= FIXED_DT;
+  }
+
+  // clear (the world draw paints its own gradient bg)
+  drawWorld();
+  applyBloom();   // single full-screen blur + additive composite
+  drawHUD();
+  if (level.phase === "allocating") drawAllocateOverlay();
+  else if (level.phase === "dead") drawDeathOverlay();
+  else if (level.phase === "paused") drawPauseOverlay();
+
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
