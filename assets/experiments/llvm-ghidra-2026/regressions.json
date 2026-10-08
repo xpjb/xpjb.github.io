@@ -1,0 +1,186 @@
+[
+  {
+    "input_ascii": "\"\\u!000\"",
+    "input_hex": "225c752130303022",
+    "outputs": {
+      "original": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "normalized_O3": {
+        "return": 1,
+        "parser": {
+          "pos": 8,
+          "toknext": 1,
+          "toksuper": -1
+        }
+      },
+      "normalized_Oz": {
+        "return": 1,
+        "parser": {
+          "pos": 8,
+          "toknext": 1,
+          "toksuper": -1
+        }
+      },
+      "repaired_O3": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "repaired_Oz": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      }
+    }
+  },
+  {
+    "input_ascii": "\"\\u0000\"",
+    "input_hex": "225c753030303022",
+    "outputs": {
+      "original": {
+        "return": 1,
+        "parser": {
+          "pos": 8,
+          "toknext": 1,
+          "toksuper": -1
+        }
+      },
+      "normalized_O3": {
+        "return": 1,
+        "parser": {
+          "pos": 8,
+          "toknext": 1,
+          "toksuper": -1
+        }
+      },
+      "normalized_Oz": {
+        "return": 1,
+        "parser": {
+          "pos": 8,
+          "toknext": 1,
+          "toksuper": -1
+        }
+      },
+      "repaired_O3": {
+        "return": 1,
+        "parser": {
+          "pos": 8,
+          "toknext": 1,
+          "toksuper": -1
+        }
+      },
+      "repaired_Oz": {
+        "return": 1,
+        "parser": {
+          "pos": 8,
+          "toknext": 1,
+          "toksuper": -1
+        }
+      }
+    }
+  },
+  {
+    "input_ascii": ";123 ",
+    "input_hex": "3b31323320",
+    "outputs": {
+      "original": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "normalized_O3": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "normalized_Oz": {
+        "return": -3,
+        "parser": {
+          "pos": 5,
+          "toknext": 2,
+          "toksuper": 0
+        }
+      },
+      "repaired_O3": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "repaired_Oz": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      }
+    }
+  },
+  {
+    "input_ascii": "\u0007} ",
+    "input_hex": "077d20",
+    "outputs": {
+      "original": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "normalized_O3": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "normalized_Oz": {
+        "return": -2,
+        "parser": {
+          "pos": 1,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "repaired_O3": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      },
+      "repaired_Oz": {
+        "return": -2,
+        "parser": {
+          "pos": 0,
+          "toknext": 0,
+          "toksuper": -1
+        }
+      }
+    }
+  }
+]

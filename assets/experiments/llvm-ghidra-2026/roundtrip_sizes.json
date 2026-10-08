@@ -1,0 +1,230 @@
+[
+  {
+    "path": "build/rt_O2_jsmn/recompiled_O3.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 15,
+      "jsmn_parse": 1469,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1484
+  },
+  {
+    "path": "build/rt_O2_jsmn/recompiled_Oz.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 9,
+      "jsmn_parse": 1526,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1535
+  },
+  {
+    "path": "build/rt_O3_jsmn/recompiled_O3.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 15,
+      "jsmn_parse": 1469,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1484
+  },
+  {
+    "path": "build/rt_O3_jsmn/recompiled_Oz.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 9,
+      "jsmn_parse": 1522,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1531
+  },
+  {
+    "path": "build/rt_O3_jsmn/repaired_O3.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 15,
+      "jsmn_parse": 1453,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1468
+  },
+  {
+    "path": "build/rt_O3_jsmn/repaired_Oz.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 9,
+      "jsmn_parse": 1504,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1513
+  },
+  {
+    "path": "build/rt_Oz_jsmn/recompiled_O3.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 15,
+      "jsmn_parse": 1640,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1655
+  },
+  {
+    "path": "build/rt_Oz_jsmn/recompiled_Oz.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 9,
+      "jsmn_parse": 1281,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1290
+  },
+  {
+    "path": "build/rt_Oz_jsmn/repaired_O3.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 15,
+      "jsmn_parse": 1616,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1631
+  },
+  {
+    "path": "build/rt_Oz_jsmn/repaired_Oz.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 9,
+      "jsmn_parse": 1384,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1393
+  },
+  {
+    "path": "build/rt_O3_generic_jsmn/recompiled_O3.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 15,
+      "jsmn_parse": 1453,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1468
+  },
+  {
+    "path": "build/rt_O3_generic_jsmn/recompiled_Oz.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 9,
+      "jsmn_parse": 1502,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1511
+  },
+  {
+    "path": "build/rt_O3_generic_sha256/recompiled_O3.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "register_tm_clones": 0,
+      "sha256_final": 423,
+      "sha256_init": 38,
+      "sha256_transform": 411,
+      "sha256_update": 133
+    },
+    "function_machine_bytes": 1005
+  },
+  {
+    "path": "build/rt_O3_generic_sha256/recompiled_Oz.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "register_tm_clones": 0,
+      "sha256_final": 387,
+      "sha256_init": 35,
+      "sha256_transform": 313,
+      "sha256_update": 110
+    },
+    "function_machine_bytes": 845
+  },
+  {
+    "path": "build/rt_O3_unroll_jsmn/recompiled_O3.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 15,
+      "jsmn_parse": 1469,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1484
+  },
+  {
+    "path": "build/rt_O3_unroll_jsmn/recompiled_Oz.so",
+    "function_sizes": {
+      "__do_global_dtors_aux": 0,
+      "_fini": 0,
+      "_init": 0,
+      "deregister_tm_clones": 0,
+      "frame_dummy": 0,
+      "jsmn_init": 9,
+      "jsmn_parse": 1522,
+      "register_tm_clones": 0
+    },
+    "function_machine_bytes": 1531
+  }
+]

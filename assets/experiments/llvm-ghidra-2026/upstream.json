@@ -1,0 +1,32 @@
+[
+  {
+    "name": "jsmn",
+    "repo": "zserge/jsmn",
+    "commit": "25647e692c7906b96ffd2b05ca54c097948e879c",
+    "files": [
+      "jsmn.h",
+      "LICENSE"
+    ],
+    "commit_date": "2021-10-14T11:51:38Z"
+  },
+  {
+    "name": "qoi",
+    "repo": "phoboslab/qoi",
+    "commit": "ffb2d2cb74a1de60819b21b939f7209aa53e91c1",
+    "files": [
+      "qoi.h",
+      "LICENSE"
+    ],
+    "commit_date": "2026-09-27T13:36:43Z"
+  },
+  {
+    "name": "sha256",
+    "repo": "B-Con/crypto-algorithms",
+    "commit": "cfbde48414baacf51fc7c74f275190881f037d32",
+    "files": [
+      "sha256.c",
+      "sha256.h"
+    ],
+    "commit_date": "2015-04-27T03:50:49Z"
+  }
+]

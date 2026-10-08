@@ -1,0 +1,1010 @@
+[
+  {
+    "variant": "O0",
+    "library": "jsmn",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 1,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O0_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O0_jsmn/recompiled_O3.so"
+        ],
+        "errors": 1
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O0_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O0_jsmn/recompiled_Oz.so"
+        ],
+        "errors": 1
+      }
+    }
+  },
+  {
+    "variant": "O0",
+    "library": "qoi",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 32,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O0_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O0_qoi/recompiled_O3.so"
+        ],
+        "errors": 32
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O0_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O0_qoi/recompiled_Oz.so"
+        ],
+        "errors": 32
+      }
+    }
+  },
+  {
+    "variant": "O0",
+    "library": "sha256",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 1,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O0_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O0_sha256/recompiled_O3.so"
+        ],
+        "errors": 1
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O0_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O0_sha256/recompiled_Oz.so"
+        ],
+        "errors": 1
+      }
+    }
+  },
+  {
+    "variant": "O2",
+    "library": "jsmn",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 6,
+    "normalized": {
+      "O3": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O2_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O2_jsmn/recompiled_O3.so"
+        ],
+        "errors": 0
+      },
+      "Oz": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O2_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O2_jsmn/recompiled_Oz.so"
+        ],
+        "errors": 0
+      }
+    }
+  },
+  {
+    "variant": "O2",
+    "library": "qoi",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 27,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O2_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O2_qoi/recompiled_O3.so"
+        ],
+        "errors": 26
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O2_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O2_qoi/recompiled_Oz.so"
+        ],
+        "errors": 26
+      }
+    }
+  },
+  {
+    "variant": "O2",
+    "library": "sha256",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 53,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O2_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O2_sha256/recompiled_O3.so"
+        ],
+        "errors": 43
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O2_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O2_sha256/recompiled_Oz.so"
+        ],
+        "errors": 43
+      }
+    }
+  },
+  {
+    "variant": "O3",
+    "library": "jsmn",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 6,
+    "normalized": {
+      "O3": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_jsmn/recompiled_O3.so"
+        ],
+        "errors": 0
+      },
+      "Oz": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_jsmn/recompiled_Oz.so"
+        ],
+        "errors": 0
+      }
+    }
+  },
+  {
+    "variant": "O3",
+    "library": "qoi",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 27,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_qoi/recompiled_O3.so"
+        ],
+        "errors": 26
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_qoi/recompiled_Oz.so"
+        ],
+        "errors": 26
+      }
+    }
+  },
+  {
+    "variant": "O3",
+    "library": "sha256",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 4,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_sha256/recompiled_O3.so"
+        ],
+        "errors": 4
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_sha256/recompiled_Oz.so"
+        ],
+        "errors": 4
+      }
+    }
+  },
+  {
+    "variant": "Oz",
+    "library": "jsmn",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 6,
+    "normalized": {
+      "O3": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_jsmn/recompiled_O3.so"
+        ],
+        "errors": 0
+      },
+      "Oz": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_jsmn/recompiled_Oz.so"
+        ],
+        "errors": 0
+      }
+    }
+  },
+  {
+    "variant": "Oz",
+    "library": "qoi",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 25,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_qoi/recompiled_O3.so"
+        ],
+        "errors": 25
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_qoi/recompiled_Oz.so"
+        ],
+        "errors": 25
+      }
+    }
+  },
+  {
+    "variant": "Oz",
+    "library": "sha256",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 50,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_sha256/recompiled_O3.so"
+        ],
+        "errors": 48
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_Oz_sha256/recompiled_Oz.so"
+        ],
+        "errors": 48
+      }
+    }
+  },
+  {
+    "variant": "O3_generic",
+    "library": "jsmn",
+    "raw_with_declarations_ok": true,
+    "raw_errors": 0,
+    "normalized": {
+      "O3": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_jsmn/recompiled_O3.so"
+        ],
+        "errors": 0
+      },
+      "Oz": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_jsmn/recompiled_Oz.so"
+        ],
+        "errors": 0
+      }
+    }
+  },
+  {
+    "variant": "O3_generic",
+    "library": "qoi",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 1,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_qoi/recompiled_O3.so"
+        ],
+        "errors": 1
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_qoi/recompiled_Oz.so"
+        ],
+        "errors": 1
+      }
+    }
+  },
+  {
+    "variant": "O3_generic",
+    "library": "sha256",
+    "raw_with_declarations_ok": true,
+    "raw_errors": 0,
+    "normalized": {
+      "O3": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_sha256/recompiled_O3.so"
+        ],
+        "errors": 0
+      },
+      "Oz": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_generic_sha256/recompiled_Oz.so"
+        ],
+        "errors": 0
+      }
+    }
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "jsmn",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 6,
+    "normalized": {
+      "O3": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_jsmn/recompiled_O3.so"
+        ],
+        "errors": 0
+      },
+      "Oz": {
+        "ok": true,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_jsmn/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_jsmn/recompiled_Oz.so"
+        ],
+        "errors": 0
+      }
+    }
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "qoi",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 27,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_qoi/recompiled_O3.so"
+        ],
+        "errors": 26
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_qoi/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_qoi/recompiled_Oz.so"
+        ],
+        "errors": 26
+      }
+    }
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "sha256",
+    "raw_with_declarations_ok": false,
+    "raw_errors": 4,
+    "normalized": {
+      "O3": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-O3",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_sha256/recompiled_O3.so"
+        ],
+        "errors": 4
+      },
+      "Oz": {
+        "ok": false,
+        "command": [
+          "clang",
+          "-std=c11",
+          "-shared",
+          "-fPIC",
+          "-flto",
+          "-fuse-ld=lld",
+          "-march=native",
+          "-fno-stack-protector",
+          "-fwrapv",
+          "-fno-strict-aliasing",
+          "-Wl,-Bsymbolic",
+          "-Wno-int-conversion",
+          "-Wno-incompatible-pointer-types",
+          "-ferror-limit=0",
+          "-Oz",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_sha256/normalized.c",
+          "-o",
+          "/root/llvm-ghidra-experiment/build/rt_O3_unroll_sha256/recompiled_Oz.so"
+        ],
+        "errors": 4
+      }
+    }
+  }
+]

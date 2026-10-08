@@ -1,0 +1,278 @@
+[
+  {
+    "variant": "O0",
+    "library": "jsmn",
+    "path": "build/O0/libraries.so",
+    "ok": true,
+    "cases": 12000,
+    "parse_calls": 17354,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 0.5156180178746581
+  },
+  {
+    "variant": "O0",
+    "library": "qoi",
+    "path": "build/O0/libraries.so",
+    "ok": true,
+    "cases": 500,
+    "decode_calls": 1500,
+    "oracle": "Bit-identical encoder vs O0; independent Python QOI decoder; original RGB/RGBA pixels and forced-channel conversion",
+    "seconds": 0.6906548759434372
+  },
+  {
+    "variant": "O0",
+    "library": "sha256",
+    "path": "build/O0/libraries.so",
+    "ok": true,
+    "cases": 1200,
+    "update_calls": 5236,
+    "oracle": "Python hashlib / OpenSSL; standard vectors, padding boundaries, randomized streaming chunks",
+    "seconds": 0.078205571975559
+  },
+  {
+    "variant": "O2",
+    "library": "jsmn",
+    "path": "build/O2/libraries.so",
+    "ok": true,
+    "cases": 12000,
+    "parse_calls": 17354,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 0.49157700897194445
+  },
+  {
+    "variant": "O2",
+    "library": "qoi",
+    "path": "build/O2/libraries.so",
+    "ok": true,
+    "cases": 500,
+    "decode_calls": 1500,
+    "oracle": "Bit-identical encoder vs O0; independent Python QOI decoder; original RGB/RGBA pixels and forced-channel conversion",
+    "seconds": 0.6771281899418682
+  },
+  {
+    "variant": "O2",
+    "library": "sha256",
+    "path": "build/O2/libraries.so",
+    "ok": true,
+    "cases": 1200,
+    "update_calls": 5236,
+    "oracle": "Python hashlib / OpenSSL; standard vectors, padding boundaries, randomized streaming chunks",
+    "seconds": 0.04939921502955258
+  },
+  {
+    "variant": "O3",
+    "library": "jsmn",
+    "path": "build/O3/libraries.so",
+    "ok": true,
+    "cases": 12000,
+    "parse_calls": 17354,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 0.5109988700132817
+  },
+  {
+    "variant": "O3",
+    "library": "qoi",
+    "path": "build/O3/libraries.so",
+    "ok": true,
+    "cases": 500,
+    "decode_calls": 1500,
+    "oracle": "Bit-identical encoder vs O0; independent Python QOI decoder; original RGB/RGBA pixels and forced-channel conversion",
+    "seconds": 0.6772447088733315
+  },
+  {
+    "variant": "O3",
+    "library": "sha256",
+    "path": "build/O3/libraries.so",
+    "ok": true,
+    "cases": 1200,
+    "update_calls": 5236,
+    "oracle": "Python hashlib / OpenSSL; standard vectors, padding boundaries, randomized streaming chunks",
+    "seconds": 0.04935888503678143
+  },
+  {
+    "variant": "Oz",
+    "library": "jsmn",
+    "path": "build/Oz/libraries.so",
+    "ok": true,
+    "cases": 12000,
+    "parse_calls": 17354,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 0.5067309900186956
+  },
+  {
+    "variant": "Oz",
+    "library": "qoi",
+    "path": "build/Oz/libraries.so",
+    "ok": true,
+    "cases": 500,
+    "decode_calls": 1500,
+    "oracle": "Bit-identical encoder vs O0; independent Python QOI decoder; original RGB/RGBA pixels and forced-channel conversion",
+    "seconds": 0.6846397009212524
+  },
+  {
+    "variant": "Oz",
+    "library": "sha256",
+    "path": "build/Oz/libraries.so",
+    "ok": true,
+    "cases": 1200,
+    "update_calls": 5236,
+    "oracle": "Python hashlib / OpenSSL; standard vectors, padding boundaries, randomized streaming chunks",
+    "seconds": 0.07368841394782066
+  },
+  {
+    "variant": "O3_generic",
+    "library": "jsmn",
+    "path": "build/O3_generic/libraries.so",
+    "ok": true,
+    "cases": 12000,
+    "parse_calls": 17354,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 0.5010123939719051
+  },
+  {
+    "variant": "O3_generic",
+    "library": "qoi",
+    "path": "build/O3_generic/libraries.so",
+    "ok": true,
+    "cases": 500,
+    "decode_calls": 1500,
+    "oracle": "Bit-identical encoder vs O0; independent Python QOI decoder; original RGB/RGBA pixels and forced-channel conversion",
+    "seconds": 0.6901315271388739
+  },
+  {
+    "variant": "O3_generic",
+    "library": "sha256",
+    "path": "build/O3_generic/libraries.so",
+    "ok": true,
+    "cases": 1200,
+    "update_calls": 5236,
+    "oracle": "Python hashlib / OpenSSL; standard vectors, padding boundaries, randomized streaming chunks",
+    "seconds": 0.05225361790508032
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "jsmn",
+    "path": "build/O3_unroll/libraries.so",
+    "ok": true,
+    "cases": 12000,
+    "parse_calls": 17354,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 0.5019976028706878
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "qoi",
+    "path": "build/O3_unroll/libraries.so",
+    "ok": true,
+    "cases": 500,
+    "decode_calls": 1500,
+    "oracle": "Bit-identical encoder vs O0; independent Python QOI decoder; original RGB/RGBA pixels and forced-channel conversion",
+    "seconds": 0.6863135269377381
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "sha256",
+    "path": "build/O3_unroll/libraries.so",
+    "ok": true,
+    "cases": 1200,
+    "update_calls": 5236,
+    "oracle": "Python hashlib / OpenSSL; standard vectors, padding boundaries, randomized streaming chunks",
+    "seconds": 0.04848217801190913
+  },
+  {
+    "variant": "rt_O2_O3",
+    "library": "jsmn",
+    "path": "build/rt_O2_jsmn/recompiled_O3.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 3430 cap=32 steps=[169] data=b'[\"\\\\na/\\\\u6f22ZY\\\\u00e9a9XY9\\\\u00e9\\\\u6f22Y9\\\\\\\\\\\\\"\\\\\\\\\\\\t  Z \\\\u6f22c\\\\\"0\\\\\"\\\\\\\\Za\\\\t\\\\u0\"e9ZYb \",true,-3308.3628323150187,[71418.18706655205,\"0\"],\"\\\\\\\\\\\\\"0bX\",775142539,74556.2843'; returns [10] vs [-2]\n"
+  },
+  {
+    "variant": "rt_O2_Oz",
+    "library": "jsmn",
+    "path": "build/rt_O2_jsmn/recompiled_Oz.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 3430 cap=32 steps=[169] data=b'[\"\\\\na/\\\\u6f22ZY\\\\u00e9a9XY9\\\\u00e9\\\\u6f22Y9\\\\\\\\\\\\\"\\\\\\\\\\\\t  Z \\\\u6f22c\\\\\"0\\\\\"\\\\\\\\Za\\\\t\\\\u0\"e9ZYb \",true,-3308.3628323150187,[71418.18706655205,\"0\"],\"\\\\\\\\\\\\\"0bX\",775142539,74556.2843'; returns [10] vs [-2]\n"
+  },
+  {
+    "variant": "rt_O3_O3",
+    "library": "jsmn",
+    "path": "build/rt_O3_jsmn/recompiled_O3.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 3430 cap=32 steps=[169] data=b'[\"\\\\na/\\\\u6f22ZY\\\\u00e9a9XY9\\\\u00e9\\\\u6f22Y9\\\\\\\\\\\\\"\\\\\\\\\\\\t  Z \\\\u6f22c\\\\\"0\\\\\"\\\\\\\\Za\\\\t\\\\u0\"e9ZYb \",true,-3308.3628323150187,[71418.18706655205,\"0\"],\"\\\\\\\\\\\\\"0bX\",775142539,74556.2843'; returns [10] vs [-2]\n"
+  },
+  {
+    "variant": "rt_O3_Oz",
+    "library": "jsmn",
+    "path": "build/rt_O3_jsmn/recompiled_Oz.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 3430 cap=32 steps=[169] data=b'[\"\\\\na/\\\\u6f22ZY\\\\u00e9a9XY9\\\\u00e9\\\\u6f22Y9\\\\\\\\\\\\\"\\\\\\\\\\\\t  Z \\\\u6f22c\\\\\"0\\\\\"\\\\\\\\Za\\\\t\\\\u0\"e9ZYb \",true,-3308.3628323150187,[71418.18706655205,\"0\"],\"\\\\\\\\\\\\\"0bX\",775142539,74556.2843'; returns [10] vs [-2]\n"
+  },
+  {
+    "variant": "rt_Oz_O3",
+    "library": "jsmn",
+    "path": "build/rt_Oz_jsmn/recompiled_O3.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 805 cap=8 steps=[3] data=b'\\x07} '; returns [-2] vs [-2]\n"
+  },
+  {
+    "variant": "rt_Oz_Oz",
+    "library": "jsmn",
+    "path": "build/rt_Oz_jsmn/recompiled_Oz.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 805 cap=8 steps=[3] data=b'\\x07} '; returns [-2] vs [-2]\n"
+  },
+  {
+    "variant": "rt_O3_generic_O3",
+    "library": "jsmn",
+    "path": "build/rt_O3_generic_jsmn/recompiled_O3.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 3430 cap=32 steps=[169] data=b'[\"\\\\na/\\\\u6f22ZY\\\\u00e9a9XY9\\\\u00e9\\\\u6f22Y9\\\\\\\\\\\\\"\\\\\\\\\\\\t  Z \\\\u6f22c\\\\\"0\\\\\"\\\\\\\\Za\\\\t\\\\u0\"e9ZYb \",true,-3308.3628323150187,[71418.18706655205,\"0\"],\"\\\\\\\\\\\\\"0bX\",775142539,74556.2843'; returns [10] vs [-2]\n"
+  },
+  {
+    "variant": "rt_O3_generic_Oz",
+    "library": "jsmn",
+    "path": "build/rt_O3_generic_jsmn/recompiled_Oz.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 3430 cap=32 steps=[169] data=b'[\"\\\\na/\\\\u6f22ZY\\\\u00e9a9XY9\\\\u00e9\\\\u6f22Y9\\\\\\\\\\\\\"\\\\\\\\\\\\t  Z \\\\u6f22c\\\\\"0\\\\\"\\\\\\\\Za\\\\t\\\\u0\"e9ZYb \",true,-3308.3628323150187,[71418.18706655205,\"0\"],\"\\\\\\\\\\\\\"0bX\",775142539,74556.2843'; returns [10] vs [-2]\n"
+  },
+  {
+    "variant": "rt_O3_generic_O3",
+    "library": "sha256",
+    "path": "build/rt_O3_generic_sha256/recompiled_O3.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 65, in sha_tests\n    if bytes(out)!=expected:raise AssertionError(f'sha256 case {i} len={len(data)} got={bytes(out).hex()} expected={expected.hex()}')\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: sha256 case 0 len=0 got=9068e7bb98260b59332545115670b44073f1ae44cd6b23e09f48551aefc76a43 expected=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n"
+  },
+  {
+    "variant": "rt_O3_generic_Oz",
+    "library": "sha256",
+    "path": "build/rt_O3_generic_sha256/recompiled_Oz.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 65, in sha_tests\n    if bytes(out)!=expected:raise AssertionError(f'sha256 case {i} len={len(data)} got={bytes(out).hex()} expected={expected.hex()}')\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: sha256 case 0 len=0 got=369ab5a7ad724036c2c5fe8abc2ceb48f88bc8e0d8b0a15d5ed7b0cd26b3b9df expected=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n"
+  },
+  {
+    "variant": "rt_O3_unroll_O3",
+    "library": "jsmn",
+    "path": "build/rt_O3_unroll_jsmn/recompiled_O3.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 3430 cap=32 steps=[169] data=b'[\"\\\\na/\\\\u6f22ZY\\\\u00e9a9XY9\\\\u00e9\\\\u6f22Y9\\\\\\\\\\\\\"\\\\\\\\\\\\t  Z \\\\u6f22c\\\\\"0\\\\\"\\\\\\\\Za\\\\t\\\\u0\"e9ZYb \",true,-3308.3628323150187,[71418.18706655205,\"0\"],\"\\\\\\\\\\\\\"0bX\",775142539,74556.2843'; returns [10] vs [-2]\n"
+  },
+  {
+    "variant": "rt_O3_unroll_Oz",
+    "library": "jsmn",
+    "path": "build/rt_O3_unroll_jsmn/recompiled_Oz.so",
+    "ok": false,
+    "returncode": 1,
+    "error": "Traceback (most recent call last):\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 124, in <module>\n    if len(sys.argv)>1 and sys.argv[1]=='--worker': worker(sys.argv[2],sys.argv[3]);sys.exit()\n                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 120, in worker\n    start=time.monotonic(); result={'jsmn':json_tests,'sha256':sha_tests,'qoi':qoi_tests}[libname](lib,ref)\n                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/root/llvm-ghidra-experiment/scripts/test.py\", line 48, in json_tests\n    if actual!=expected: raise AssertionError(f'jsmn case {i} cap={cap} steps={steps} data={data[:160]!r}; returns {[x[0] for x in actual]} vs {[x[0] for x in expected]}')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: jsmn case 3430 cap=32 steps=[169] data=b'[\"\\\\na/\\\\u6f22ZY\\\\u00e9a9XY9\\\\u00e9\\\\u6f22Y9\\\\\\\\\\\\\"\\\\\\\\\\\\t  Z \\\\u6f22c\\\\\"0\\\\\"\\\\\\\\Za\\\\t\\\\u0\"e9ZYb \",true,-3308.3628323150187,[71418.18706655205,\"0\"],\"\\\\\\\\\\\\\"0bX\",775142539,74556.2843'; returns [10] vs [-2]\n"
+  }
+]

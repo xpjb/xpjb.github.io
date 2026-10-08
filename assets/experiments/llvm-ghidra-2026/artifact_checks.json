@@ -1,0 +1,16 @@
+{
+  "original_build_library_pairs_passed": 18,
+  "mechanically_normalized_recompiled_pairs_failed": 12,
+  "repaired_pairs_passed": 4,
+  "held_out_cases_per_repaired_pair": 100000,
+  "text_sha256": {
+    "O3": "08d7e6f6a6c82d6b714bfe299f07b6bfa2651bbd6e9d13e436cdd0d5a90f6edf",
+    "O3_unroll": "08d7e6f6a6c82d6b714bfe299f07b6bfa2651bbd6e9d13e436cdd0d5a90f6edf",
+    "O3_debug": "08d7e6f6a6c82d6b714bfe299f07b6bfa2651bbd6e9d13e436cdd0d5a90f6edf",
+    "Oz": "bfea986e908c885920969453becfc0e29f82b541ab808001c51748418d01655d",
+    "Oz_debug": "bfea986e908c885920969453becfc0e29f82b541ab808001c51748418d01655d"
+  },
+  "all_selected_functions_decompiled": true,
+  "timing_samples": 308,
+  "fixture_hashes_verified": true
+}

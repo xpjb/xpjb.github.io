@@ -1,0 +1,169 @@
+[
+  {
+    "kind": "holdout",
+    "variant": "O3",
+    "opt": "O3",
+    "seed": "0x8b17",
+    "ok": true,
+    "cases": 100000,
+    "parse_calls": 144265,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 4.093163480050862
+  },
+  {
+    "kind": "holdout",
+    "variant": "O3",
+    "opt": "Oz",
+    "seed": "0x8b17",
+    "ok": true,
+    "cases": 100000,
+    "parse_calls": 144265,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 4.083244245033711
+  },
+  {
+    "kind": "holdout",
+    "variant": "Oz",
+    "opt": "O3",
+    "seed": "0x8b17",
+    "ok": true,
+    "cases": 100000,
+    "parse_calls": 144265,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 4.124549621948972
+  },
+  {
+    "kind": "holdout",
+    "variant": "Oz",
+    "opt": "Oz",
+    "seed": "0x8b17",
+    "ok": true,
+    "cases": 100000,
+    "parse_calls": 144265,
+    "oracle": "O0 return values, all parser fields and token bytes; valid/malformed/truncated JSON, token-count mode, capacity exhaustion, incremental parsing",
+    "seconds": 4.1830656048841774
+  },
+  {
+    "kind": "sanitizer",
+    "name": "original_sha",
+    "returncode": 0,
+    "command": [
+      "clang",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fwrapv",
+      "-fno-strict-aliasing",
+      "-Wno-int-conversion",
+      "-Wno-incompatible-pointer-types",
+      "src/libraries.c",
+      "src/sanitize_driver.c",
+      "-o",
+      "/root/llvm-ghidra-experiment/build/san_original_sha"
+    ],
+    "log": "results/sanitizer_original_sha.log"
+  },
+  {
+    "kind": "sanitizer",
+    "name": "normalized_generic_sha",
+    "returncode": 1,
+    "command": [
+      "clang",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fwrapv",
+      "-fno-strict-aliasing",
+      "-Wno-int-conversion",
+      "-Wno-incompatible-pointer-types",
+      "build/rt_O3_generic_sha256/normalized.c",
+      "src/sanitize_driver.c",
+      "-o",
+      "/root/llvm-ghidra-experiment/build/san_normalized_generic_sha"
+    ],
+    "log": "results/sanitizer_normalized_generic_sha.log"
+  },
+  {
+    "kind": "sanitizer",
+    "name": "original_json",
+    "returncode": 0,
+    "command": [
+      "clang",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fwrapv",
+      "-fno-strict-aliasing",
+      "-Wno-int-conversion",
+      "-Wno-incompatible-pointer-types",
+      "-DCHECK_JSON",
+      "src/libraries.c",
+      "src/sanitize_driver.c",
+      "-o",
+      "/root/llvm-ghidra-experiment/build/san_original_json"
+    ],
+    "log": "results/sanitizer_original_json.log"
+  },
+  {
+    "kind": "sanitizer",
+    "name": "repaired_O3_json",
+    "returncode": 0,
+    "command": [
+      "clang",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fwrapv",
+      "-fno-strict-aliasing",
+      "-Wno-int-conversion",
+      "-Wno-incompatible-pointer-types",
+      "-DCHECK_JSON",
+      "build/rt_O3_jsmn/repaired.c",
+      "src/sanitize_driver.c",
+      "-o",
+      "/root/llvm-ghidra-experiment/build/san_repaired_O3_json"
+    ],
+    "log": "results/sanitizer_repaired_O3_json.log"
+  },
+  {
+    "kind": "sanitizer",
+    "name": "repaired_Oz_json",
+    "returncode": 0,
+    "command": [
+      "clang",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fwrapv",
+      "-fno-strict-aliasing",
+      "-Wno-int-conversion",
+      "-Wno-incompatible-pointer-types",
+      "-DCHECK_JSON",
+      "build/rt_Oz_jsmn/repaired.c",
+      "src/sanitize_driver.c",
+      "-o",
+      "/root/llvm-ghidra-experiment/build/san_repaired_Oz_json"
+    ],
+    "log": "results/sanitizer_repaired_Oz_json.log"
+  },
+  {
+    "kind": "upstream_shift_probe",
+    "mode": "default",
+    "returncode": 1
+  },
+  {
+    "kind": "upstream_shift_probe",
+    "mode": "wrapv",
+    "returncode": 0
+  }
+]

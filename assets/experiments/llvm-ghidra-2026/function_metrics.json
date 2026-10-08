@@ -1,0 +1,1022 @@
+[
+  {
+    "variant": "source",
+    "library": "jsmn",
+    "function": "jsmn_alloc_token",
+    "tokens": 67,
+    "compact_chars": 227,
+    "gotos": 0,
+    "semicolons": 6,
+    "code_lines": 11
+  },
+  {
+    "variant": "source",
+    "library": "jsmn",
+    "function": "jsmn_fill_token",
+    "tokens": 46,
+    "compact_chars": 155,
+    "gotos": 0,
+    "semicolons": 4,
+    "code_lines": 7
+  },
+  {
+    "variant": "source",
+    "library": "jsmn",
+    "function": "jsmn_parse_primitive",
+    "tokens": 211,
+    "compact_chars": 687,
+    "gotos": 1,
+    "semicolons": 19,
+    "code_lines": 40
+  },
+  {
+    "variant": "source",
+    "library": "jsmn",
+    "function": "jsmn_parse_string",
+    "tokens": 350,
+    "compact_chars": 989,
+    "gotos": 0,
+    "semicolons": 27,
+    "code_lines": 56
+  },
+  {
+    "variant": "source",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 790,
+    "compact_chars": 2208,
+    "gotos": 0,
+    "semicolons": 61,
+    "code_lines": 135
+  },
+  {
+    "variant": "source",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 29,
+    "compact_chars": 95,
+    "gotos": 0,
+    "semicolons": 3,
+    "code_lines": 5
+  },
+  {
+    "variant": "source",
+    "library": "qoi",
+    "function": "qoi_write_32",
+    "tokens": 85,
+    "compact_chars": 190,
+    "gotos": 0,
+    "semicolons": 4,
+    "code_lines": 6
+  },
+  {
+    "variant": "source",
+    "library": "qoi",
+    "function": "qoi_read_32",
+    "tokens": 84,
+    "compact_chars": 194,
+    "gotos": 0,
+    "semicolons": 5,
+    "code_lines": 7
+  },
+  {
+    "variant": "source",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 865,
+    "compact_chars": 2101,
+    "gotos": 0,
+    "semicolons": 65,
+    "code_lines": 111
+  },
+  {
+    "variant": "source",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 720,
+    "compact_chars": 1786,
+    "gotos": 0,
+    "semicolons": 52,
+    "code_lines": 90
+  },
+  {
+    "variant": "source",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 399,
+    "compact_chars": 614,
+    "gotos": 0,
+    "semicolons": 35,
+    "code_lines": 36
+  },
+  {
+    "variant": "source",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 93,
+    "compact_chars": 262,
+    "gotos": 0,
+    "semicolons": 10,
+    "code_lines": 13
+  },
+  {
+    "variant": "source",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 86,
+    "compact_chars": 220,
+    "gotos": 0,
+    "semicolons": 8,
+    "code_lines": 13
+  },
+  {
+    "variant": "source",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 450,
+    "compact_chars": 942,
+    "gotos": 0,
+    "semicolons": 28,
+    "code_lines": 37
+  },
+  {
+    "variant": "expanded",
+    "library": "jsmn",
+    "function": "jsmn_alloc_token",
+    "tokens": 73,
+    "compact_chars": 233,
+    "gotos": 0,
+    "semicolons": 6,
+    "code_lines": 11
+  },
+  {
+    "variant": "expanded",
+    "library": "jsmn",
+    "function": "jsmn_fill_token",
+    "tokens": 46,
+    "compact_chars": 155,
+    "gotos": 0,
+    "semicolons": 4,
+    "code_lines": 7
+  },
+  {
+    "variant": "expanded",
+    "library": "jsmn",
+    "function": "jsmn_parse_primitive",
+    "tokens": 223,
+    "compact_chars": 699,
+    "gotos": 1,
+    "semicolons": 19,
+    "code_lines": 40
+  },
+  {
+    "variant": "expanded",
+    "library": "jsmn",
+    "function": "jsmn_parse_string",
+    "tokens": 362,
+    "compact_chars": 1001,
+    "gotos": 0,
+    "semicolons": 27,
+    "code_lines": 56
+  },
+  {
+    "variant": "expanded",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 838,
+    "compact_chars": 2254,
+    "gotos": 0,
+    "semicolons": 61,
+    "code_lines": 135
+  },
+  {
+    "variant": "expanded",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 29,
+    "compact_chars": 93,
+    "gotos": 0,
+    "semicolons": 3,
+    "code_lines": 5
+  },
+  {
+    "variant": "expanded",
+    "library": "qoi",
+    "function": "qoi_write_32",
+    "tokens": 85,
+    "compact_chars": 190,
+    "gotos": 0,
+    "semicolons": 4,
+    "code_lines": 6
+  },
+  {
+    "variant": "expanded",
+    "library": "qoi",
+    "function": "qoi_read_32",
+    "tokens": 84,
+    "compact_chars": 194,
+    "gotos": 0,
+    "semicolons": 5,
+    "code_lines": 7
+  },
+  {
+    "variant": "expanded",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 977,
+    "compact_chars": 2201,
+    "gotos": 0,
+    "semicolons": 65,
+    "code_lines": 111
+  },
+  {
+    "variant": "expanded",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 832,
+    "compact_chars": 1868,
+    "gotos": 0,
+    "semicolons": 52,
+    "code_lines": 90
+  },
+  {
+    "variant": "expanded",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 740,
+    "compact_chars": 993,
+    "gotos": 0,
+    "semicolons": 35,
+    "code_lines": 36
+  },
+  {
+    "variant": "expanded",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 93,
+    "compact_chars": 262,
+    "gotos": 0,
+    "semicolons": 10,
+    "code_lines": 13
+  },
+  {
+    "variant": "expanded",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 86,
+    "compact_chars": 220,
+    "gotos": 0,
+    "semicolons": 8,
+    "code_lines": 13
+  },
+  {
+    "variant": "expanded",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 450,
+    "compact_chars": 942,
+    "gotos": 0,
+    "semicolons": 28,
+    "code_lines": 37
+  },
+  {
+    "variant": "O0",
+    "library": "jsmn",
+    "function": "jsmn_alloc_token",
+    "tokens": 125,
+    "compact_chars": 350,
+    "gotos": 0,
+    "semicolons": 10,
+    "code_lines": 17
+  },
+  {
+    "variant": "O0",
+    "library": "jsmn",
+    "function": "jsmn_fill_token",
+    "tokens": 46,
+    "compact_chars": 170,
+    "gotos": 0,
+    "semicolons": 5,
+    "code_lines": 8
+  },
+  {
+    "variant": "O0",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 30,
+    "compact_chars": 88,
+    "gotos": 0,
+    "semicolons": 4,
+    "code_lines": 7
+  },
+  {
+    "variant": "O0",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 1176,
+    "compact_chars": 2882,
+    "gotos": 2,
+    "semicolons": 70,
+    "code_lines": 156
+  },
+  {
+    "variant": "O0",
+    "library": "jsmn",
+    "function": "jsmn_parse_primitive",
+    "tokens": 319,
+    "compact_chars": 856,
+    "gotos": 0,
+    "semicolons": 24,
+    "code_lines": 43
+  },
+  {
+    "variant": "O0",
+    "library": "jsmn",
+    "function": "jsmn_parse_string",
+    "tokens": 521,
+    "compact_chars": 1387,
+    "gotos": 0,
+    "semicolons": 34,
+    "code_lines": 77
+  },
+  {
+    "variant": "O0",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 1153,
+    "compact_chars": 3146,
+    "gotos": 0,
+    "semicolons": 80,
+    "code_lines": 133
+  },
+  {
+    "variant": "O0",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 1395,
+    "compact_chars": 3770,
+    "gotos": 0,
+    "semicolons": 103,
+    "code_lines": 152
+  },
+  {
+    "variant": "O0",
+    "library": "qoi",
+    "function": "qoi_read_32",
+    "tokens": 147,
+    "compact_chars": 386,
+    "gotos": 0,
+    "semicolons": 16,
+    "code_lines": 20
+  },
+  {
+    "variant": "O0",
+    "library": "qoi",
+    "function": "qoi_write_32",
+    "tokens": 153,
+    "compact_chars": 396,
+    "gotos": 0,
+    "semicolons": 14,
+    "code_lines": 17
+  },
+  {
+    "variant": "O0",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 960,
+    "compact_chars": 2182,
+    "gotos": 0,
+    "semicolons": 29,
+    "code_lines": 49
+  },
+  {
+    "variant": "O0",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 140,
+    "compact_chars": 418,
+    "gotos": 0,
+    "semicolons": 11,
+    "code_lines": 14
+  },
+  {
+    "variant": "O0",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 793,
+    "compact_chars": 2206,
+    "gotos": 0,
+    "semicolons": 54,
+    "code_lines": 72
+  },
+  {
+    "variant": "O0",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 159,
+    "compact_chars": 421,
+    "gotos": 0,
+    "semicolons": 9,
+    "code_lines": 15
+  },
+  {
+    "variant": "O2",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 29,
+    "compact_chars": 90,
+    "gotos": 0,
+    "semicolons": 3,
+    "code_lines": 6
+  },
+  {
+    "variant": "O2",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 2176,
+    "compact_chars": 5957,
+    "gotos": 23,
+    "semicolons": 168,
+    "code_lines": 313
+  },
+  {
+    "variant": "O2",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 1894,
+    "compact_chars": 5118,
+    "gotos": 2,
+    "semicolons": 109,
+    "code_lines": 354
+  },
+  {
+    "variant": "O2",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 1668,
+    "compact_chars": 4632,
+    "gotos": 1,
+    "semicolons": 172,
+    "code_lines": 218
+  },
+  {
+    "variant": "O2",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 797,
+    "compact_chars": 1813,
+    "gotos": 0,
+    "semicolons": 55,
+    "code_lines": 66
+  },
+  {
+    "variant": "O2",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 88,
+    "compact_chars": 291,
+    "gotos": 0,
+    "semicolons": 7,
+    "code_lines": 10
+  },
+  {
+    "variant": "O2",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 1592,
+    "compact_chars": 4566,
+    "gotos": 0,
+    "semicolons": 119,
+    "code_lines": 144
+  },
+  {
+    "variant": "O2",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 198,
+    "compact_chars": 512,
+    "gotos": 0,
+    "semicolons": 19,
+    "code_lines": 27
+  },
+  {
+    "variant": "O3",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 29,
+    "compact_chars": 90,
+    "gotos": 0,
+    "semicolons": 3,
+    "code_lines": 6
+  },
+  {
+    "variant": "O3",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 2206,
+    "compact_chars": 6065,
+    "gotos": 23,
+    "semicolons": 175,
+    "code_lines": 320
+  },
+  {
+    "variant": "O3",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 1894,
+    "compact_chars": 5118,
+    "gotos": 2,
+    "semicolons": 109,
+    "code_lines": 354
+  },
+  {
+    "variant": "O3",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 1668,
+    "compact_chars": 4632,
+    "gotos": 1,
+    "semicolons": 172,
+    "code_lines": 218
+  },
+  {
+    "variant": "O3",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 797,
+    "compact_chars": 1813,
+    "gotos": 0,
+    "semicolons": 55,
+    "code_lines": 66
+  },
+  {
+    "variant": "O3",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 88,
+    "compact_chars": 291,
+    "gotos": 0,
+    "semicolons": 7,
+    "code_lines": 10
+  },
+  {
+    "variant": "O3",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 1982,
+    "compact_chars": 4988,
+    "gotos": 0,
+    "semicolons": 97,
+    "code_lines": 170
+  },
+  {
+    "variant": "O3",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 198,
+    "compact_chars": 512,
+    "gotos": 0,
+    "semicolons": 19,
+    "code_lines": 27
+  },
+  {
+    "variant": "Oz",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 29,
+    "compact_chars": 90,
+    "gotos": 0,
+    "semicolons": 3,
+    "code_lines": 6
+  },
+  {
+    "variant": "Oz",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 1957,
+    "compact_chars": 5392,
+    "gotos": 25,
+    "semicolons": 142,
+    "code_lines": 280
+  },
+  {
+    "variant": "Oz",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 1903,
+    "compact_chars": 5220,
+    "gotos": 1,
+    "semicolons": 111,
+    "code_lines": 405
+  },
+  {
+    "variant": "Oz",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 1411,
+    "compact_chars": 3715,
+    "gotos": 2,
+    "semicolons": 125,
+    "code_lines": 172
+  },
+  {
+    "variant": "Oz",
+    "library": "qoi",
+    "function": "qoi_read_32",
+    "tokens": 144,
+    "compact_chars": 353,
+    "gotos": 0,
+    "semicolons": 13,
+    "code_lines": 17
+  },
+  {
+    "variant": "Oz",
+    "library": "qoi",
+    "function": "qoi_write_32",
+    "tokens": 153,
+    "compact_chars": 396,
+    "gotos": 0,
+    "semicolons": 14,
+    "code_lines": 17
+  },
+  {
+    "variant": "Oz",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 722,
+    "compact_chars": 1579,
+    "gotos": 0,
+    "semicolons": 41,
+    "code_lines": 48
+  },
+  {
+    "variant": "Oz",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 88,
+    "compact_chars": 291,
+    "gotos": 0,
+    "semicolons": 7,
+    "code_lines": 10
+  },
+  {
+    "variant": "Oz",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 756,
+    "compact_chars": 2118,
+    "gotos": 0,
+    "semicolons": 56,
+    "code_lines": 74
+  },
+  {
+    "variant": "Oz",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 157,
+    "compact_chars": 408,
+    "gotos": 0,
+    "semicolons": 11,
+    "code_lines": 17
+  },
+  {
+    "variant": "O3_generic",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 29,
+    "compact_chars": 90,
+    "gotos": 0,
+    "semicolons": 3,
+    "code_lines": 6
+  },
+  {
+    "variant": "O3_generic",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 2226,
+    "compact_chars": 6007,
+    "gotos": 23,
+    "semicolons": 176,
+    "code_lines": 322
+  },
+  {
+    "variant": "O3_generic",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 3467,
+    "compact_chars": 8987,
+    "gotos": 3,
+    "semicolons": 347,
+    "code_lines": 584
+  },
+  {
+    "variant": "O3_generic",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 1722,
+    "compact_chars": 4519,
+    "gotos": 1,
+    "semicolons": 169,
+    "code_lines": 217
+  },
+  {
+    "variant": "O3_generic",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 1037,
+    "compact_chars": 2508,
+    "gotos": 0,
+    "semicolons": 60,
+    "code_lines": 71
+  },
+  {
+    "variant": "O3_generic",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 88,
+    "compact_chars": 291,
+    "gotos": 0,
+    "semicolons": 7,
+    "code_lines": 10
+  },
+  {
+    "variant": "O3_generic",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 1230,
+    "compact_chars": 3196,
+    "gotos": 0,
+    "semicolons": 84,
+    "code_lines": 113
+  },
+  {
+    "variant": "O3_generic",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 198,
+    "compact_chars": 512,
+    "gotos": 0,
+    "semicolons": 19,
+    "code_lines": 27
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 29,
+    "compact_chars": 90,
+    "gotos": 0,
+    "semicolons": 3,
+    "code_lines": 6
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 2206,
+    "compact_chars": 6065,
+    "gotos": 23,
+    "semicolons": 175,
+    "code_lines": 320
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 1894,
+    "compact_chars": 5118,
+    "gotos": 2,
+    "semicolons": 109,
+    "code_lines": 354
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 1668,
+    "compact_chars": 4632,
+    "gotos": 1,
+    "semicolons": 172,
+    "code_lines": 218
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 797,
+    "compact_chars": 1813,
+    "gotos": 0,
+    "semicolons": 55,
+    "code_lines": 66
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 88,
+    "compact_chars": 291,
+    "gotos": 0,
+    "semicolons": 7,
+    "code_lines": 10
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 1982,
+    "compact_chars": 4988,
+    "gotos": 0,
+    "semicolons": 97,
+    "code_lines": 170
+  },
+  {
+    "variant": "O3_unroll",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 198,
+    "compact_chars": 512,
+    "gotos": 0,
+    "semicolons": 19,
+    "code_lines": 27
+  },
+  {
+    "variant": "O3_debug",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 30,
+    "compact_chars": 94,
+    "gotos": 0,
+    "semicolons": 4,
+    "code_lines": 7
+  },
+  {
+    "variant": "O3_debug",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 2017,
+    "compact_chars": 5744,
+    "gotos": 23,
+    "semicolons": 171,
+    "code_lines": 314
+  },
+  {
+    "variant": "O3_debug",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 1902,
+    "compact_chars": 5083,
+    "gotos": 2,
+    "semicolons": 109,
+    "code_lines": 352
+  },
+  {
+    "variant": "O3_debug",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 1680,
+    "compact_chars": 4650,
+    "gotos": 1,
+    "semicolons": 172,
+    "code_lines": 217
+  },
+  {
+    "variant": "O3_debug",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 953,
+    "compact_chars": 2029,
+    "gotos": 0,
+    "semicolons": 55,
+    "code_lines": 66
+  },
+  {
+    "variant": "O3_debug",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 95,
+    "compact_chars": 269,
+    "gotos": 0,
+    "semicolons": 11,
+    "code_lines": 14
+  },
+  {
+    "variant": "O3_debug",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 2026,
+    "compact_chars": 5153,
+    "gotos": 0,
+    "semicolons": 111,
+    "code_lines": 184
+  },
+  {
+    "variant": "O3_debug",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 147,
+    "compact_chars": 395,
+    "gotos": 0,
+    "semicolons": 19,
+    "code_lines": 27
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "jsmn",
+    "function": "jsmn_init",
+    "tokens": 30,
+    "compact_chars": 94,
+    "gotos": 0,
+    "semicolons": 4,
+    "code_lines": 7
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "jsmn",
+    "function": "jsmn_parse",
+    "tokens": 1733,
+    "compact_chars": 5164,
+    "gotos": 25,
+    "semicolons": 137,
+    "code_lines": 273
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "qoi",
+    "function": "qoi_decode",
+    "tokens": 1961,
+    "compact_chars": 5292,
+    "gotos": 1,
+    "semicolons": 112,
+    "code_lines": 406
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "qoi",
+    "function": "qoi_encode",
+    "tokens": 1261,
+    "compact_chars": 3324,
+    "gotos": 2,
+    "semicolons": 124,
+    "code_lines": 171
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "qoi",
+    "function": "qoi_read_32",
+    "tokens": 115,
+    "compact_chars": 267,
+    "gotos": 0,
+    "semicolons": 13,
+    "code_lines": 16
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "qoi",
+    "function": "qoi_write_32",
+    "tokens": 121,
+    "compact_chars": 248,
+    "gotos": 0,
+    "semicolons": 14,
+    "code_lines": 17
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "sha256",
+    "function": "sha256_final",
+    "tokens": 570,
+    "compact_chars": 1338,
+    "gotos": 0,
+    "semicolons": 42,
+    "code_lines": 49
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "sha256",
+    "function": "sha256_init",
+    "tokens": 95,
+    "compact_chars": 269,
+    "gotos": 0,
+    "semicolons": 11,
+    "code_lines": 14
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "sha256",
+    "function": "sha256_transform",
+    "tokens": 723,
+    "compact_chars": 2042,
+    "gotos": 0,
+    "semicolons": 56,
+    "code_lines": 74
+  },
+  {
+    "variant": "Oz_debug",
+    "library": "sha256",
+    "function": "sha256_update",
+    "tokens": 103,
+    "compact_chars": 290,
+    "gotos": 0,
+    "semicolons": 11,
+    "code_lines": 16
+  }
+]
