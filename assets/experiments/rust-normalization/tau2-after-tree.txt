@@ -1,0 +1,31 @@
+tau2/
+└── crates/
+    ├── block-store/
+    │   └── src/
+    │       ├── implementation.rs  [253 lines]
+    │       ├── lib.rs  [942 lines]
+    │       └── tests.rs  [639 lines]
+    ├── code-viewer/
+    │   ├── examples/
+    │   │   └── index_size.rs  [81 lines]
+    │   └── src/
+    │       ├── implementation.rs  [944 lines]
+    │       ├── lib.rs  [250 lines]
+    │       └── tests.rs  [587 lines]
+    ├── daemon/
+    │   └── src/
+    │       ├── bin1.rs  [100 lines]
+    │       ├── implementation.rs  [11,235 lines]
+    │       ├── lib.rs  [2,201 lines]
+    │       └── tests.rs  [11,589 lines]
+    ├── frontend/
+    │   └── src/
+    │       ├── bin1.rs  [39 lines]
+    │       ├── implementation.rs  [33,446 lines]
+    │       ├── lib.rs  [4,651 lines]
+    │       └── tests.rs  [24,397 lines]
+    └── net/
+        └── src/
+            ├── implementation.rs  [2,093 lines]
+            ├── lib.rs  [1,223 lines]
+            └── tests.rs  [1,326 lines]
