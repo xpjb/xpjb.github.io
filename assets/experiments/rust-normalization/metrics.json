@@ -5733,6 +5733,163 @@
       ]
     }
   },
+  "import_fix": {
+    "summary": {
+      "compendium": {
+        "original_generated_output": {
+          "physical_lines": 76716,
+          "formatted_lines": 76709,
+          "tokens": 547344,
+          "anatomy": {
+            "always_false_cfg_attributes": 312,
+            "behaviour_trait_tokens": 10357,
+            "behaviour_traits": 73,
+            "empty_impl_blocks": 14,
+            "import_statements": 2156,
+            "import_tokens": 35931,
+            "module_declarations": 172,
+            "module_wrapper_tokens": 1841,
+            "other_tokens": 499215,
+            "parameterized_generated_closures": 394
+          }
+        },
+        "import_fix_output": {
+          "physical_lines": 75694,
+          "formatted_lines": 75687,
+          "tokens": 536540,
+          "anatomy": {
+            "always_false_cfg_attributes": 312,
+            "behaviour_trait_tokens": 10357,
+            "behaviour_traits": 73,
+            "empty_impl_blocks": 14,
+            "import_statements": 1521,
+            "import_tokens": 25058,
+            "module_declarations": 178,
+            "module_wrapper_tokens": 1907,
+            "other_tokens": 499218,
+            "parameterized_generated_closures": 394
+          },
+          "inlinings": 407,
+          "dead_removed": 3,
+          "same_inlined_function_set": true,
+          "same_removed_function_set": true,
+          "suspended_items": {
+            "compendium": 313
+          }
+        },
+        "reductions": {
+          "physical_lines": 1022,
+          "formatted_lines": 1022,
+          "tokens": 10804
+        }
+      },
+      "tau2": {
+        "original_generated_output": {
+          "physical_lines": 95996,
+          "formatted_lines": 95972,
+          "tokens": 748812,
+          "anatomy": {
+            "always_false_cfg_attributes": 653,
+            "behaviour_trait_tokens": 13704,
+            "behaviour_traits": 129,
+            "empty_impl_blocks": 10,
+            "import_statements": 4186,
+            "import_tokens": 73626,
+            "module_declarations": 312,
+            "module_wrapper_tokens": 5408,
+            "other_tokens": 656074,
+            "parameterized_generated_closures": 58
+          }
+        },
+        "import_fix_output": {
+          "physical_lines": 92912,
+          "formatted_lines": 92888,
+          "tokens": 722905,
+          "anatomy": {
+            "always_false_cfg_attributes": 653,
+            "behaviour_trait_tokens": 13704,
+            "behaviour_traits": 129,
+            "empty_impl_blocks": 10,
+            "import_statements": 2604,
+            "import_tokens": 47567,
+            "module_declarations": 325,
+            "module_wrapper_tokens": 5551,
+            "other_tokens": 656083,
+            "parameterized_generated_closures": 58
+          },
+          "inlinings": 62,
+          "dead_removed": 2,
+          "same_inlined_function_set": true,
+          "same_removed_function_set": true,
+          "suspended_items": {
+            "taud": 181,
+            "tau-block-store": 0,
+            "tau-net": 3,
+            "tau-code-viewer": 4,
+            "tau-frontend": 467
+          }
+        },
+        "reductions": {
+          "physical_lines": 3084,
+          "formatted_lines": 3084,
+          "tokens": 25907
+        }
+      },
+      "scope": "Full-pipeline reruns; only import generation changed. Accepted inline/dead-removal sets and suspension counts match the first outputs. Broader verbosity of inlining frames is not fixed."
+    },
+    "validation": {
+      "tool_tests_passed": 65,
+      "compendium_public_tests": {
+        "run": 83,
+        "passed": 83,
+        "skipped": 2
+      },
+      "tau2_public_tests": {
+        "run": 93,
+        "passed": 93,
+        "skipped": 0
+      },
+      "color_samples": 65556,
+      "float_channels": 262224,
+      "color_bitwise_equal": true,
+      "color_sha256": "8c60352d2e6c41646618968bf85c509f0106f33771fcbeb51bd8c2f10ea89384",
+      "unchanged_java_files": {
+        "crates/frontend/android/java/app/tau/rust/MainActivity.java": "635879e7744a3a029a4403d27cd499e2efe69c7588b17b0bd40a9979c906d8be",
+        "crates/frontend/tests/android/SelectionBridgeTest.java": "7a5cd9229385387d7e3acd03b972aacdcf6e44a2177582e9b3f04f06a8454f8f"
+      },
+      "android_build_verified": false,
+      "original_input_integrity": {
+        "compendium": {
+          "checked_files": 92,
+          "changed_files": [],
+          "git_status_clean": true
+        },
+        "tau2": {
+          "checked_files": 232,
+          "changed_files": [],
+          "git_status_clean": true
+        }
+      }
+    },
+    "provenance": {
+      "compendium": {
+        "initial": {
+          "normalization_report_sha256": "c095edb0e657a887f00e7063c43b53783e73d28c9ef612810307d70ce2bffbad"
+        },
+        "import-fix": {
+          "normalization_report_sha256": "16fbcf2bb2caeea5c628641934ee3690ac452da834b60e7f154a3ffaf5b6629f"
+        }
+      },
+      "tau2": {
+        "initial": {
+          "normalization_report_sha256": "ed5627975c973af29fa116e605c9a8b36392c43a3f66d0d7565f18cb5b167359"
+        },
+        "import-fix": {
+          "normalization_report_sha256": "aa0de06976adc91c9f318b9355e8ba593485a38bf52b44f0f15365a9afde3d64"
+        }
+      }
+    }
+  },
   "phase_costs": {
     "method": "isolated copy of hash-verified normalizer, instrumented to capture layout and post-test-migration then stop before semantic inlining; after is the existing validated output. Trait inventories, suspension counts match that output; tests.rs match apart from inactive imports of inlined helpers that the inliner deletes. Final delta includes inlining, dead removals, import cleanup and dependency ordering.",
     "summary": {

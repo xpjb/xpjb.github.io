@@ -15,7 +15,48 @@ permalink: /blog/rust-normalization-tau2-compendium/
 
 <p class="deck">The normalizer made both codebases longer. Here are the measurements, generated-code costs, accepted inlinings, and test losses—not a claim that fewer files makes the result better.</p>
 
-> **The code-size result is worse.** Physical LOC increased **27.3% in Compendium** and **107.4% in Tau2**. Applying the same parser and formatter to both sides still gives increases of **31.2%** and **20.1%**. Neither output is exception-free, and incompatible tests remain inactive rather than being counted as passing.
+<h2 id="import-fix">Update: import scaffolding repaired</h2>
+
+The first emitter repeated dependency imports in nested scopes and emitted many one-name imports with repeated attributes. That overhead was unnecessary. Fresh full-pipeline runs with the repaired emitter give:
+
+| Metric | Compendium: initial → repaired | Tau2: initial → repaired |
+|---|---:|---:|
+| Import statements | 2,156 → **1,521** | 4,186 → **2,604** |
+| Import-syntax tokens (including their attributes) | 35,931 → **25,058** | 73,626 → **47,567** |
+| Physical source lines | 76,716 → **75,694** | 95,996 → **92,912** |
+| Same-formatter source lines | 76,709 → **75,687** | 95,972 → **92,888** |
+| All lexical tokens | 547,344 → **536,540** | 748,812 → **722,905** |
+
+**Net reduction from the initial generated outputs: 1,022 physical lines in Compendium and 3,084 in Tau2.** These figures use exactly the same source scope and counters as the initial report. The number of files is unchanged: 7 and 18.
+
+### What changed
+
+- Workspace dependency trait imports are gathered **once per Rust crate root** in a private `__unsloppifier_scope` module. A library and its separate binaries/integration-test targets each have their own crate root.
+- Nested scopes receive one shared-prelude glob only when an existing unconditional parent/root glob does not already supply it. Nested Rust modules do not automatically inherit their parent's imports.
+- Explicit declaration re-exports and generated trait aliases are grouped by matching conditional attributes. Explicit bindings retain their precedence instead of being replaced indiscriminately by ambiguous globs.
+- Generated trait aliases include the package name, covering the regression where two dependencies have identically named generated traits.
+
+This does **not** eliminate every repeated original import or flatten the retained namespaces. The concrete changes cover the generator's repeated scaffolding, not a claim that every remaining import is minimal.
+
+### Same transformations, revalidated outputs
+
+The accepted inlining **sets**, not just the counts, are unchanged: **407 Compendium / 62 Tau2**. The removed-dead-function sets remain **3 / 2**. Suspended test-item counts remain **313 / 655**; the import repair did not restore that lost active coverage.
+
+The repaired normalizer passed **65 nextest tests**, compiler checks, rustdoc and formatting checks. Both repaired outputs compiled in staging and at their final paths. The final public suites passed again: **83 Compendium tests (2 skipped)** and **93 Tau tests (none skipped)**. The original and repaired Compendium outputs matched bit-for-bit for **65,556 colour samples / 262,224 float channels**. Both Java files and all **324 recorded original input hashes** remain unchanged. These are bounded host/default-feature checks, not full application or Android equivalence proofs.
+
+### Still not a source-size win
+
+Against the original inputs, repaired physical LOC is still **+25.6% in Compendium / +100.7% in Tau2**. With identical formatting, growth is still **+29.5% / +16.3%**; lexical tokens remain **+30.5% / +13.1%**.
+
+**The retry-helper lowering is not fixed by this change.** `next_attempt` has no early return, `?`, or async body. It missed the small-block fast path because that path rejected its non-primitive by-value parameters, method-call body and call-expression argument. The resulting conservative typed frame remains unchanged, as do the other inlining-frame costs discussed below.
+
+**Updated downloads:** [measurements, source hashes and validation (JSON)](/assets/experiments/rust-normalization/import-fix-metrics.json) · [per-file comparison (CSV)](/assets/experiments/rust-normalization/import-fix-files.csv) · repaired trees: [Compendium](/assets/experiments/rust-normalization/compendium-import-fix-tree.txt) / [Tau2](/assets/experiments/rust-normalization/tau2-import-fix-tree.txt) · [comparison script](/assets/experiments/rust-normalization/measure-import-fix.py).
+
+The sections below deliberately retain the **initial output**, including its original phase-cost measurements and code examples. They are not silently relabeled as the repaired output.
+
+<h2 id="initial-output">Initial output, before the import repair</h2>
+
+> **The initial code-size result is worse.** Physical LOC increased **27.3% in Compendium** and **107.4% in Tau2**. Applying the same parser and formatter to both sides still gives increases of **31.2%** and **20.1%**. Neither output is exception-free, and incompatible tests remain inactive rather than being counted as passing.
 
 <div class="normalization-cards" markdown="0">
 <div><span>Compendium physical LOC</span><strong>+27.3%</strong><small>+31.2% with identical formatting</small></div>
@@ -24,7 +65,7 @@ permalink: /blog/rust-normalization-tau2-compendium/
 <div><span>Inactive test items</span><strong>968</strong><small>Imports/helpers/functions, not a test count</small></div>
 </div>
 
-**Read:** [scope](#scope) · [size](#size) · [phase costs](#costs) · [actual code](#code) · [inlinings](#inlinings) · [trees](#trees) · [packages](#packages) · [tests](#tests) · [validation](#validation) · [methodology and downloads](#methodology)
+**Read:** [import repair](#import-fix) · [initial scope](#scope) · [size](#size) · [phase costs](#costs) · [actual code](#code) · [inlinings](#inlinings) · [trees](#trees) · [packages](#packages) · [tests](#tests) · [validation](#validation) · [methodology and downloads](#methodology)
 
 <h2 id="scope">1. What was transformed</h2>
 
@@ -767,6 +808,6 @@ The script uses `/usr/local/bin/cargo`, does not invoke Clippy or Cargo's built-
 
 ---
 
-**Bottom line:** this version produces larger source and loses active test coverage. Compiler-accepted inlinings do not by themselves make its generated code concise or pleasant to read. A lower file count does not offset those failures.
+**Bottom line:** even after the import repair, the output has larger source and loses active test coverage. Compiler-accepted inlinings do not by themselves make its generated code concise or pleasant to read. A lower file count does not offset those failures.
 
 </article>

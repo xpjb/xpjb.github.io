@@ -12,3 +12,19 @@ built-in test runner. Output includes all cfg branches and inactive test items.
 The publication's metrics.json adds the previously executed validation results,
 source preservation checks, and report hashes to the size measurements. Its
 public test results describe only active migrated tests, not the original suite.
+
+The original metrics/trees/phase analysis describe the initial emitter. The
+`import-fix-metrics.json`, `import-fix-files.csv`, and `*-import-fix-tree.txt`
+files separately describe the repaired emitter; initial results are retained.
+The repaired normalizer has the same accepted inline/dead-removal sets and
+suspended item counts. The verbose retry-helper frame remains unfixed.
+
+To reproduce the import repair comparison from four generated output snapshots:
+
+    /usr/local/bin/cargo build --locked --offline --manifest-path meter/Cargo.toml --bin anatomy
+    python3 measure-import-fix.py COMPENDIUM_INITIAL COMPENDIUM_IMPORT_FIX TAU2_INITIAL TAU2_IMPORT_FIX OUTPUT_JSON --meter meter/target/debug/anatomy
+
+The Python comparison only reads the supplied snapshots and the already-built
+meter. Its output includes per-file hashes, syntax counts, normalization-report
+hashes, and exact accepted rewrite-set comparisons. Validation results are added
+separately from the actual compiler/test/differential runs.
