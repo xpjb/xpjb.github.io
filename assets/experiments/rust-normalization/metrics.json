@@ -6318,7 +6318,7 @@
     }
   ],
   "normalizer": {
-    "source_manifest_sha256": "b9d71dcd4a0d3248ac765510266d02c7c6e7ab3ec8c8f391684c68a681b3eb37",
+    "source_manifest_sha256": "ac6acdb602f521a748b7e1cb7230af1249b360076195405f8a484ba45d9e6bf4",
     "source_file_sha256": {
       ".gitignore": "a2152382e6e286a810c92c54c094d33fa141de20b5bff4f4c89ef6d461fae52e",
       "Cargo.lock": "dd8b4d5b531dc3abd2874134ce437f2e346a5808cb7dacf3d89a7b56806b4185",
@@ -6348,7 +6348,7 @@
       "tools/report/meter/Cargo.toml": "659d05c512077dd6ec8c63edaae206570dacd7d66e32ea9b909c000d44851ab0",
       "tools/report/meter/src/bin/anatomy.rs": "2a25b8b5b54b85334b0d7b424b7744e22fec92af005140e50c4fc16bb27c71c4",
       "tools/report/meter/src/main.rs": "af0b192b0d151fdb93e1c9ce314ff11cdad938404df71d134804d7bc2f7608e5",
-      "tools/report/publish-report.py": "790fa489e2b631b5da04f11866c75f32b413041f80af5968c741dca3b95817db",
+      "tools/report/publish-report.py": "7b7ad0f445cb6a0dd273433036284060549b12d2a287cde8f1a84308dc7d1cf9",
       "tools/validate.sh": "1e45eb48face26711a4d936298f3e038824cc0eb8910b6900b9d2942b5bfba01",
       "tools/verify-canonical.py": "35e7e39b2a0f8829bc923aae57660747fd92a80a6cf09271c72c9bf9ca7d18ec",
       "vendor/ra_ap_toolchain/Cargo.toml": "5c2f7cb5430694d56f91b0f4ceb8d6604d6ae57ecdbffb735eaa9a81c023f9a0",
@@ -6358,7 +6358,7 @@
       "vendor/ra_ap_toolchain/src/lib.rs": "e45b9b0fd20489e6d87dc59ea09829ba93da4f0817a6d600b7865a281e584d71"
     },
     "provenance": {
-      "current_source_commit": "49489c67d0441720b69e5954016b4e409ac008b8",
+      "current_source_commit": "e65cd296a47487e4e25c1b9feca86650d716f77c",
       "generation_source_commit": "49489c67d0441720b69e5954016b4e409ac008b8",
       "semantic_generation_commit": "a74cdc1df226fab21f18c45061bff4ce7691d888",
       "semantic_stage_sources_unchanged": true,

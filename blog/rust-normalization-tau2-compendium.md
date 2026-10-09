@@ -11,7 +11,7 @@ permalink: /blog/rust-normalization-tau2-compendium/
 
 # Rust normalization: Compendium and Tau2
 
-**Shorter outputs, but not less production code.** Unit suites are excluded; production counts remain separate.
+**Production reduction and unit-test migration remain unresolved.** Smaller totals include omitted unit suites, not a smaller production program.
 
 ## One source comparison
 
@@ -49,7 +49,7 @@ No closure, cast, synthetic argument or trait import. **420 / 48 single-site hel
 
 ## Test boundary and validation
 
-Earlier blockers: Compendium’s private OAuth helpers; Tau2’s relocated unit-test fixtures. Coupling does not make those tests worthless.
+**These test problems were bypassed, not fixed:** Compendium’s private OAuth tests and Tau2’s shared Rust fixture dependencies were excluded with the unit suites. No fixture crate or fixture-asset migration was implemented.
 
 Only **original Cargo integration targets** are migrated; compiler errors cannot disable tests. **305 / 397 unit-test declarations are omitted**, not passed. Originals retain them. This deliberately reduces coverage.
 
@@ -57,6 +57,10 @@ Only **original Cargo integration targets** are migrated; compiler errors cannot
 - Public `Color` is bit-identical across **65,556 RGBA samples**.
 - **12 existing normalizer tests passed**, plus compiler, rustdoc and formatting checks. Both outputs passed host/all-target checks at their final paths.
 - **324 captured input hashes** and both Java files are unchanged; original repositories remain clean. Android and excluded Windows targets were not built. Runtime and binary size were not benchmarked.
+
+## Remaining implementation work
+
+Generated programs build, but some attempted rewrites still fail on generated syntax, method/generic substitution, macros/cfg, lifetimes or privacy and retain the original helper. Namespace elimination is not implemented. Removing unnecessary trait/import/call-frame scaffolding remains work to do; changing compiler APIs alone would not solve it.
 
 ## Evidence
 
