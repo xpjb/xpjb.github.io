@@ -21,7 +21,7 @@ for project,before,after in [('compendium',roots[0],roots[1]),('tau2',roots[2],r
 manifest=out/'meter-input-local.json';manifest.write_text(json.dumps(rows))
 meter=pathlib.Path(__file__).parent/'meter/Cargo.toml'
 with (out/'meter-build.log').open('wb') as log:
- data=subprocess.check_output(['/usr/local/bin/cargo','run','--offline','--quiet','--bin','normalization_report_meter','--manifest-path',str(meter),'--',str(manifest)],stderr=log)
+ data=subprocess.check_output(['/usr/local/bin/cargo','run','--offline','--locked','--quiet','--bin','normalization_report_meter','--manifest-path',str(meter),'--',str(manifest)],stderr=log)
 measured=json.loads(data)
 # Tokei supplies conventional code/comment/blank line counts on precisely the
 # same explicit file list; there is no VCS-ignore or directory-selection drift.
@@ -39,7 +39,7 @@ for project in ['compendium','tau2']:
    docs=sum(blob_lines(b)for b in s.get('blobs',{}).values())
    target.update(code_lines=s['code'],comment_lines=s['comments']+docs,blank_lines=s['blanks'])
    target['counter_line_delta']=s['code']+s['comments']+s['blanks']+docs-target['physical_lines']
-metrics=['physical_lines','nonblank_lines','code_lines','comment_lines','blank_lines','formatted_lines','formatted_nonblank_lines','tokens','bytes']
+metrics=['physical_lines','nonblank_lines','code_lines','comment_lines','blank_lines','formatted_lines','formatted_nonblank_lines','tokens','bytes','production_formatted_lines','production_tokens']
 summary={}
 for project,report in reports.items():
  sums={}
@@ -52,29 +52,19 @@ for project,report in reports.items():
  sums['inlining_exceptions']=len(report['inlining']['exceptions'])
  sums['packages']=[]
  for p in report['packages']:
-  item={k:p[k]for k in ['name','directory','test_functions','suspended_test_items']};item['traits']=len(p['behaviour_traits'])
+  item={k:p[k]for k in ['name','directory','test_functions']};item['traits']=len(p['behaviour_traits']);item['omitted_unit_test_declarations']=len(p['omitted_unit_tests'])
   for snapshot in ['before','after']:
    rs=[r for r in measured if r['project']==project and r['snapshot']==snapshot and r['package']==p['name']]
    item[snapshot]={'files':len(rs),**{k:sum(r[k]for r in rs)for k in metrics}}
   sums['packages'].append(item)
- groups=collections.Counter()
- for e in report['exceptions']:
-  if not e['reason'].startswith('test item could not migrate'):continue
-  d=e['reason'].split('not promoted to public: ',1)[-1]
-  if re.search(r'\bprivate\b|is inaccessible|not publicly',d):cat='explicit_privacy'
-  elif re.search(r'cannot find|failed to resolve|unresolved import|not found in',d):cat='unresolved_name'
-  elif re.search(r'no (?:method named|function or associated item|associated function or constant)',d):cat='unavailable_method'
-  else:cat='other'
-  groups[cat]+=1
- sums['suspended_item_diagnostic_categories']=dict(groups)
- assert sum(groups.values())==sum(p['suspended_test_items']for p in report['packages'])
+ sums['omitted_unit_test_declarations']=sum(len(p['omitted_unit_tests']) for p in report['packages'])
  summary[project]=sums
 provenance={}
 for name,root in [('compendium',roots[0]),('tau2',roots[2])]:
  provenance[name]={'commit':subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip(),'git_status':subprocess.check_output(['git','-C',str(root),'status','--short'],text=True)}
  assert not provenance[name]['git_status']
 versions={'tokei':subprocess.check_output(['tokei','--version'],text=True).strip(),'meter_cargo_lock_sha256':hashlib.sha256(meter.with_name('Cargo.lock').read_bytes()).hexdigest()}
-result={'scope':'Rust target sources under member-package src/tests/examples/benches; all cfg branches and inactive tests included; build scripts and excluded Windows crates measured separately','summary':summary,'provenance':provenance,'versions':versions,'files':measured}
+result={'scope':'Rust target sources under member-package src/tests/examples/benches; all cfg branches included; generated output keeps original integration targets, not library-unit suites. Production excludes standalone tests/ or tests.rs and structurally test-only items; build scripts and excluded Windows crates measured separately','summary':summary,'provenance':provenance,'versions':versions,'files':measured}
 (out/'metrics.json').write_text(json.dumps(result,indent=2)+'\n')
 with (out/'files.csv').open('w') as f:
  writer=csv.DictWriter(f,fieldnames=list(measured[0]));writer.writeheader();writer.writerows(measured)

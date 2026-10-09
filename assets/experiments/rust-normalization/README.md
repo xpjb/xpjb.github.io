@@ -1,22 +1,25 @@
 # Current Rust normalization measurements
 
-All metrics and trees compare the original inputs with the retained generated
-snapshots. Current hardened regeneration is blocked at test migration, so these
-measurements and older active-suite receipts are not a current correctness claim. There is no mixed-emitter or historical appendix. Complete application
-sources and private compiler logs are not published; only the displayed retry
-excerpt, derived data, source hashes, and measurement tooling are included.
+One comparison of the original inputs and current generated outputs; no mixed
+emitters or historical appendix. Complete application sources and compiler logs
+are not published. Only the displayed retry excerpt, derived data, source hashes,
+and measurement tooling are included.
 
 Reproduce sizes without editing either source tree:
 
     python3 measure.py COMPENDIUM_INPUT COMPENDIUM_OUTPUT TAU2_INPUT TAU2_OUTPUT OUTPUT_DIR
 
-Requires Python 3, Tokei, managed Cargo at /usr/local/bin/cargo, and the locked
-Rust meter dependencies cached for the offline invocation. Never use Clippy or
-Cargo's built-in test runner. The script counts all cfg branches and inactive
-test items within member-package src/tests/examples/benches directories.
+Requires Python 3, Tokei, managed Cargo at /usr/local/bin/cargo, and cached locked
+Rust meter dependencies for its offline invocation. Never use Clippy or Cargo's
+built-in test runner. Total counts include all cfg branches in the listed member
+src/tests/examples/benches files. Production counts exclude standalone tests/
+and tests.rs files and structurally test-only items, on both sides. The generated
+output omits library/binary unit suites; it preserves original integration tests.
+Omitted declarations are coverage loss, not passes or proof of redundancy.
 
-metrics.json adds separately executed validation, original source integrity,
-preservation checks and report hashes. Its test counts describe active migrated
-public-interface tests, not the original suite. Windows source and build scripts
-are preserved; excluded Windows manifests can have formatting-only differences.
-Neither Android nor excluded Windows targets were built for this validation.
+Both raw and identically formatted sizes are reported, plus lexical tokens.
+Shorter physical output does not imply less production code. metrics.json adds
+bounded host/default-feature validation, input integrity, preservation checks,
+and exact source/report hashes. Public integration suites were also run against
+scratch copies of both originals. Unit suites, Android and excluded Windows
+builds are not covered by these checks.

@@ -1,7 +1,7 @@
 ---
 layout: experiment
 title: "Rust normalization: Compendium and Tau2"
-description: "Retained source measurements and the current test-migration blocker, without a false correctness claim."
+description: "Shorter generated outputs, with explicit test exclusions and separate production measurements."
 permalink: /blog/rust-normalization-tau2-compendium/
 ---
 <link rel="stylesheet" href="/assets/css/rust-normalization.css">
@@ -11,24 +11,22 @@ permalink: /blog/rust-normalization-tau2-compendium/
 
 # Rust normalization: Compendium and Tau2
 
-**Current status: regeneration is blocked at public-test migration in both projects.** The hardened tool rejects unresolved test symbols/imports instead of silently suspending them. No replacement outputs were published.
+**Shorter outputs, but not less production code.** Unit suites are excluded; production counts remain separate.
 
-The measurements below describe the retained generated snapshots, not successful output from the current tool.
-
-## Retained snapshot sizes
+## One source comparison
 
 | Measure | Compendium: original → generated | Tau2: original → generated |
 |---|---:|---:|
 | Rust source files | 80 → 7 | 210 → 18 |
-| Physical lines | 60,269 → 67,365 (+11.8%) | 46,284 → 91,587 (+97.9%) |
-| Same-formatter lines | 58,457 → 67,358 (+15.2%) | 79,884 → 91,563 (+14.6%) |
-| Lexical tokens | 411,167 → 463,345 (+12.7%) | 639,286 → 710,433 (+11.1%) |
+| Physical lines | 60,269 → 40,179 (-33.3%) | 46,284 → 44,771 (-3.3%) |
+| Same-printer lines | 58,457 → 53,567 (-8.4%) | 79,884 → 60,470 (-24.3%) |
+| Lexical tokens | 411,167 → 351,158 (-14.6%) | 639,286 → 444,024 (-30.5%) |
+| Production-only same-printer lines | 45,548 → 52,533 (+15.3%) | 46,432 → 52,504 (+13.1%) |
+| Production-only tokens | 307,119 → 343,488 (+11.8%) | 345,398 → 378,137 (+9.5%) |
 
-**Still larger after identical formatting:** +15.2% / +14.6%. Fewer files is not less code. Counts include inactive configurations and suspended tests; the download specifies the source scope.
+Definitions stay together behind a lean facade. Token-checked compact formatting uses a 120-column limit. Both sides also use the same locked printer above.
 
-## Generated code
-
-Before, at the retry call and its helper:
+## Actual inlining
 
 ```rust
 let retry_at = next_attempt(attempt_at, Instant::now());
@@ -38,7 +36,7 @@ fn next_attempt(started: Instant, failed: Instant) -> Instant {
 }
 ```
 
-In the retained generated snapshot:
+becomes:
 
 ```rust
 let retry_at = {
@@ -47,22 +45,22 @@ let retry_at = {
 };
 ```
 
-No closure, cast, synthetic arguments, or trait import. The tuple preserves evaluation order. The same lowering handles other safe expressions, constructors, matches and iterator chains; necessary control-flow and lifetime boundaries remain.
+No closure, cast, synthetic argument or trait import. **420 / 48 single-site helpers** were inlined; unsupported cases remain explicit exceptions.
 
-Accepted single-site inlinings: **448 Compendium / 70 Tau2**. Unsupported cases remain explicit exceptions.
+## Test boundary and validation
 
-## Validation and limits
+Earlier blockers: Compendium’s private OAuth helpers; Tau2’s relocated unit-test fixtures. Coupling does not make those tests worthless.
 
-- **12 normalizer tests passed**, plus compiler, rustdoc and formatting checks. Current project regeneration stops on `E0425` (Compendium) and `E0432` (Tau2); these errors are not waived.
-- The retained snapshots passed host/all-target compiler checks and their active public suites: **83 Compendium passed, 2 skipped; 93 Tau2 passed, 0 skipped**. Public `Color` matched the original bit-for-bit over **65,556 RGBA samples**.
-- **Those passes do not establish transformation correctness.** The older migration suspended errors too broadly: 313 / 655 test-module items, including helpers/imports—not that many tests. Correct test migration remains unresolved.
-- **324 captured input source/configuration hashes** and both Java files are unchanged; original repositories remain clean. Android and excluded Windows targets were not built.
+Only **original Cargo integration targets** are migrated; compiler errors cannot disable tests. **305 / 397 unit-test declarations are omitted**, not passed. Originals retain them. This deliberately reduces coverage.
+
+- Original and generated integration suites agree: **7 Compendium passed, 2 skipped; 69 Tau2 passed, 0 skipped**.
+- Public `Color` is bit-identical across **65,556 RGBA samples**.
+- **12 existing normalizer tests passed**, plus compiler, rustdoc and formatting checks. Both outputs passed host/all-target checks at their final paths.
+- **324 captured input hashes** and both Java files are unchanged; original repositories remain clean. Android and excluded Windows targets were not built. Runtime and binary size were not benchmarked.
 
 ## Evidence
 
-Both sides use the same locked parser/printer; token counts ignore whitespace. Runtime and binary size were not benchmarked.
-
-[Metrics, provenance and validation (JSON)](/assets/experiments/rust-normalization/metrics.json) · [Per-file measurements (CSV)](/assets/experiments/rust-normalization/files.csv) · [Inlining inventory (CSV)](/assets/experiments/rust-normalization/inlining-inventory.csv) · [Reproduction tools](/assets/experiments/rust-normalization/measurement-tools.tar.gz)
+[Metrics and provenance (JSON)](/assets/experiments/rust-normalization/metrics.json) · [Per-file counts (CSV)](/assets/experiments/rust-normalization/files.csv) · [Inlining inventory (CSV)](/assets/experiments/rust-normalization/inlining-inventory.csv) · [Reproduction tools](/assets/experiments/rust-normalization/measurement-tools.tar.gz)
 
 <details markdown="1">
 <summary>Full source trees, before and after</summary>
@@ -168,14 +166,14 @@ compendium/
 ```text
 compendium/
 ├── examples/
-│   ├── markdown_preview.rs  [60 lines]
-│   ├── perf_scenarios.rs  [1,369 lines]
-│   └── render_smoke.rs  [337 lines]
+│   ├── markdown_preview.rs  [41 lines]
+│   ├── perf_scenarios.rs  [1,068 lines]
+│   └── render_smoke.rs  [293 lines]
 └── src/
-    ├── bin1.rs  [34 lines]
-    ├── implementation.rs  [44,579 lines]
-    ├── lib.rs  [7,273 lines]
-    └── tests.rs  [13,713 lines]
+    ├── bin1.rs  [29 lines]
+    ├── implementation.rs  [36,423 lines]
+    ├── lib.rs  [1,592 lines]
+    └── tests.rs  [733 lines]
 ```
 
 ### Tau2 — before
@@ -446,33 +444,33 @@ tau2/
 └── crates/
     ├── block-store/
     │   └── src/
-    │       ├── implementation.rs  [186 lines]
-    │       ├── lib.rs  [914 lines]
-    │       └── tests.rs  [639 lines]
+    │       ├── implementation.rs  [835 lines]
+    │       ├── lib.rs  [19 lines]
+    │       └── tests.rs  [7 lines]
     ├── code-viewer/
     │   ├── examples/
-    │   │   └── index_size.rs  [83 lines]
+    │   │   └── index_size.rs  [66 lines]
     │   └── src/
-    │       ├── implementation.rs  [916 lines]
-    │       ├── lib.rs  [244 lines]
-    │       └── tests.rs  [579 lines]
+    │       ├── implementation.rs  [697 lines]
+    │       ├── lib.rs  [98 lines]
+    │       └── tests.rs  [7 lines]
     ├── daemon/
     │   └── src/
-    │       ├── bin1.rs  [102 lines]
-    │       ├── implementation.rs  [10,842 lines]
-    │       ├── lib.rs  [2,061 lines]
-    │       └── tests.rs  [11,391 lines]
+    │       ├── bin1.rs  [92 lines]
+    │       ├── implementation.rs  [8,901 lines]
+    │       ├── lib.rs  [341 lines]
+    │       └── tests.rs  [509 lines]
     ├── frontend/
     │   └── src/
-    │       ├── bin1.rs  [40 lines]
-    │       ├── implementation.rs  [31,520 lines]
-    │       ├── lib.rs  [3,975 lines]
-    │       └── tests.rs  [23,739 lines]
+    │       ├── bin1.rs  [33 lines]
+    │       ├── implementation.rs  [23,252 lines]
+    │       ├── lib.rs  [1,521 lines]
+    │       └── tests.rs  [4,903 lines]
     └── net/
         └── src/
-            ├── implementation.rs  [1,855 lines]
-            ├── lib.rs  [1,184 lines]
-            └── tests.rs  [1,317 lines]
+            ├── implementation.rs  [2,276 lines]
+            ├── lib.rs  [225 lines]
+            └── tests.rs  [989 lines]
 ```
 
 </details>

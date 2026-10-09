@@ -1,10 +1,10 @@
 compendium/
 ├── examples/
-│   ├── markdown_preview.rs  [60 lines]
-│   ├── perf_scenarios.rs  [1,369 lines]
-│   └── render_smoke.rs  [337 lines]
+│   ├── markdown_preview.rs  [41 lines]
+│   ├── perf_scenarios.rs  [1,068 lines]
+│   └── render_smoke.rs  [293 lines]
 └── src/
-    ├── bin1.rs  [34 lines]
-    ├── implementation.rs  [44,579 lines]
-    ├── lib.rs  [7,273 lines]
-    └── tests.rs  [13,713 lines]
+    ├── bin1.rs  [29 lines]
+    ├── implementation.rs  [36,423 lines]
+    ├── lib.rs  [1,592 lines]
+    └── tests.rs  [733 lines]

@@ -2,30 +2,30 @@ tau2/
 └── crates/
     ├── block-store/
     │   └── src/
-    │       ├── implementation.rs  [186 lines]
-    │       ├── lib.rs  [914 lines]
-    │       └── tests.rs  [639 lines]
+    │       ├── implementation.rs  [835 lines]
+    │       ├── lib.rs  [19 lines]
+    │       └── tests.rs  [7 lines]
     ├── code-viewer/
     │   ├── examples/
-    │   │   └── index_size.rs  [83 lines]
+    │   │   └── index_size.rs  [66 lines]
     │   └── src/
-    │       ├── implementation.rs  [916 lines]
-    │       ├── lib.rs  [244 lines]
-    │       └── tests.rs  [579 lines]
+    │       ├── implementation.rs  [697 lines]
+    │       ├── lib.rs  [98 lines]
+    │       └── tests.rs  [7 lines]
     ├── daemon/
     │   └── src/
-    │       ├── bin1.rs  [102 lines]
-    │       ├── implementation.rs  [10,842 lines]
-    │       ├── lib.rs  [2,061 lines]
-    │       └── tests.rs  [11,391 lines]
+    │       ├── bin1.rs  [92 lines]
+    │       ├── implementation.rs  [8,901 lines]
+    │       ├── lib.rs  [341 lines]
+    │       └── tests.rs  [509 lines]
     ├── frontend/
     │   └── src/
-    │       ├── bin1.rs  [40 lines]
-    │       ├── implementation.rs  [31,520 lines]
-    │       ├── lib.rs  [3,975 lines]
-    │       └── tests.rs  [23,739 lines]
+    │       ├── bin1.rs  [33 lines]
+    │       ├── implementation.rs  [23,252 lines]
+    │       ├── lib.rs  [1,521 lines]
+    │       └── tests.rs  [4,903 lines]
     └── net/
         └── src/
-            ├── implementation.rs  [1,855 lines]
-            ├── lib.rs  [1,184 lines]
-            └── tests.rs  [1,317 lines]
+            ├── implementation.rs  [2,276 lines]
+            ├── lib.rs  [225 lines]
+            └── tests.rs  [989 lines]

@@ -2,2616 +2,2366 @@
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::agent::codex::image_results"
+    "item": "src/implementation.rs::agent::codex::definition#4::image_results"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::agent::codex_auth::read_owned"
+    "item": "src/implementation.rs::agent::codex_auth::definition#13::read_owned"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::agent::codex_auth::authorize_url"
+    "item": "src/implementation.rs::agent::codex_auth::definition#15::authorize_url"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::agent::codex_auth::parse_query"
+    "item": "src/implementation.rs::agent::codex_auth::definition#17::parse_query"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::agent::codex_auth::exchange_code"
+    "item": "src/implementation.rs::agent::codex_auth::definition#18::exchange_code"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::agent::codex_auth::open_browser"
+    "item": "src/implementation.rs::agent::codex_auth::definition#28::open_browser"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::agent::openrouter_http_error"
+    "item": "src/implementation.rs::agent::definition#53::openrouter_http_error"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::agent::mock_llm_response"
+    "item": "src/implementation.rs::agent::definition#58::mock_llm_response"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::impl<AppModel>::handle_picker_pointer"
+    "item": "src/implementation.rs::app::chrome::impl<AppModel>::definition#67::active_picker_allows_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::impl<AppModel>::active_picker_allows_text"
+    "item": "src/implementation.rs::app::chrome::impl<AppModel>::definition#72::open_modal_activate"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::impl<AppModel>::open_modal_activate"
+    "item": "src/implementation.rs::app::chrome::impl<AppModel>::definition#77::refresh_find_bar_results"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::impl<AppModel>::refresh_find_bar_results"
+    "item": "src/implementation.rs::app::chrome::impl<AppModel>::definition#86::run_context_menu_action"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::impl<AppModel>::context_menu_items_for_pane"
+    "item": "src/implementation.rs::app::chrome::definition#92::rename_document_title"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::impl<AppModel>::run_context_menu_action"
+    "item": "src/implementation.rs::app::confirm_modal::impl<AppModel>::definition#94::open_empty_trash_confirm"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::rename_document_title"
+    "item": "src/implementation.rs::app::confirm_modal::impl<AppModel>::definition#95::handle_confirm_modal_key"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::confirm_modal::impl<AppModel>::open_empty_trash_confirm"
+    "item": "src/implementation.rs::app::event_loop::impl<AppModel>::definition#106::on_new_events"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::confirm_modal::impl<AppModel>::handle_confirm_modal_key"
+    "item": "src/implementation.rs::app::event_loop::definition#112::load_window_icon"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::confirm_modal::impl<AppModel>::handle_confirm_modal_pointer_down"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#113::pointer_moved"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::event_loop::impl<AppModel>::on_new_events"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#115::should_finish_live_prediction_directly"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::event_loop::load_window_icon"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#119::pointer_in_window_resize_border"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::pointer_moved"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#121::hovering_resize_handle"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::should_finish_live_prediction_directly"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#122::hovering_title_bar"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::pointer_in_window_resize_border"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#123::hovering_text_input"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::hovering_resize_handle"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#124::arm_new_note"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::hovering_title_bar"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#125::arm_select"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::hovering_text_input"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#126::arm_pen"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::arm_new_note"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#127::update_modifiers"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::arm_select"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#128::pointer_button"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::arm_pen"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#129::next_text_click_kind"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::update_modifiers"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#130::reset_primary_click_count"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::pointer_button"
+    "item": "src/implementation.rs::app::input::definition#135::key_code_token"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::next_text_click_kind"
+    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::definition#150::follow_body_caret"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::reset_primary_click_count"
+    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::definition#153::focus_body_text_at"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::key_code_token"
+    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::definition#162::title_background_hit_at"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::follow_body_caret"
+    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::definition#166::widget_field_hit_at"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::focus_body_text_at"
+    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::definition#167::measure_visible_bodies"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::scroll_markdown_x"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#173::sync_text_editor"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::title_background_hit_at"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#174::tick_drag_autoscroll"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::widget_field_hit_at"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#175::tick_scroll_anim"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<Pane>::measure_visible_bodies"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#182::text_editor_swap_with_active_view"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::sync_text_editor"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#184::handle_editor_shortcut"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::tick_drag_autoscroll"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#185::handle_read_only_editor_input"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::tick_scroll_anim"
+    "item": "src/implementation.rs::app::pane::library::impl<AppModel>::definition#195::handle_library_gear_pointer_down"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::text_editor_swap_with_active_view"
+    "item": "src/implementation.rs::app::pane::library::impl<AppModel>::definition#196::handle_library_new_button_pointer_down"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::handle_editor_shortcut"
+    "item": "src/implementation.rs::app::pane::prediction::impl<AppModel>::definition#207::apply_undo"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::handle_read_only_editor_input"
+    "item": "src/implementation.rs::app::pane::prediction::impl<AppModel>::definition#208::apply_redo"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::library::impl<AppModel>::handle_library_gear_pointer_down"
+    "item": "src/implementation.rs::app::pane::prediction::impl<Pane>::definition#217::cancel_prediction"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::library::impl<AppModel>::handle_library_new_button_pointer_down"
+    "item": "src/implementation.rs::app::pane::scrollbar::impl<AppModel>::definition#232::handle_scrollbar_pointer_down"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::library::impl<AppModel>::handle_library_entry_pointer_down"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#243::node_stream_key_for_owner"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::prediction::impl<AppModel>::apply_undo"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#246::start_command_runner"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::prediction::impl<AppModel>::apply_redo"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#248::stop_all_command_runners"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::prediction::impl<Pane>::cancel_prediction"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#259::node_stream_active"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::scrollbar::impl<AppModel>::handle_scrollbar_pointer_down"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#260::prune_node_streams"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::node_stream_key_for_owner"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#263::reply_sources"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::start_command_runner"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#264::reply_parent_for_sources"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::stop_all_command_runners"
+    "item": "src/implementation.rs::app::pane::streaming::definition#271::kill_child_tree"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::node_stream_active"
+    "item": "src/implementation.rs::app::pane::streaming::definition#272::shell_command"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::prune_node_streams"
+    "item": "src/implementation.rs::app::pane::streaming::definition#274::stream_text_has_visible_output"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::reply_sources"
+    "item": "src/implementation.rs::app::pane::streaming::definition#276::flush_valid_utf8_prefix"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::reply_parent_for_sources"
+    "item": "src/implementation.rs::app::pane::streaming::impl<Pane>::definition#278::agent_streaming_node"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::kill_child_tree"
+    "item": "src/implementation.rs::app::pane::streaming::impl<Pane>::definition#279::command_runner_output_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::shell_command"
+    "item": "src/implementation.rs::app::pane::streaming::impl<Pane>::definition#281::command_runner_scrolled_to_bottom"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::stream_text_has_visible_output"
+    "item": "src/implementation.rs::app::pane::streaming::impl<Pane>::definition#282::stick_command_runner_to_bottom"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::flush_valid_utf8_prefix"
+    "item": "src/implementation.rs::app::pane::streaming::definition#283::command_runner_max_scroll_for_lines"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<Pane>::agent_streaming_node"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#295::focused_save_mut"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<Pane>::command_runner_output_text"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#299::title_for_pane"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<Pane>::command_runner_scrolled_to_bottom"
+    "item": "src/implementation.rs::app::persistence::definition#307::open_document_session"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<Pane>::stick_command_runner_to_bottom"
+    "item": "src/implementation.rs::app::persistence::definition#309::load_session_by_id"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::command_runner_max_scroll_for_lines"
+    "item": "src/implementation.rs::app::persistence::definition#315::trashed_entries"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::focused_save_mut"
+    "item": "src/implementation.rs::app::persistence::definition#319::relative_time_label"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::title_for_pane"
+    "item": "src/implementation.rs::app::persistence::definition#325::session_doc_id"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::open_document_session"
+    "item": "src/implementation.rs::app::persistence::definition#333::write_document_pack_and_metadata"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::load_session_by_id"
+    "item": "src/implementation.rs::app::persistence::definition#337::random_device_id"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::trashed_entries"
+    "item": "src/implementation.rs::app::persistence::definition#346::migration_backup_path"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::relative_time_label"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#348::apply_pane_camera"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::session_doc_id"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#354::reload_sync_subscriptions"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::write_document_pack_and_metadata"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#358::mark_settings_dirty"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::random_device_id"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#360::apply_finished_save_metadata"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::migration_backup_path"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#362::poll_pane_save_writer"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::apply_pane_camera"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#367::flush_pane_save_blocking"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::reload_sync_subscriptions"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#370::next_save_deadline"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::mark_settings_dirty"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#376::paste_clipboard_image"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::apply_finished_save_metadata"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#378::clipboard_snapshot_is_current"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::poll_pane_save_writer"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#380::open_document_dialog"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::flush_pane_save_blocking"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#393::save_document_command"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::next_save_deadline"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#398::export_main_document_snapshot_path"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::run_import_picker_action"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#400::suggested_document_file_name"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::paste_clipboard_image"
+    "item": "src/implementation.rs::app::popup::impl<AppModel>::definition#415::active_picker_mut"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::clipboard_snapshot_is_current"
+    "item": "src/implementation.rs::app::popup::impl<AppModel>::definition#421::popup_items"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::open_document_dialog"
+    "item": "src/implementation.rs::app::preview::impl<AppModel>::definition#424::preview_active"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::open_new_document_pane"
+    "item": "src/implementation.rs::app::preview::impl<AppModel>::definition#429::refresh_preview_display"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::save_document_command"
+    "item": "src/implementation.rs::app::preview::definition#434::read_preview_descriptor"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::export_main_document_snapshot_path"
+    "item": "src/implementation.rs::app::preview::definition#435::spawn_preview_worker"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::suggested_document_file_name"
+    "item": "src/implementation.rs::app::preview::definition#437::run_preview_job"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::popup::impl<AppModel>::active_picker_mut"
+    "item": "src/implementation.rs::app::render::impl<AppModel>::definition#440::reload_fonts_if_changed"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::popup::impl<AppModel>::popup_items"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#443::prune_expired_remote_presence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::impl<AppModel>::preview_active"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#445::defer_remote_sync"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::impl<AppModel>::enqueue_preview_after_save"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#446::apply_pending_remote_syncs"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::impl<AppModel>::refresh_preview_display"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#461::sync_event_active"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::read_preview_descriptor"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#466::poll_due_hub_reconnects"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::spawn_preview_worker"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#478::ensure_trusted_hub_connections"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::run_preview_job"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#490::refresh_sync_shared_documents"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::render::impl<AppModel>::reload_fonts_if_changed"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#492::ensure_document_title_for_sync"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::prune_expired_remote_presence"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#510::merge_conflict_preview_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::defer_remote_sync"
+    "item": "src/implementation.rs::app::sync::definition#511::push_pack_over_stream"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::apply_pending_remote_syncs"
+    "item": "src/implementation.rs::app::sync::definition#512::start_sync_catalog_request"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::reconcile_imported_pack"
+    "item": "src/implementation.rs::app::sync::definition#514::start_sync_document_pull"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::sync_event_active"
+    "item": "src/implementation.rs::app::sync::definition#519::outbound_sync_event"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::notify_focused_sync_subscribers"
+    "item": "src/implementation.rs::app::sync::definition#520::run_outbound_reader"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::poll_due_hub_reconnects"
+    "item": "src/implementation.rs::app::sync::definition#528::sync_status_rank"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::ensure_trusted_hub_connections"
+    "item": "src/implementation.rs::app::sync::definition#529::sync_status_clears_presence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::refresh_sync_shared_documents"
+    "item": "src/implementation.rs::app::sync::definition#532::sync_tooltip_text_color"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::ensure_document_title_for_sync"
+    "item": "src/implementation.rs::app::sync::definition#534::merge_conflict_label"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::sync_status_items_for_pane"
+    "item": "src/implementation.rs::app::sync::definition#537::compact_preview_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::merge_conflict_preview_text"
+    "item": "src/implementation.rs::app::sync::definition#539::clipped_text_item"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::push_pack_over_stream"
+    "item": "src/implementation.rs::app::text_prompt::impl<AppModel>::definition#541::open_rename_prompt"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::start_sync_catalog_request"
+    "item": "src/implementation.rs::app::text_prompt::impl<AppModel>::definition#542::handle_text_prompt_key"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::start_sync_document_pull"
+    "item": "src/implementation.rs::app::workspace::impl<AppModel>::definition#556::settings_pane"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::outbound_sync_event"
+    "item": "src/implementation.rs::app::workspace::impl<AppModel>::definition#564::tick_strip_scroll"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::run_outbound_reader"
+    "item": "src/implementation.rs::app::workspace::impl<AppModel>::definition#578::focus_previous_pane"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::sync_status_rank"
+    "item": "src/implementation.rs::app::workspace::impl<AppModel>::definition#579::focus_next_pane"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::sync_status_clears_presence"
+    "item": "src/implementation.rs::app::impl<AppModel>::definition#588::editing_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::sync_tooltip_text_color"
+    "item": "src/implementation.rs::base64::definition#595::decode_digit"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::merge_conflict_label"
+    "item": "src/implementation.rs::control::impl<Control>::definition#637::delete_selection"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::compact_preview_text"
+    "item": "src/implementation.rs::control::definition#641::active_draw_placement"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::clipped_text_item"
+    "item": "src/implementation.rs::control::definition#643::paste_delta"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::text_prompt::impl<AppModel>::open_rename_prompt"
+    "item": "src/implementation.rs::control::definition#645::selected_rects"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::text_prompt::impl<AppModel>::handle_text_prompt_key"
+    "item": "src/implementation.rs::control::definition#648::is_selected_drag_root"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::text_prompt::impl<AppModel>::handle_text_prompt_pointer_down"
+    "item": "src/implementation.rs::control::definition#650::drag_reparent_target"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::workspace::impl<AppModel>::settings_pane"
+    "item": "src/implementation.rs::control::definition#652::resolve_repel_group"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::workspace::impl<AppModel>::tick_strip_scroll"
+    "item": "src/implementation.rs::control::definition#659::lerp"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::workspace::impl<AppModel>::focus_previous_pane"
+    "item": "src/implementation.rs::document::compat::store_v4::definition#674::canonical_serialize"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::workspace::impl<AppModel>::focus_next_pane"
+    "item": "src/implementation.rs::document::compat::store_v4::definition#679::v4_commit_hash"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::impl<AppModel>::editing_text"
+    "item": "src/implementation.rs::document::compat::store_v4::impl<V4Content>::definition#687::into_active"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::base64::decode_digit"
+    "item": "src/implementation.rs::document::compat::v1::definition#695::split_unified_tree_bucket_pool"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::control::impl<Control>::delete_selection"
+    "item": "src/implementation.rs::document::compat::v1::definition#696::classify_text_sequences"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::control::active_draw_placement"
+    "item": "src/implementation.rs::document::compat::v1::definition#697::collect_text_bucket_kinds"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::control::paste_delta"
+    "item": "src/implementation.rs::document::compat::v1::definition#701::split_tree_pool"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::control::selected_rects"
+    "item": "src/implementation.rs::document::compat::v1::definition#702::split_text_bucket_pool"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::control::is_selected_drag_root"
+    "item": "src/implementation.rs::document::compat::v1::definition#703::upgrade_node_pool"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::control::drag_reparent_target"
+    "item": "src/implementation.rs::document::compat::v1::definition#704::upgrade_unified_node_pool"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::control::resolve_repel_group"
+    "item": "src/implementation.rs::document::compat::v1::definition#705::upgrade_paragraph_pool"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::control::lerp"
+    "item": "src/implementation.rs::document::compat::v2::definition#709::load_and_upgrade"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::store_v4::impl<DirectoryStore>::read_object_bytes"
+    "item": "src/implementation.rs::document::compat::v2::definition#713::fresh_paragraph_id"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::store_v4::impl<PackStore>::cache_source"
+    "item": "src/implementation.rs::document::compat::definition#718::snapshot_version"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::store_v4::decode_v4_object"
+    "item": "src/implementation.rs::document::hash::definition#773::hash_labeled_bytes"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::store_v4::v4_commit_hash"
+    "item": "src/implementation.rs::document::merge::impl<Document>::definition#788::merge_base"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::store_v4::v4_object_hash"
+    "item": "src/implementation.rs::document::merge::impl<Document>::definition#797::merge_children"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::store_v4::v4_object_child_hashes"
+    "item": "src/implementation.rs::document::merge::impl<Document>::definition#802::insert_text_with_paragraph_ids"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::store_v4::impl<V4Content>::into_active"
+    "item": "src/implementation.rs::document::merge::impl<Document>::definition#804::text_paragraph_by_id"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::load_and_upgrade"
+    "item": "src/implementation.rs::document::merge::impl<Document>::definition#805::current_text_paragraph_range"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::split_unified_tree_bucket_pool"
+    "item": "src/implementation.rs::document::node_index::impl<Document>::definition#833::node_bucket_path_is_unique"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::classify_text_sequences"
+    "item": "src/implementation.rs::document::persistence::impl<Document>::definition#856::loaded_owned_resources"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::collect_text_bucket_kinds"
+    "item": "src/implementation.rs::document::persistence::impl<Document>::definition#857::validate_loaded_resource"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::split_tree_pool"
+    "item": "src/implementation.rs::document::render::impl<Document>::definition#863::append_widget_handles"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::split_text_bucket_pool"
+    "item": "src/implementation.rs::document::render::impl<Document>::definition#865::append_widget_draw_items"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::upgrade_node_pool"
+    "item": "src/implementation.rs::document::root::definition#895::random_node_id"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::upgrade_unified_node_pool"
+    "item": "src/implementation.rs::document::root::definition#910::template_rect_centroid"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::upgrade_paragraph_pool"
+    "item": "src/implementation.rs::document::rope::definition#930::random_paragraph_id"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v2::load_and_upgrade"
+    "item": "src/implementation.rs::document::rope::impl<Pools>::definition#984::clone_paragraph_with_id"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v2::fresh_paragraph_id"
+    "item": "src/implementation.rs::document::rope::impl<Pools>::definition#985::sequence_pool_for_kind"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::snapshot_version"
+    "item": "src/implementation.rs::document::rope::impl<Pools>::definition#986::sequence_pool_for_kind_mut"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::hash::hash_labeled_bytes"
+    "item": "src/implementation.rs::document::rope::impl<Pools>::definition#987::measured_bucket_metrics"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::merge::impl<Document>::merge_base"
+    "item": "src/implementation.rs::document::rope::impl<Pools>::definition#988::retain_measured_bucket"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::merge::impl<Document>::merge_children"
+    "item": "src/implementation.rs::document::sqlite::impl<SqliteStore>::definition#1002::object_hashes"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::merge::impl<Document>::insert_text_with_paragraph_ids"
+    "item": "src/implementation.rs::document::store::impl<StoreHead>::definition#1018::active_roots"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::merge::impl<Document>::text_paragraph_by_id"
+    "item": "src/implementation.rs::document::store::impl<StoreWriter>::definition#1020::finish"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::merge::impl<Document>::current_text_paragraph_range"
+    "item": "src/implementation.rs::document::store::impl<StoreWriter>::definition#1028::string"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::node_index::impl<Document>::node_bucket_path_is_unique"
+    "item": "src/implementation.rs::document::store::definition#1055::doc_kind_to_u8"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::persistence::impl<Document>::loaded_owned_resources"
+    "item": "src/implementation.rs::document::store::definition#1056::doc_kind_from_u8"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::persistence::impl<Document>::validate_loaded_resource"
+    "item": "src/implementation.rs::document::store::definition#1077::decode_v5_commit_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::render::impl<Document>::append_widget_handles"
+    "item": "src/implementation.rs::document::store::definition#1078::decode_v5_root_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::render::impl<Document>::append_widget_draw_items"
+    "item": "src/implementation.rs::document::store::definition#1079::decode_v5_node_index_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::root::random_node_id"
+    "item": "src/implementation.rs::document::store::definition#1080::decode_v5_node_bucket_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::root::template_rect_centroid"
+    "item": "src/implementation.rs::document::store::definition#1081::decode_v5_note_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::rope::random_paragraph_id"
+    "item": "src/implementation.rs::document::store::definition#1082::decode_v5_text_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::rope::impl<Pools>::clone_paragraph_with_id"
+    "item": "src/implementation.rs::document::store::definition#1083::decode_v5_text_sequence_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::rope::impl<Pools>::sequence_pool_for_kind"
+    "item": "src/implementation.rs::document::store::definition#1084::decode_v5_paragraph_bucket_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::rope::impl<Pools>::sequence_pool_for_kind_mut"
+    "item": "src/implementation.rs::document::store::definition#1085::decode_v5_text_leaf_bucket_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::rope::impl<Pools>::measured_bucket_metrics"
+    "item": "src/implementation.rs::document::store::definition#1086::decode_v5_paragraph_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::rope::impl<Pools>::retain_measured_bucket"
+    "item": "src/implementation.rs::document::store::definition#1087::decode_v5_text_leaf_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::sqlite::impl<SqliteStore>::create"
+    "item": "src/implementation.rs::document::store::definition#1088::decode_v5_paint_surface_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::sqlite::impl<SqliteStore>::read_all_stored_objects"
+    "item": "src/implementation.rs::document::store::definition#1089::decode_v5_tile_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::sqlite::impl<SqliteStore>::object_hashes"
+    "item": "src/implementation.rs::document::store::definition#1090::v5_store_object_hash"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreHead>::active_roots"
+    "item": "src/implementation.rs::document::store::definition#1092::write_commit"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreWriter>::finish"
+    "item": "src/implementation.rs::document::store::definition#1094::write_option_hash"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreWriter>::string"
+    "item": "src/implementation.rs::document::store::definition#1096::write_store_content"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::doc_kind_to_u8"
+    "item": "src/implementation.rs::document::store::definition#1099::read_store_widget"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::doc_kind_from_u8"
+    "item": "src/implementation.rs::document::store::definition#1100::hash_store_commit"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_commit_object"
+    "item": "src/implementation.rs::document::store::impl<StoreWidget>::definition#1108::child_hashes"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_root_object"
+    "item": "src/implementation.rs::document::store::impl<Document>::definition#1130::clear_cached_store_objects"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_node_index_object"
+    "item": "src/implementation.rs::document::store::definition#1133::commit_children"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_node_bucket_object"
+    "item": "src/implementation.rs::document::store::definition#1142::write_full_sqlite_pack"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_note_object"
+    "item": "src/implementation.rs::document::store::definition#1143::write_store_pack_to_sqlite"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_text_object"
+    "item": "src/implementation.rs::document::store::definition#1145::write_full_sqlite_cached"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_text_sequence_object"
+    "item": "src/implementation.rs::document::store::definition#1149::store_head_from_sqlite"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_paragraph_bucket_object"
+    "item": "src/implementation.rs::document::store::definition#1150::temporary_sqlite_path"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_text_leaf_bucket_object"
+    "item": "src/implementation.rs::document::store::definition#1154::collect_store_node_index"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_paragraph_object"
+    "item": "src/implementation.rs::document::store::definition#1156::materialize_store_content_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_text_leaf_object"
+    "item": "src/implementation.rs::document::store::definition#1158::materialize_store_paragraph_sequence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_paint_surface_object"
+    "item": "src/implementation.rs::document::store::definition#1160::materialize_store_paragraph"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::decode_v5_tile_object"
+    "item": "src/implementation.rs::document::store::definition#1167::backup_pack_path"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::v5_store_object_hash"
+    "item": "src/implementation.rs::document::store::definition#1172::read_stored_pack_entry"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::write_commit"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1177::finish"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::write_option_hash"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1178::root_hash"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::write_store_content"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1180::clear_root_dependent_caches"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::read_store_widget"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1185::cache_node_index"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::hash_store_commit"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1186::cache_node_bucket"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreWidget>::child_hashes"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1187::cache_node"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<Document>::clear_cached_store_objects"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1188::cache_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::commit_children"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1189::cache_paragraph_sequence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::write_full_sqlite_pack"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1190::cache_text_leaf_sequence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::write_store_pack_to_sqlite"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1191::cache_paragraph_bucket"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::write_full_sqlite_cached"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1192::cache_text_leaf_bucket"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::store_head_from_sqlite"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1193::cache_paragraph"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::temporary_sqlite_path"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1194::cache_text_leaf"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::collect_store_node_index"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1195::cache_paint_surface"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::materialize_store_content_text"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1196::cache_tile"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::materialize_store_paragraph_sequence"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1201::hash_content"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::materialize_store_paragraph"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<DirectoryStore>>::definition#1215::load_loose"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::backup_pack_path"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1234::cached_object_bytes"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::read_stored_pack_entry"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1235::decode_store_object"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::finish"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1252::load_flat_node_index"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::root_hash"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1253::load_node_index_refs"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::clear_root_dependent_caches"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1255::collect_node_index"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_node_index"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1257::load_note"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_node_bucket"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1260::load_paragraph_sequence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_node"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1261::load_text_leaf_sequence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_text"
+    "item": "src/implementation.rs::document::text_view::definition#1285::grapheme_floor_in_str"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_paragraph_sequence"
+    "item": "src/implementation.rs::document::text_view::definition#1286::is_word_segment"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_text_leaf_sequence"
+    "item": "src/implementation.rs::document::text_view::definition#1289::next_word_segment"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_paragraph_bucket"
+    "item": "src/implementation.rs::document::definition#1291::encode_context_png"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_text_leaf_bucket"
+    "item": "src/implementation.rs::document::definition#1293::normalize_agent_messages"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_paragraph"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1323::note_context_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_text_leaf"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1330::release_index_ref"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_paint_surface"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1347::hydrate_content"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::cache_tile"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1351::new_widget_node"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::hash_content"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1353::edit_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<DirectoryStore>>::load_loose"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1357::append_to_paragraph"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::cached_object_bytes"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1358::prepend_to_paragraph"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::decode_store_object"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1360::text_paragraph_cache_keys"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::load_flat_node_index"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1361::text_paragraph_identities"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::load_node_index_refs"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1363::set_node_widget_node_ref"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::collect_node_index"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1364::set_agent"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::load_note"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1365::set_rect"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::load_paragraph_sequence"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1366::reparent"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::load_text_leaf_sequence"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1367::destroy"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::text_view::grapheme_floor_in_str"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1369::relation_widget_dangles_after"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::text_view::is_word_segment"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1370::reorder"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::text_view::next_word_segment"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1373::contain_children_from_prediction_base"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::normalize_agent_messages"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1374::expand_to_contain_children"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::note_context_text"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1375::expand_parent_to_contain"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::release_index_ref"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1385::push_dirty_node_leaf_diff"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::hydrate_content"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1387::is_selected_clipboard_root"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::new_widget_node"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1389::snapshot_paint"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::edit_text"
+    "item": "src/implementation.rs::document::definition#1392::is_placeholder_document_title"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::append_to_paragraph"
+    "item": "src/implementation.rs::fs_import::definition#1398::load_file"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::prepend_to_paragraph"
+    "item": "src/implementation.rs::fs_import::definition#1402::eligible_lossless_source"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::text_paragraph_cache_keys"
+    "item": "src/implementation.rs::fs_import::definition#1406::directory_target_width"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::text_paragraph_identities"
+    "item": "src/implementation.rs::fs_import::definition#1408::is_dot_entry"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::set_node_widget_node_ref"
+    "item": "src/implementation.rs::logging::definition#1455::unix_ms"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::set_agent"
+    "item": "src/implementation.rs::logging::definition#1456::elapsed_ms"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::set_rect"
+    "item": "src/implementation.rs::presentation::definition#1463::lerp_placement"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::reparent"
+    "item": "src/implementation.rs::presentation::definition#1464::placement_nearly_equal"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::destroy"
+    "item": "src/implementation.rs::presentation::definition#1465::one_pole_alpha"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::relation_widget_dangles_after"
+    "item": "src/implementation.rs::renderer::impl<TextBatchCache>::definition#1473::retain_panes"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::reorder"
+    "item": "src/implementation.rs::renderer::definition#1480::viewport_scissor"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::contain_children_from_prediction_base"
+    "item": "src/implementation.rs::renderer::definition#1482::text_transform"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::expand_to_contain_children"
+    "item": "src/implementation.rs::renderer::definition#1483::text_clip"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::expand_parent_to_contain"
+    "item": "src/implementation.rs::renderer::impl<RenderResources>::definition#1490::dirty_rect"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::push_dirty_node_leaf_diff"
+    "item": "src/implementation.rs::renderer::impl<RenderResources>::definition#1493::promote_live_stroke_tile"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::is_selected_clipboard_root"
+    "item": "src/implementation.rs::renderer::impl<RenderResources>::definition#1494::live_stroke_key_for_tile"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::snapshot_paint"
+    "item": "src/implementation.rs::renderer::impl<RenderResources>::definition#1495::bind_group"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::is_placeholder_document_title"
+    "item": "src/implementation.rs::renderer::definition#1497::paragraph_keys_from_cache_keys"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::fs_import::load_file"
+    "item": "src/implementation.rs::renderer::definition#1500::top_corner_radii"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::fs_import::eligible_lossless_source"
+    "item": "src/implementation.rs::renderer::definition#1529::srgb_to_linear_table"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::fs_import::directory_target_width"
+    "item": "src/implementation.rs::renderer::definition#1530::linear_to_srgb_table"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::fs_import::is_dot_entry"
+    "item": "src/implementation.rs::renderer::definition#1533::distance_sq"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::logging::unix_ms"
+    "item": "src/implementation.rs::settings::definition#1576::ensure_new_document_template"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::logging::elapsed_ms"
+    "item": "src/implementation.rs::settings::definition#1582::normalize_action_name"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::presentation::lerp_placement"
+    "item": "src/implementation.rs::settings::definition#1583::parse_key_binding"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::presentation::placement_nearly_equal"
+    "item": "src/implementation.rs::settings::definition#1590::has_section"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::presentation::one_pole_alpha"
+    "item": "src/implementation.rs::settings::definition#1591::provider_from_note"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::impl<TextBatchCache>::retain_panes"
+    "item": "src/implementation.rs::sync::discovery::definition#1610::peer_from_resolved"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::viewport_scissor"
+    "item": "src/implementation.rs::sync::discovery::definition#1612::advertise_addresses_from_interfaces"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::text_transform"
+    "item": "src/implementation.rs::sync::discovery::definition#1614::is_lan_ipv4"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::text_clip"
+    "item": "src/implementation.rs::sync::discovery::definition#1615::is_tailscale_ipv4"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::impl<RenderResources>::dirty_rect"
+    "item": "src/implementation.rs::sync::discovery::definition#1616::parse_addr"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::impl<RenderResources>::promote_live_stroke_tile"
+    "item": "src/implementation.rs::sync::hub::definition#1625::bind_listeners"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::impl<RenderResources>::live_stroke_key_for_tile"
+    "item": "src/implementation.rs::sync::hub::definition#1629::relay_presence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::impl<RenderResources>::bind_group"
+    "item": "src/implementation.rs::sync::hub::definition#1632::unregister_client"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::paragraph_keys_from_cache_keys"
+    "item": "src/implementation.rs::sync::hub::definition#1633::run_listener_exchange"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::top_corner_radii"
+    "item": "src/implementation.rs::sync::hub::definition#1634::hub_heartbeat_loop"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::srgb_to_linear_table"
+    "item": "src/implementation.rs::sync::hub::definition#1636::remove_document"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::linear_to_srgb_table"
+    "item": "src/implementation.rs::sync::hub::definition#1637::notify_document_changed"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::renderer::distance_sq"
+    "item": "src/implementation.rs::sync::hub::definition#1638::load_documents"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::settings::ensure_new_document_template"
+    "item": "src/implementation.rs::sync::hub::definition#1641::catalog_entries"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::settings::normalize_action_name"
+    "item": "src/implementation.rs::sync::hub::definition#1642::unknown_document"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::settings::parse_key_binding"
+    "item": "src/implementation.rs::sync::identity::definition#1656::trusted_node_from_note"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::settings::has_section"
+    "item": "src/implementation.rs::sync::identity::definition#1659::ed25519_public_to_x25519"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::settings::provider_from_note"
+    "item": "src/implementation.rs::sync::identity::definition#1660::sign_with_agent"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::discovery::peer_from_resolved"
+    "item": "src/implementation.rs::sync::identity::definition#1663::request_agent_identities"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::discovery::advertise_addresses_from_interfaces"
+    "item": "src/implementation.rs::sync::identity::definition#1666::parse_agent_sign_response"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::discovery::is_lan_ipv4"
+    "item": "src/implementation.rs::sync::identity::definition#1667::decode_agent_signature"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::discovery::is_tailscale_ipv4"
+    "item": "src/implementation.rs::sync::session::definition#1689::exchange_pack_headers"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::discovery::parse_addr"
+    "item": "src/implementation.rs::sync::session::definition#1692::read_object_request"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::bind_listeners"
+    "item": "src/implementation.rs::sync::session::definition#1693::read_objects"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::relay_presence"
+    "item": "src/implementation.rs::sync::session::definition#1697::agreed_base_root_to_fetch"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::unregister_client"
+    "item": "src/implementation.rs::sync::session::definition#1699::write_requested_objects"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::run_listener_exchange"
+    "item": "src/implementation.rs::sync::trace::impl<Dir>::definition#1702::arrow"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::hub_heartbeat_loop"
+    "item": "src/implementation.rs::sync::wire::impl<NoiseTcpStream>::definition#1713::read_noise_message"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::remove_document"
+    "item": "src/implementation.rs::sync::wire::impl<NoiseReader>::definition#1722::read_noise_message"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::notify_document_changed"
+    "item": "src/implementation.rs::sync::wire::definition#1746::check_protocol"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::load_documents"
+    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::definition#1778::set_cursor_unchecked"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::catalog_entries"
+    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::definition#1781::backspace"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::hub::unknown_document"
+    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::definition#1782::delete"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::trusted_node_from_note"
+    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::definition#1795::selection_rects"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::ed25519_public_to_x25519"
+    "item": "src/implementation.rs::text_editor::definition#1798::normalize_inserted_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::sign_with_agent"
+    "item": "src/implementation.rs::widgets::arrow::impl<ArrowWidget>::definition#1867::endpoints"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::request_agent_identities"
+    "item": "src/implementation.rs::world::definition#1905::marquee_crosses_node_rect"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::parse_agent_sign_response"
+    "item": "src/implementation.rs::world::definition#1908::segment_crosses_rect"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::decode_agent_signature"
+    "item": "src/implementation.rs::world::impl<World>::definition#1955::is_ancestor"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::session::exchange_pack_headers"
+    "item": "src/implementation.rs::world::impl<World>::definition#1956::has_selected_ancestor"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::session::read_object_request"
+    "item": "src/implementation.rs::world::impl<World>::definition#1970::resize_handle_at"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::session::read_objects"
+    "item": "src/implementation.rs::world::impl<World>::definition#1975::push_catalog_draw_items"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::session::agreed_base_root_to_fetch"
+    "item": "examples/perf_scenarios.rs::impl<ResultRow>::definition#1989::single"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::session::write_requested_objects"
+    "item": "examples/perf_scenarios.rs::::definition#1994::document_live_edit_append"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::trace::impl<Dir>::arrow"
+    "item": "examples/perf_scenarios.rs::::definition#1995::document_live_edit_middle"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::wire::impl<NoiseTcpStream>::read_noise_message"
+    "item": "examples/perf_scenarios.rs::::definition#1996::document_commit_prediction_workflow"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::wire::impl<NoiseReader>::read_noise_message"
+    "item": "examples/perf_scenarios.rs::::definition#1997::document_undo_redo_swap"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::sync::wire::check_protocol"
+    "item": "examples/perf_scenarios.rs::::definition#1998::document_range_extract_many_paragraphs"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::set_cursor_unchecked"
+    "item": "examples/perf_scenarios.rs::::definition#1999::document_store_pack_encode"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::backspace"
+    "item": "examples/perf_scenarios.rs::::definition#2002::layout_cached_same_paragraphs"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::delete"
+    "item": "examples/perf_scenarios.rs::::definition#2003::layout_rewrap_width_cycle"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::selection_rects"
+    "item": "examples/perf_scenarios.rs::::definition#2004::layout_geometry_wrapped"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::text_editor::normalize_inserted_text"
+    "item": "examples/perf_scenarios.rs::::definition#2009::fs_import_hit_test_positions"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::widgets::arrow::impl<ArrowWidget>::endpoints"
+    "item": "examples/perf_scenarios.rs::::definition#2013::shape_params"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::world::marquee_crosses_node_rect"
+    "item": "examples/perf_scenarios.rs::::definition#2029::scenario_names"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::world::segment_crosses_rect"
+    "item": "examples/perf_scenarios.rs::::definition#2030::print_help"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::world::impl<World>::is_ancestor"
+    "item": "examples/render_smoke.rs::::definition#2037::render_pane"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::world::impl<World>::has_selected_ancestor"
+    "item": "src/implementation.rs::app::chrome::impl<AppModel>::definition#68::active_picker_cfg"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::world::impl<World>::resize_handle_at"
+    "item": "src/implementation.rs::app::chrome::impl<AppModel>::definition#89::rename_focused_document"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::world::impl<World>::push_catalog_draw_items"
+    "item": "src/implementation.rs::app::input::impl<AppModel>::definition#131::keyboard_input"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::impl<ResultRow>::single"
+    "item": "src/implementation.rs::app::input::definition#136::distance_sq"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::document_live_edit_append"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#177::sync_marquee_text_selection"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::document_live_edit_middle"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#180::focus_body_text_best_effort_at"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::document_commit_prediction_workflow"
+    "item": "src/implementation.rs::app::pane::editing::definition#190::drag_autoscroll_velocity"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::document_undo_redo_swap"
+    "item": "src/implementation.rs::app::pane::library::impl<AppModel>::definition#201::run_catalog_menu_action"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::document_range_extract_many_paragraphs"
+    "item": "src/implementation.rs::app::pane::library::impl<Pane>::definition#204::scroll_at"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::document_store_pack_encode"
+    "item": "src/implementation.rs::app::pane::scrollbar::impl<Pane>::definition#236::update_scrollbar_drag"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::layout_cached_same_paragraphs"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#261::stream_target_exists_for_pane"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::layout_rewrap_width_cycle"
+    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::definition#269::selected_reply_sources"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::layout_geometry_wrapped"
+    "item": "src/implementation.rs::app::pane::streaming::definition#270::run_shell_command"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::fs_import_hit_test_positions"
+    "item": "src/implementation.rs::app::pane::streaming::definition#285::rect_gap"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::shape_params"
+    "item": "src/implementation.rs::app::pane::streaming::definition#288::dot_vec2"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::scenario_names"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#364::tick_pane_save"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/perf_scenarios.rs::::print_help"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#371::import_filesystem_dialog"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "examples/render_smoke.rs::::render_pane"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#386::close_focused_pane"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::impl<AppModel>::active_picker_cfg"
+    "item": "src/implementation.rs::app::persistence::definition#404::import_filesystem_file_dialog_paths"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::chrome::impl<AppModel>::rename_focused_document"
+    "item": "src/implementation.rs::app::persistence::definition#405::import_filesystem_folder_dialog_paths"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::impl<AppModel>::keyboard_input"
+    "item": "src/implementation.rs::app::popup::impl<AppModel>::definition#412::popup_hover_changed"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::input::distance_sq"
+    "item": "src/implementation.rs::app::preview::definition#431::png_generation"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::sync_marquee_text_selection"
+    "item": "src/implementation.rs::app::preview::definition#432::decode_preview_image"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::focus_body_text_best_effort_at"
+    "item": "src/implementation.rs::app::preview::definition#438::render_document_preview"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::drag_autoscroll_velocity"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#480::push_active_docs_to_peer"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::library::impl<AppModel>::run_catalog_menu_action"
+    "item": "src/implementation.rs::app::sync::impl<AppModel>::definition#506::submit_merge_screen"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::library::impl<Pane>::scroll_at"
+    "item": "src/implementation.rs::app::sync::definition#513::catalog_over_connection"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::render::impl<AppModel>::draw_items_for_pane"
+    "item": "src/implementation.rs::app::sync::definition#518::run_outbound_sync_session"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::scrollbar::impl<Pane>::handle_scrollbar_pointer_down"
+    "item": "src/implementation.rs::app::sync::definition#531::sync_status_fill"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::scrollbar::impl<Pane>::update_scrollbar_drag"
+    "item": "src/implementation.rs::app::workspace::impl<AppModel>::definition#580::focus_library"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::stream_target_exists_for_pane"
+    "item": "src/implementation.rs::document::compat::v1::definition#693::upgrade_to_v2"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::impl<AppModel>::selected_reply_sources"
+    "item": "src/implementation.rs::document::compat::v1::definition#694::upgrade_unified_buckets_to_split"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::run_shell_command"
+    "item": "src/implementation.rs::document::compat::v2::definition#710::ensure_version"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::rect_gap"
+    "item": "src/implementation.rs::document::merge::impl<Document>::definition#789::commit_root_available"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::pane::streaming::dot_vec2"
+    "item": "src/implementation.rs::document::merge::impl<Document>::definition#792::merge_node"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::tick_pane_save"
+    "item": "src/implementation.rs::document::merge::impl<Document>::definition#796::merge_value"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::import_filesystem_dialog"
+    "item": "src/implementation.rs::document::sqlite::impl<SqliteStore>::definition#993::create_schema"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::close_focused_pane"
+    "item": "src/implementation.rs::document::store::definition#1098::write_store_widget"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::export_snapshot_command"
+    "item": "src/implementation.rs::document::store::definition#1169::replace_with_temp_file"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::import_filesystem_file_dialog_paths"
+    "item": "src/implementation.rs::document::store::definition#1170::loose_object_file"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::import_filesystem_folder_dialog_paths"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1179::hash_history_commit"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::popup::impl<AppModel>::popup_hover_changed"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1198::hash_node_index"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::impl<AppModel>::enqueue_preview_if_stale"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1204::hash_text_leaf_sequence"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::png_generation"
+    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::definition#1210::hash_tile"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::decode_preview_image"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<PackStore>>::definition#1216::load"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::preview::render_document_preview"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<SqliteStore>>::definition#1218::warm_from_bulk_scan"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::toggle_sync_subscription"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1240::read_note"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::remove_focused_document_from_hub"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1241::read_text"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::push_active_docs_to_peer"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1243::read_paragraph_bucket"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::request_remote_document_pull"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1244::read_text_leaf_bucket"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::sync_badge_hover_changed"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1245::read_paragraph"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::impl<AppModel>::submit_merge_screen"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1246::read_text_leaf"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::catalog_over_connection"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1247::read_paint_surface"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::sync::run_outbound_sync_session"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1248::read_tile"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::app::workspace::impl<AppModel>::focus_library"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1250::load_commits"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::upgrade_to_v2"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1340::release_resource_once"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v1::upgrade_unified_buckets_to_split"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1354::text_contains_valid_byte_range"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::compat::v2::ensure_version"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1356::replace_text_range"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::merge::impl<Document>::commit_root_available"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1362::set_node_text_ref"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::merge::impl<Document>::merge_node"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1368::collect_dangling_relation_widget_subtrees"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::merge::impl<Document>::merge_value"
+    "item": "src/implementation.rs::document::impl<Document>::definition#1377::is_ancestor"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::sqlite::impl<SqliteStore>::create_schema"
+    "item": "src/implementation.rs::presentation::definition#1468::rect_nearly_equal"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::write_store_widget"
+    "item": "src/implementation.rs::renderer::definition#1496::choose_tile_residency_action"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::replace_with_temp_file"
+    "item": "src/implementation.rs::renderer::definition#1531::downsample_srgb_rgba"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::loose_object_file"
+    "item": "src/implementation.rs::settings::definition#1589::normalize_key_token"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::hash_history_commit"
+    "item": "src/implementation.rs::sync::identity::definition#1662::connect_ssh_agent"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::hash_node_index"
+    "item": "src/implementation.rs::sync::identity::definition#1665::parse_agent_identities"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::hash_text_leaf_sequence"
+    "item": "src/implementation.rs::sync::identity::impl<TrustedNodeKind>::definition#1678::parse"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreBuilder<'a>>::hash_tile"
+    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::definition#1793::current_line_range"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<PackStore>>::load"
+    "item": "src/implementation.rs::widgets::arrow::impl<ArrowWidget>::definition#1868::curve"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<SqliteStore>>::warm_from_bulk_scan"
+    "item": "src/implementation.rs::world::definition#1906::rect_strictly_contains_rect"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::read_note"
+    "item": "src/implementation.rs::world::impl<World>::definition#1951::widget_relations_crossed_by_rect"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::read_text"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#186::copy_editor_selection"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::read_paragraph_bucket"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#187::cut_editor_selection"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::read_text_leaf_bucket"
+    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::definition#188::paste_editor_clipboard"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::read_paragraph"
+    "item": "src/implementation.rs::app::sync::definition#515::pull_document_over_connection"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::read_text_leaf"
+    "item": "src/implementation.rs::app::sync::definition#525::forward_polled_event"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::read_paint_surface"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<SqliteStore>>::definition#1217::load_sqlite"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::read_tile"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1249::cache_reachable_objects"
   },
   {
     "project": "compendium",
     "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::load_commits"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::release_resource_once"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::text_contains_valid_byte_range"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::replace_text_range"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::set_node_text_ref"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::collect_dangling_relation_widget_subtrees"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::impl<Document>::is_ancestor"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::presentation::rect_nearly_equal"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::renderer::choose_tile_residency_action"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::renderer::downsample_srgb_rgba"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::settings::normalize_key_token"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::connect_ssh_agent"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::parse_agent_identities"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::sync::identity::impl<TrustedNodeKind>::parse"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::text_editor::impl<ActiveTextEditor>::current_line_range"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::widgets::arrow::impl<ArrowWidget>::curve"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::world::rect_strictly_contains_rect"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::world::impl<World>::widget_relations_crossed_by_rect"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::copy_editor_selection"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::cut_editor_selection"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::app::pane::editing::impl<AppModel>::paste_editor_clipboard"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::open_document_path"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::app::sync::pull_document_over_connection"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::app::sync::forward_polled_event"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::app::sync::sync_status_fill"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::compat::load_and_migrate"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<SqliteStore>>::load_sqlite"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::cache_reachable_objects"
-  },
-  {
-    "project": "compendium",
-    "status": "inlined",
-    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::load_paragraph"
+    "item": "src/implementation.rs::document::store::impl<StoreLoader<S>>::definition#1264::load_paragraph"
   },
   {
     "project": "compendium",
     "status": "removed_dead",
-    "item": "src/implementation.rs::app::persistence::impl<AppModel>::mark_session_metadata_dirty"
+    "item": "src/implementation.rs::app::persistence::impl<AppModel>::definition#353::mark_session_metadata_dirty"
   },
   {
     "project": "compendium",
     "status": "removed_dead",
-    "item": "src/implementation.rs::app::slug_paragraph_runs"
+    "item": "src/implementation.rs::app::definition#584::slug_paragraph_runs"
   },
   {
     "project": "compendium",
     "status": "removed_dead",
-    "item": "src/implementation.rs::renderer::impl<Renderer>::_moved_to_text_system"
+    "item": "src/implementation.rs::renderer::impl<Renderer>::definition#1506::_moved_to_text_system"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/daemon/src/implementation.rs::attachments::impl<AgentManager>::write_upload"
+    "item": "crates/block-store/src/implementation.rs::::definition#13::is_prefix"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/daemon/src/implementation.rs::catalog::impl<ModelCatalog>::restore"
+    "item": "crates/code-viewer/src/implementation.rs::filesystem::definition#50::index_worker"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/daemon/src/implementation.rs::catalog::impl<ModelCatalog>::restored"
+    "item": "crates/frontend/src/implementation.rs::replica::impl<Cache>::definition#106::plan_active"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/daemon/src/implementation.rs::catalog::impl<ModelCatalog>::failed"
+    "item": "crates/frontend/src/implementation.rs::replica::definition#118::initialize_echoes"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/daemon/src/implementation.rs::manager::safe_file_name"
+    "item": "crates/frontend/src/implementation.rs::net::definition#237::next_attempt"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/daemon/src/implementation.rs::state::impl<StateStore>::review_restore"
+    "item": "crates/frontend/src/implementation.rs::app::attachments::definition#249::completed_exports"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/daemon/src/implementation.rs::state::impl<StateStore>::operation_receipt"
+    "item": "crates/frontend/src/implementation.rs::app::attachments::impl<App>::definition#256::finish_exports"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/block-store/src/implementation.rs::::is_prefix"
+    "item": "crates/frontend/src/implementation.rs::app::ui::dialogs::impl<ConnectionDialog>::definition#329::submit"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/code-viewer/src/implementation.rs::filesystem::index_worker"
+    "item": "crates/frontend/src/implementation.rs::app::ui::tooltips::impl<TooltipHost>::definition#420::usage_frame"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::replica::impl<Cache>::body_checkpoint"
+    "item": "crates/frontend/src/implementation.rs::app::ui::message_row::impl<ToolView>::definition#451::hide"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::replica::impl<Cache>::previous_source"
+    "item": "crates/frontend/src/implementation.rs::app::ui::transcript::impl<Transcript>::definition#491::place_window"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::replica::impl<Cache>::plan_active"
+    "item": "crates/frontend/src/implementation.rs::app::ui::transcript::definition#498::paint_autoscroll"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::replica::impl<Cache>::retain_background"
+    "item": "crates/frontend/src/implementation.rs::app::ui::composer::definition#544::slash_suggestions"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::replica::initialize_echoes"
+    "item": "crates/frontend/src/implementation.rs::app::ui::impl<RootWidget>::definition#566::overlay_widget"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::feed::impl<Feed>::resident_bytes"
+    "item": "crates/frontend/src/implementation.rs::app::ui::impl<UiState>::definition#576::navigation_changed"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::feed::impl<Feed>::retained_roots"
+    "item": "crates/frontend/src/implementation.rs::app::ui_owner::impl<App>::definition#589::update_widgets"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::net::sync::subscriptions"
+    "item": "crates/frontend/src/implementation.rs::app::ui_owner::impl<App>::definition#592::open_ui"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::net::next_attempt"
+    "item": "crates/frontend/src/implementation.rs::app::code_view::paint::definition#596::matched_label"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::attachments::completed_exports"
+    "item": "crates/frontend/src/implementation.rs::app::code_view::paint::definition#597::entry_label"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::attachments::impl<App>::finish_exports"
+    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<View>::definition#603::remember_preview"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui::dialogs::impl<ConnectionDialog>::submit"
+    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<CodeBrowser>::definition#625::code_press"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui::tooltips::impl<TooltipHost>::usage_frame"
+    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<CodeBrowser>::definition#626::code_motion"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui::message_row::impl<ToolView>::hide"
+    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<CodeBrowser>::definition#627::code_release"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui::transcript::impl<Transcript>::place_window"
+    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<CodeBrowser>::definition#628::code_wheel"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui::transcript::paint_autoscroll"
+    "item": "crates/frontend/src/implementation.rs::app::impl<App>::definition#670::open_download_notice"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui::composer::slash_suggestions"
+    "item": "crates/frontend/src/implementation.rs::app::impl<App>::definition#672::editor"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui::impl<RootWidget>::overlay_widget"
+    "item": "crates/frontend/src/implementation.rs::app::impl<App>::definition#673::edited"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui::impl<UiState>::navigation_changed"
+    "item": "crates/frontend/src/implementation.rs::cache_ttl::impl<Basis>::definition#678::timestamp"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui_owner::impl<App>::update_widgets"
+    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::definition#763::last_chat_in_project"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::ui_owner::impl<App>::open_ui"
+    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::definition#766::view_files_document"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::code_view::paint::matched_label"
+    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::definition#768::report_sync_error"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::code_view::paint::entry_label"
+    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::definition#769::reconcile_controls"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<View>::remember_preview"
+    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::definition#776::reconcile_receipts"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<CodeBrowser>::code_press"
+    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::definition#780::sync_scopes"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<CodeBrowser>::code_motion"
+    "item": "crates/frontend/src/implementation.rs::editor::mobile::definition#811::next_id"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<CodeBrowser>::code_release"
+    "item": "crates/frontend/src/implementation.rs::editor::mobile::definition#812::utf16_byte"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::code_view::impl<CodeBrowser>::code_wheel"
+    "item": "crates/frontend/src/implementation.rs::editor::touch::impl<Editor>::definition#819::draw_selection_handles"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::impl<App>::trace_wakes"
+    "item": "crates/frontend/src/implementation.rs::render::trace::impl<Trace>::definition#906::save_latest"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::impl<App>::open_download_notice"
+    "item": "crates/frontend/src/implementation.rs::scroll::impl<ScrollMotion>::definition#956::release_velocity"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::impl<App>::preview_attachments"
+    "item": "crates/frontend/src/implementation.rs::scroll::impl<Fling>::definition#959::velocity"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::impl<App>::editor"
+    "item": "crates/frontend/src/implementation.rs::scroll::impl<Fling>::definition#960::advance"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::impl<App>::edited"
+    "item": "crates/frontend/src/implementation.rs::disk::definition#983::replica_directory_lease"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::cache_ttl::impl<Basis>::timestamp"
+    "item": "crates/frontend/src/implementation.rs::downloads::definition#990::super_safe_component"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::last_chat_in_project"
+    "item": "crates/daemon/src/implementation.rs::attachments::impl<AgentManager>::definition#1116::write_upload"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::file_wake"
+    "item": "crates/daemon/src/implementation.rs::manager::definition#1167::safe_file_name"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::viewer_generation"
+    "item": "crates/daemon/src/implementation.rs::state::impl<StateStore>::definition#1280::review_restore"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::view_files_document"
+    "item": "crates/daemon/src/implementation.rs::state::impl<StateStore>::definition#1296::operation_receipt"
   },
   {
     "project": "tau2",
     "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::report_sync_error"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::reconcile_controls"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::reconcile_receipts"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::controller::impl<Controller>::sync_scopes"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::editor::mobile::next_id"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::editor::mobile::utf16_byte"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::editor::touch::impl<Editor>::draw_selection_handles"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::editor::touch::impl<Editor>::grab_selection_handle"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::editor::touch::impl<Editor>::selection_rect"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::editor::impl<Editor>::mouse_down"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::editor::impl<Editor>::begin_scroll"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::editor::impl<Editor>::sample_scroll"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::notice::impl<Notice>::download"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::render::trace::cache_lock_timer"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::render::trace::cache_lock_wait"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::render::trace::impl<Trace>::save_latest"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::render::impl<Renderer>::trim_messages"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::scroll::impl<ScrollMotion>::release_velocity"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::scroll::impl<Fling>::velocity"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::scroll::impl<Fling>::advance"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::disk::replica_directory_lease"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::downloads::super_safe_component"
-  },
-  {
-    "project": "tau2",
-    "status": "inlined",
-    "item": "crates/frontend/src/implementation.rs::app::attachments::impl<ui::Context<'_>>::finish_exports"
+    "item": "crates/frontend/src/implementation.rs::app::attachments::impl<ui::Context<'_>>::definition#251::finish_exports"
   },
   {
     "project": "tau2",
     "status": "removed_dead",
-    "item": "crates/frontend/src/implementation.rs::app::attachments::impl<App>::export_target"
+    "item": "crates/frontend/src/implementation.rs::app::attachments::impl<App>::definition#257::export_target"
   },
   {
     "project": "tau2",
     "status": "removed_dead",
-    "item": "crates/frontend/src/implementation.rs::app::attachments::impl<App>::begin_save"
+    "item": "crates/frontend/src/implementation.rs::app::attachments::impl<App>::definition#258::begin_save"
   }
 ]
