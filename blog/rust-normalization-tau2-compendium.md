@@ -1,7 +1,7 @@
 ---
 layout: experiment
-title: "Why generated Rust got larger: Tau2 and Compendium"
-description: "Measured before/after file trees, line counts, tokens, semantic inlining, test migration and limitations for two real Rust workspaces."
+title: "Rust normalization: Compendium and Tau2"
+description: "Retained source measurements and the current test-migration blocker, without a false correctness claim."
 permalink: /blog/rust-normalization-tau2-compendium/
 ---
 <link rel="stylesheet" href="/assets/css/rust-normalization.css">
@@ -9,278 +9,65 @@ permalink: /blog/rust-normalization-tau2-compendium/
 
 [← Writings](/writings.html)
 
-<p class="kicker">Compiler-checked source transformation · Two real workspaces</p>
+# Rust normalization: Compendium and Tau2
 
-# Why the generated Rust got larger
+**Current status: regeneration is blocked at public-test migration in both projects.** The hardened tool rejects unresolved test symbols/imports instead of silently suspending them. No replacement outputs were published.
 
-<p class="deck">The normalizer made both codebases longer. Here are the measurements, generated-code costs, accepted inlinings, and test losses—not a claim that fewer files makes the result better.</p>
+The measurements below describe the retained generated snapshots, not successful output from the current tool.
 
-<h2 id="import-fix">Update: import scaffolding repaired</h2>
+## Retained snapshot sizes
 
-The first emitter repeated dependency imports in nested scopes and emitted many one-name imports with repeated attributes. That overhead was unnecessary. Fresh full-pipeline runs with the repaired emitter give:
-
-| Metric | Compendium: initial → repaired | Tau2: initial → repaired |
+| Measure | Compendium: original → generated | Tau2: original → generated |
 |---|---:|---:|
-| Import statements | 2,156 → **1,521** | 4,186 → **2,604** |
-| Import-syntax tokens (including their attributes) | 35,931 → **25,058** | 73,626 → **47,567** |
-| Physical source lines | 76,716 → **75,694** | 95,996 → **92,912** |
-| Same-formatter source lines | 76,709 → **75,687** | 95,972 → **92,888** |
-| All lexical tokens | 547,344 → **536,540** | 748,812 → **722,905** |
+| Rust source files | 80 → 7 | 210 → 18 |
+| Physical lines | 60,269 → 67,365 (+11.8%) | 46,284 → 91,587 (+97.9%) |
+| Same-formatter lines | 58,457 → 67,358 (+15.2%) | 79,884 → 91,563 (+14.6%) |
+| Lexical tokens | 411,167 → 463,345 (+12.7%) | 639,286 → 710,433 (+11.1%) |
 
-**Net reduction from the initial generated outputs: 1,022 physical lines in Compendium and 3,084 in Tau2.** These figures use exactly the same source scope and counters as the initial report. The number of files is unchanged: 7 and 18.
+**Still larger after identical formatting:** +15.2% / +14.6%. Fewer files is not less code. Counts include inactive configurations and suspended tests; the download specifies the source scope.
 
-### What changed
+## Generated code
 
-- Workspace dependency trait imports are gathered **once per Rust crate root** in a private `__unsloppifier_scope` module. A library and its separate binaries/integration-test targets each have their own crate root.
-- Nested scopes receive one shared-prelude glob only when an existing unconditional parent/root glob does not already supply it. Nested Rust modules do not automatically inherit their parent's imports.
-- Explicit declaration re-exports and generated trait aliases are grouped by matching conditional attributes. Explicit bindings retain their precedence instead of being replaced indiscriminately by ambiguous globs.
-- Generated trait aliases include the package name, covering the regression where two dependencies have identically named generated traits.
-
-This does **not** eliminate every repeated original import or flatten the retained namespaces. The concrete changes cover the generator's repeated scaffolding, not a claim that every remaining import is minimal.
-
-### Same transformations, revalidated outputs
-
-The accepted inlining **sets**, not just the counts, are unchanged: **407 Compendium / 62 Tau2**. The removed-dead-function sets remain **3 / 2**. Suspended test-item counts remain **313 / 655**; the import repair did not restore that lost active coverage.
-
-The repaired normalizer passed **65 nextest tests**, compiler checks, rustdoc and formatting checks. Both repaired outputs compiled in staging and at their final paths. The final public suites passed again: **83 Compendium tests (2 skipped)** and **93 Tau tests (none skipped)**. The original and repaired Compendium outputs matched bit-for-bit for **65,556 colour samples / 262,224 float channels**. Both Java files and all **324 recorded original input hashes** remain unchanged. These are bounded host/default-feature checks, not full application or Android equivalence proofs.
-
-### Still not a source-size win
-
-Against the original inputs, repaired physical LOC is still **+25.6% in Compendium / +100.7% in Tau2**. With identical formatting, growth is still **+29.5% / +16.3%**; lexical tokens remain **+30.5% / +13.1%**.
-
-**The retry-helper lowering is not fixed by this change.** `next_attempt` has no early return, `?`, or async body. It missed the small-block fast path because that path rejected its non-primitive by-value parameters, method-call body and call-expression argument. The resulting conservative typed frame remains unchanged, as do the other inlining-frame costs discussed below.
-
-**Updated downloads:** [measurements, source hashes and validation (JSON)](/assets/experiments/rust-normalization/import-fix-metrics.json) · [per-file comparison (CSV)](/assets/experiments/rust-normalization/import-fix-files.csv) · repaired trees: [Compendium](/assets/experiments/rust-normalization/compendium-import-fix-tree.txt) / [Tau2](/assets/experiments/rust-normalization/tau2-import-fix-tree.txt) · [comparison script](/assets/experiments/rust-normalization/measure-import-fix.py).
-
-The sections below deliberately retain the **initial output**, including its original phase-cost measurements and code examples. They are not silently relabeled as the repaired output.
-
-<h2 id="initial-output">Initial output, before the import repair</h2>
-
-> **The initial code-size result is worse.** Physical LOC increased **27.3% in Compendium** and **107.4% in Tau2**. Applying the same parser and formatter to both sides still gives increases of **31.2%** and **20.1%**. Neither output is exception-free, and incompatible tests remain inactive rather than being counted as passing.
-
-<div class="normalization-cards" markdown="0">
-<div><span>Compendium physical LOC</span><strong>+27.3%</strong><small>+31.2% with identical formatting</small></div>
-<div><span>Tau2 physical LOC</span><strong>+107.4%</strong><small>+20.1% with identical formatting</small></div>
-<div><span>Single-site inlinings</span><strong>407 / 62</strong><small>Compendium / Tau2 · all tracked</small></div>
-<div><span>Inactive test items</span><strong>968</strong><small>Imports/helpers/functions, not a test count</small></div>
-</div>
-
-**Read:** [import repair](#import-fix) · [initial scope](#scope) · [size](#size) · [phase costs](#costs) · [actual code](#code) · [inlinings](#inlinings) · [trees](#trees) · [packages](#packages) · [tests](#tests) · [validation](#validation) · [methodology and downloads](#methodology)
-
-<h2 id="scope">1. What was transformed</h2>
-
-The normalizer operated on a **new copy** of each input, not the original working trees. Tau2 here means the five-member `tau2-integration` workspace: `taud`, `tau-block-store`, `tau-net`, `tau-code-viewer`, and `tau-frontend`. Compendium is one package.
-
-The requested per-package shape was:
-
-```text
-src/
-├── lib.rs             public interfaces; public free functions may keep bodies
-├── implementation.rs  private code and trait implementations
-├── bin1.rs            one file per binary; original Cargo binary name retained
-└── tests.rs           one external, public-interface integration-test target
-```
-
-Public inherent methods were moved into public `ThingBehaviour` traits where supported. Private functions with **exactly one resolved call site** were recursively inlined. Three calls from the same caller are still three sites: Compendium's `srgb_to_linear` correctly remains defined with its three calls. Cycles are allowed; dependency ordering is best effort.
-
-**Scope of the size tables:** all Rust target-source files under the member packages' `src`, `tests`, `examples`, and `benches` directories, including inactive configurations and suspended tests. The counts match the normalizer's loaded-source inventory: **80 Compendium files and 210 Tau2 files**. Build scripts, excluded Windows crates, Java, assets, manifests, generated audit reports, and build caches are outside these size totals. Examples remain separate Cargo targets and are included in the counts.
-
-<h2 id="size">2. Did LOC go down? No.</h2>
-
-### Compendium
-
-| Metric | Before | After | Change |
-|---|---:|---:|---:|
-| Rust target-source files | 80 | 7 | **-91.3%** |
-| Physical lines (comments + blank lines included) | 60,269 | 76,716 | **+27.3%** |
-| Same-parser / same-formatter lines | 58,457 | 76,709 | **+31.2%** |
-| Lexical tokens | 411,167 | 547,344 | **+33.1%** |
-| UTF-8 source bytes | 2,154,082 | 3,530,167 | **+63.9%** |
-
-### Tau2
-
-| Metric | Before | After | Change |
-|---|---:|---:|---:|
-| Rust target-source files | 210 | 18 | **-91.4%** |
-| Physical lines (comments + blank lines included) | 46,284 | 95,996 | **+107.4%** |
-| Same-parser / same-formatter lines | 79,884 | 95,972 | **+20.1%** |
-| Lexical tokens | 639,286 | 748,812 | **+17.1%** |
-| UTF-8 source bytes | 2,505,100 | 4,060,135 | **+62.1%** |
-
-**File count is not code volume.** Tau2's original style packs substantial Rust onto single lines, so expanded formatting explains a large part of its physical-LOC increase. The format-controlled comparison and lexical-token count show that the increase is **not merely formatting**.
-
-The transformation also introduces trait declarations alongside implementations, imports and module scaffolding, explicit type/UFCS paths, and typed call frames that preserve argument evaluation, ownership, early returns, and async capture. Namespaces are retained inside the coalesced files. These are real source costs. The measurements do not attribute an exact number of added lines to each mechanism, and do not establish faster runtime, smaller binaries, or lower cognitive complexity.
-
-A concrete trade-off: Compendium's `implementation.rs` is now **53,068 lines**; Tau2 frontend's is **33,446 lines**. Fewer physical files does not automatically mean easier navigation.
-
-<h2 id="costs">3. Where the extra code actually comes from</h2>
-
-This section is a phase-by-phase measurement, not a guess based on the final file count. An isolated, hash-checked copy of the normalizer was instrumented to save its generated files after layout and after test suspension, then stop before inlining. The final column uses the already validated output. Trait inventories and suspension counts match; test files match except for three inactive imports of helpers subsequently deleted by the inliner. The original inputs, tool sources, and final outputs were not edited for this replay.
-
-### Tau2: most growth occurs before inlining
-
-| Stage | Format-controlled lines | Added lines | Tokens | Added tokens |
-|---|---:|---:|---:|---:|
-| Original, rendered by the same parser/formatter | 79,884 | — | 639,286 | — |
-| Generated layout + initial external-test relocation | 93,619 | +13,735 | 728,562 | +89,276 |
-| After incompatible-test suspension | 94,274 | +655 | 734,457 | +5,895 |
-| After inlining, cleanup and ordering | 95,972 | +1,698 | 748,812 | +14,355 |
-
-Of Tau2's **16,088 additional format-controlled lines**, **13,735 (85.4%)** appear in the layout/test-relocation phase. Only **1,698** appear in the later inlining/cleanup/ordering phase. The 62 accepted inlinings therefore do not explain the 107% headline by themselves.
-
-Here is the exact reconciliation of that physical-LOC increase:
-
-```text
-46,284  original physical lines
-+33,600  original-source parser/formatting-control difference
-+13,735  generated layout and initial test relocation
-   +655  always-false cfg attributes on incompatible test items
- +1,698  inlining, cleanup and dependency-ordering stage
-    +24  final physical-vs-control formatting difference
--------
-95,996  final physical lines
-```
-
-The first adjustment is a **parser/formatting control**, including ordinary-comment removal, not a claim that every extra raw line is merely whitespace. Even after that control, the generated program is larger.
-
-### Compendium: the inlining stage itself is expensive
-
-| Stage | Format-controlled lines | Added lines | Tokens | Added tokens |
-|---|---:|---:|---:|---:|
-| Original, rendered by the same parser/formatter | 58,457 | — | 411,167 | — |
-| Generated layout + initial external-test relocation | 65,667 | +7,210 | 454,705 | +43,538 |
-| After incompatible-test suspension | 65,980 | +313 | 457,522 | +2,817 |
-| After inlining, cleanup and ordering | 76,709 | +10,729 | 547,344 | +89,822 |
-
-The later stage adds **10,729 format-controlled lines and 89,822 tokens net**, despite removing 407 one-site helper definitions and three dead functions. This phase also includes obsolete-import cleanup and dependency ordering; it is not an independently timed or isolated optimizer benchmark. It is nevertheless clear that this emitter's accepted rewrites are not source-size wins in aggregate.
-
-### The import and interface scaffolding is measurable
-
-| Syntax in the measured files | Compendium before → after | Tau2 before → after |
-|---|---:|---:|
-| Import statements (`use`) | 445 → 2,156 | 982 → 4,186 |
-| Tokens inside import statements, including attributes | 4,665 → 35,931 | 12,248 → 73,626 |
-| Generated behaviour-trait declarations | 0 → 73 | 0 → 129 |
-| Tokens in those trait declarations | 0 → 10,357 | 0 → 13,704 |
-| Module declarations / wrappers | 96 → 172 | 195 → 312 |
-| Empty implementation blocks | 4 → 14 | 6 → 10 |
-| Parameterized generated closure frames | 0 → 394 | 0 → 58 |
-
-The generated-closure count recognizes fresh `__inline_…` parameters. It excludes zero-argument frames and small typed blocks; it is a syntax count, not another inlining count.
-
-**Tau2's layout phase alone adds 3,153 import statements.** Compendium's adds 1,377. Many carry their own `#[allow(unused_imports)]` attribute, and some add a `#[cfg(test)]` line. Existing imports are copied into split scopes; behaviour-trait imports and explicit facade/declaration reexports are also injected. This is a major, concrete source of bloat—not a consequence of moving a function to a different filename.
-
-| Added token category in layout / initial test relocation | Compendium | Tau2 |
-|---|---:|---:|
-| Import statements, including their visibility/attributes | +25,613 | +58,801 |
-| Generated behaviour-trait declarations | +10,357 | +13,704 |
-| Module wrappers, excluding their contents | +1,317 | +3,217 |
-| Remaining syntax | +6,251 | +13,554 |
-| **Total layout token increase** | **+43,538** | **+89,276** |
-
-These token categories do not overlap: complete `use` items, complete generated trait declarations, module wrappers with their bodies excluded, and everything remaining. The final row is a reconciliation, not an attribution of every remaining token to one mechanism. Trait interfaces intentionally add a second declaration of each moved method's signature; that requested shape has a size cost. It does not justify indiscriminate imports or unnecessarily verbose call frames.
-
-<h2 id="code">4. What the generated code looks like</h2>
-
-### A three-line helper becomes a 19-line call-site frame
-
-This is the actual Tau2 retry-time helper and its one call site. These excerpts omit surrounding functions and imports, but are not invented examples.
-
-**Before — helper plus call site (four source lines):**
+Before, at the retry call and its helper:
 
 ```rust
+let retry_at = next_attempt(attempt_at, Instant::now());
+
 fn next_attempt(started: Instant, failed: Instant) -> Instant {
     (started + MIN_CONNECT_INTERVAL).max(failed)
 }
-
-// At its call site:
-let retry_at = next_attempt(attempt_at, Instant::now());
 ```
 
-**After — the helper is removed, but the call site is now:**
+In the retained generated snapshot:
 
 ```rust
-let retry_at = ({
-    #[allow(unused_imports)]
-    use Ord as _;
-    (|
-        __inline_0_argument_0: ::std::time::Instant,
-        __inline_0_argument_1: ::std::time::Instant,
-    | -> ::std::time::Instant {
-        let started = __inline_0_argument_0;
-        let failed = __inline_0_argument_1;
-        <::std::time::Instant as Ord>::max(
-            (started + crate::net::health::MIN_CONNECT_INTERVAL),
-            failed,
-        )
-    })
-        as fn(
-            ::std::time::Instant,
-            ::std::time::Instant,
-        ) -> ::std::time::Instant
-})(attempt_at, Instant::now());
+let retry_at = {
+    let (started, failed) = (attempt_at, Instant::now());
+    (started + MIN_CONNECT_INTERVAL).max(failed)
+};
 ```
 
-The extra code consists of typed closure parameters, fresh-name rebinding, explicit UFCS dispatch, a repeated function-pointer signature/cast, and the call wrapper. General call frames are intended to preserve argument evaluation, drops, returns, and async behavior. **This particular helper has no `return`, `?`, or async body.** Its expansion reflects the emitter's conservative full-frame choice, not evidence that a 19-line expression is intrinsically necessary here.
+No closure, cast, synthetic arguments, or trait import. The tuple preserves evaluation order. The same lowering handles other safe expressions, constructors, matches and iterator chains; necessary control-flow and lifetime boundaries remain.
 
-Inlining is not automatically simplification. Removing a helper name while replacing its call with this much machinery can make the source harder to read, even when the compiler accepts it.
+Accepted single-site inlinings: **448 Compendium / 70 Tau2**. Unsupported cases remain explicit exceptions.
 
-### Trait/import scaffolding is copied around the modules
+## Validation and limits
 
-For another concrete example, the original Tau2 `cache_ttl.rs` starts with two `use` statements. Its corresponding implementation module now starts with this block:
+- **12 normalizer tests passed**, plus compiler, rustdoc and formatting checks. Current project regeneration stops on `E0425` (Compendium) and `E0432` (Tau2); these errors are not waived.
+- The retained snapshots passed host/all-target compiler checks and their active public suites: **83 Compendium passed, 2 skipped; 93 Tau2 passed, 0 skipped**. Public `Color` matched the original bit-for-bit over **65,556 RGBA samples**.
+- **Those passes do not establish transformation correctness.** The older migration suspended errors too broadly: 313 / 655 test-module items, including helpers/imports—not that many tests. Correct test migration remains unresolved.
+- **324 captured input source/configuration hashes** and both Java files are unchanged; original repositories remain clean. Android and excluded Windows targets were not built.
 
-```rust
-#[allow(unused_imports)]
-use tau_block_store::__unsloppifier_traits::*;
-#[allow(unused_imports)]
-use tau_code_viewer::__unsloppifier_traits::*;
-#[allow(unused_imports)]
-use tau_net::__unsloppifier_traits::*;
-#[cfg(test)]
-#[allow(unused_imports)]
-use taud::__unsloppifier_traits::*;
-#[allow(unused_imports)]
-use crate::__unsloppifier_traits::*;
-#[allow(unused_imports)]
-pub(crate) use crate::cache_ttl::EstimateBehaviour;
-#[allow(unused_imports)]
-pub(crate) use crate::cache_ttl::Estimate;
-#[allow(unused_imports)]
-pub(crate) use crate::cache_ttl::*;
-use crate::{clock, feed::Feed, tooltip::{Content, ACCENT, INK, WARNING}};
-use tau_net::{EventKind, EventRole, SessionStatus, SessionSummary};
-```
+## Evidence
 
-Those trait-prelude imports and explicit facade imports are generated scaffolding. The same general pattern recurs across mirrored API/implementation scopes and migrated test scopes. The file also retains an empty `impl Basis {}` after its sole method was inlined. Both are visible cleanup/selection problems; a reduced physical file count does not resolve them.
+Both sides use the same locked parser/printer; token counts ignore whitespace. Runtime and binary size were not benchmarked.
 
-The next improvements should be measured against these costs: narrower imports, smaller call-site rewrites where justified, less repeated qualification, and removal of empty leftovers where safe. The existing output is not evidence those improvements have already been made.
-
-<h2 id="inlinings">5. Yes, the inlinings were tracked</h2>
-
-These counts come from the accepted-rewrite records, not inferred differences in function names or file counts:
-
-| Package | Accepted inlinings | Dead removals |
-|---|---:|---:|
-| `compendium` | 407 | 3 |
-| `taud` | 7 | 0 |
-| `tau-block-store` | 1 | 0 |
-| `tau-net` | 0 | 0 |
-| `tau-code-viewer` | 0 | 0 |
-| `tau-frontend` | 54 | 2 |
-| **Total** | **469** | **5** |
-
-[Download every accepted inlining and dead removal (CSV)](/assets/experiments/rust-normalization/inlining-inventory.csv), or [the per-package JSON inventory](/assets/experiments/rust-normalization/inlining-inventory.json). Names refer to the normalized module/function identities recorded by the transformer. Retained candidates are separate: **288 Compendium and 126 Tau2 inlining exceptions**. None is included in the accepted count.
-
-The changes preserve the exact-single-site policy: `srgb_to_linear` remains because its one caller contains three calls. The full inventories distinguish real accepted rewrites from functions intentionally retained.
-
-<h2 id="trees">6. Before and after file trees</h2>
-
-These are complete **in-scope Rust source trees**, not sketches. Each leaf shows its physical line count. Expand the “before” trees to inspect every original file. Cargo/configuration files and preserved platform support are described separately below, rather than mixed into the Rust file-reduction figures.
-
-### Compendium
+[Metrics, provenance and validation (JSON)](/assets/experiments/rust-normalization/metrics.json) · [Per-file measurements (CSV)](/assets/experiments/rust-normalization/files.csv) · [Inlining inventory (CSV)](/assets/experiments/rust-normalization/inlining-inventory.csv) · [Reproduction tools](/assets/experiments/rust-normalization/measurement-tools.tar.gz)
 
 <details markdown="1">
-<summary>Before — 80 Rust target-source files (expand full tree)</summary>
+<summary>Full source trees, before and after</summary>
+
+### Compendium — before
 
 ```text
 compendium/
@@ -376,29 +163,22 @@ compendium/
     └── text_integration.rs  [285 lines]
 ```
 
-</details>
-
-<details markdown="1" open>
-<summary>After — 7 Rust target-source files</summary>
+### Compendium — after
 
 ```text
 compendium/
 ├── examples/
-│   ├── markdown_preview.rs  [56 lines]
-│   ├── perf_scenarios.rs  [1,539 lines]
-│   └── render_smoke.rs  [347 lines]
+│   ├── markdown_preview.rs  [60 lines]
+│   ├── perf_scenarios.rs  [1,369 lines]
+│   └── render_smoke.rs  [337 lines]
 └── src/
-    ├── bin1.rs  [30 lines]
-    ├── implementation.rs  [53,068 lines]
-    ├── lib.rs  [7,967 lines]
-    └── tests.rs  [13,709 lines]
+    ├── bin1.rs  [34 lines]
+    ├── implementation.rs  [44,579 lines]
+    ├── lib.rs  [7,273 lines]
+    └── tests.rs  [13,713 lines]
 ```
 
-</details>
-### Tau2 workspace
-
-<details markdown="1">
-<summary>Before — 210 Rust target-source files (expand full tree)</summary>
+### Tau2 — before
 
 ```text
 tau2/
@@ -659,155 +439,42 @@ tau2/
             └── native.rs  [514 lines]
 ```
 
-</details>
-
-<details markdown="1" open>
-<summary>After — 18 Rust target-source files</summary>
+### Tau2 — after
 
 ```text
 tau2/
 └── crates/
     ├── block-store/
     │   └── src/
-    │       ├── implementation.rs  [253 lines]
-    │       ├── lib.rs  [942 lines]
+    │       ├── implementation.rs  [186 lines]
+    │       ├── lib.rs  [914 lines]
     │       └── tests.rs  [639 lines]
     ├── code-viewer/
     │   ├── examples/
-    │   │   └── index_size.rs  [81 lines]
+    │   │   └── index_size.rs  [83 lines]
     │   └── src/
-    │       ├── implementation.rs  [944 lines]
-    │       ├── lib.rs  [250 lines]
-    │       └── tests.rs  [587 lines]
+    │       ├── implementation.rs  [916 lines]
+    │       ├── lib.rs  [244 lines]
+    │       └── tests.rs  [579 lines]
     ├── daemon/
     │   └── src/
-    │       ├── bin1.rs  [100 lines]
-    │       ├── implementation.rs  [11,235 lines]
-    │       ├── lib.rs  [2,201 lines]
-    │       └── tests.rs  [11,589 lines]
+    │       ├── bin1.rs  [102 lines]
+    │       ├── implementation.rs  [10,842 lines]
+    │       ├── lib.rs  [2,061 lines]
+    │       └── tests.rs  [11,391 lines]
     ├── frontend/
     │   └── src/
-    │       ├── bin1.rs  [39 lines]
-    │       ├── implementation.rs  [33,446 lines]
-    │       ├── lib.rs  [4,651 lines]
-    │       └── tests.rs  [24,397 lines]
+    │       ├── bin1.rs  [40 lines]
+    │       ├── implementation.rs  [31,520 lines]
+    │       ├── lib.rs  [3,975 lines]
+    │       └── tests.rs  [23,739 lines]
     └── net/
         └── src/
-            ├── implementation.rs  [2,093 lines]
-            ├── lib.rs  [1,223 lines]
-            └── tests.rs  [1,326 lines]
+            ├── implementation.rs  [1,855 lines]
+            ├── lib.rs  [1,184 lines]
+            └── tests.rs  [1,317 lines]
 ```
 
 </details>
-
-
-### Preserved outside those source totals
-
-- **Compendium:** `build.rs`, the excluded `windows/` subtree, and non-Rust resources remain.
-- **Tau2:** `crates/frontend/build.rs`, the excluded `crates/windows/` subtree, Android/platform support, and non-Rust resources remain.
-- Both Java files—`crates/frontend/android/java/app/tau/rust/MainActivity.java` and `crates/frontend/tests/android/SelectionBridgeTest.java`—are **byte-for-byte unchanged**. Platform-specific Rust is retained in the coalesced sources; this is not an Android cross-build or runtime certification.
-- Both build scripts and all ten excluded Windows Rust files are byte-for-byte unchanged.
-
-**Preservation precision:** the old normalization summaries called the excluded Windows subtrees “untouched.” A byte comparison shows a narrower truth: their Rust files are unchanged, but **one Compendium and three Tau2 `Cargo.toml` files were reformatted**. Parsing the before/after TOML yields identical values. They are not claimed to have been normalized or compiled as workspace members.
-
-<h2 id="packages">7. Per-package figures and transformations</h2>
-
-| Package | Rust files | Physical LOC | Formatted LOC | Traits | Suspended test **items** | Public tests passed |
-|---|---:|---:|---:|---:|---:|---:|
-| `compendium` | 80 → 7 | 60,269 → 76,716 | 58,457 → 76,709 | 73 | 313 | 83 |
-| `taud` | 53 → 4 | 10,132 → 25,125 | 21,645 → 25,115 | 19 | 181 | 2 |
-| `tau-block-store` | 2 → 3 | 849 → 1,834 | 1,663 → 1,831 | 0 | 0 | 18 |
-| `tau-net` | 10 → 3 | 2,358 → 4,642 | 3,817 → 4,639 | 21 | 3 | 23 |
-| `tau-code-viewer` | 10 → 4 | 749 → 1,862 | 1,536 → 1,858 | 6 | 4 | 8 |
-| `tau-frontend` | 135 → 4 | 32,196 → 62,533 | 51,223 → 62,529 | 83 | 467 | 42 |
-
-Compendium's test result also has **2 skipped tests**. “Suspended items” includes imports and fixture helpers as well as functions; it is deliberately not labeled “tests removed.”
-
-| Transformation | Compendium | Tau2 |
-|---|---:|---:|
-| Extracted public behaviour traits | 73 | 129 |
-| Accepted single-site inlinings | 407 | 62 |
-| Dead-function removals | 3 | 2 |
-| Recorded retained-inlining exceptions | 288 | 126 |
-
-An inlining exception is **not** a successful inlining. Retained cases include const/ABI contracts, opaque macro or generic contexts, unnameable types, lifetime/dispatch constraints, and compiler-rejected rewrites. Existing public trait defaults and some inherent methods remain where moving them would change the contract. File coalescing is implemented; full namespace elimination is not.
-
-<h2 id="tests">8. Do incompatible tests necessarily test implementation rather than behavior?</h2>
-
-**No. Visibility and the kind of assertion are separate questions.** A private helper can implement meaningful behavior; a public API can expose implementation details. The chosen rule—external tests may use only a crate's public API—is a boundary policy, not a proof that every rejected test was a bad test.
-
-Two examples from the actual Compendium input illustrate the distinction:
-
-- **`provider_serializers_encode_typed_image_parts_at_boundary`** checks image serialization into provider request payloads. That is meaningful protocol behavior. It fails migration because the serializer methods it calls are private. A public-boundary rewrite or an intentionally exposed component boundary would be needed; calling it “non-behavioral” would be misleading.
-- **`forked_roots_share_node_refs_until_cow`** asserts exact node references and internal arena reference counts. Those assertions are representation-coupled (though they can still be valuable invariant tests). A black-box substitute could check that editing a fork preserves the original, but would not necessarily detect the same sharing or resource-management regressions.
-
-The compiler reports also contain missing fixtures/imports, unavailable test-only methods, ambiguous names, type errors, and migration/cascade failures. We cannot responsibly assign all of these to “tests of implementation details.”
-
-### What the recorded diagnostics actually say
-
-| Recorded diagnostic category | Compendium items | Tau2 items |
-|---|---:|---:|
-| Explicit private / inaccessible API | 155 | 268 |
-| Unresolved name or import; can include cascades | 156 | 339 |
-| Unavailable method / associated item | 2 | 13 |
-| Other compile incompatibility | 0 | 35 |
-| **Total suspended items** | **313** | **655** |
-
-These are **mutually exclusive message categories, not established root causes**. If an item's diagnostics explicitly mention privacy, it goes in the first row; unresolved names take precedence over missing-method and other messages. Removing an inaccessible helper can produce later “not found” errors in many dependent tests. Tau2's “other” row includes ambiguous imports, type-size errors, and call/future mismatches, some of which may themselves be cascades or migration defects.
-
-The original syntax inventory found **314 test-function declarations in Compendium and 466 in Tau2**, across configurations. Those are not baseline execution counts, and **313 / 655 suspended items are not test-function counts**. No coverage percentage should be inferred by subtracting these unlike quantities.
-
-**The loss of active coverage is real.** For example, the surviving Tau daemon public suite has only **2 tests**, despite 117 original test-function declarations in its source inventory. Passing the remaining suite is not equivalent to preserving the original suite. Tests should be reviewed and rewritten where appropriate—not dismissed or made to pass by publishing internals solely for test access.
-
-<h2 id="validation">9. What was actually validated</h2>
-
-- Both outputs passed Cargo compiler checks in staging **and again at their final published filesystem paths**, on the host/default configuration.
-- The normalizer's **65 tests passed** under nextest; its all-target compiler check, rustdoc, and formatting checks passed. Clippy and Cargo's built-in test runner were not used.
-- **Compendium: 83 active public-interface tests passed; 2 skipped.**
-- **Tau2: 93 active public-interface tests passed; none skipped.** The per-package counts are in the table above.
-- Original versus normalized Compendium public `Color` execution produced **bit-identical results for 65,556 RGBA samples: 262,224 float channels**. This is a numerical check of that API, not proof of the whole application's equivalence.
-- Both original input repositories remain clean, and all **324 captured input source/configuration hashes** are unchanged.
-
-Compiler success is not behavioral equivalence. The public test suites and differential fixtures provide bounded evidence, not a universal proof. Other feature combinations, Android execution, and excluded Windows targets were not certified. Runtime speed, binary size, and compilation-time improvements were not benchmarked.
-
-<h2 id="methodology">10. Measurement method, provenance, and downloads</h2>
-
-1. Enumerate the same member-package source directories on each side; do not omit inactive tests from the output's size.
-2. Count physical lines and UTF-8 bytes directly from each file.
-3. Parse each file with `syn` and render it with the **same locked `prettyplease` toolchain** on both sides. Count those lines as the format-controlled metric. Ordinary comments are removed by AST rendering; documentation attributes and all conditional source remain. This is a consistent formatting comparison, not a behavioral or semantic reduction metric.
-4. Count lexical tokens recursively using `proc_macro2`: punctuation tokens and delimiters count individually; a literal counts once regardless of length. Ordinary comments are discarded by tokenization; documentation comments become attributes and remain counted. Whitespace changes do not drive this count.
-5. Also record Tokei 12.1.2's code/comment/blank counts in the downloads. Embedded documentation is treated as comments. Its parser has small line-accounting discrepancies on six files (recorded as `counter_line_delta`); the headline physical counts are independently measured, not reconstructed from Tokei totals.
-6. Record per-file hashes, source commits, normalization-report hashes, and a downloadable, locked measurement program. Selected application-code excerpts appear above; full application sources and private compiler logs are not published.
-
-| Input | Source commit |
-|---|---|
-| Compendium | `7227df58674d905245672d0bcd7c78ae31ebcf73` |
-| Tau2 integration snapshot | `a7ab255a87dbd4113d992f871a76a7e6716016e3` |
-
-**Downloads**
-
-- [Measured phase costs and syntax anatomy (JSON)](/assets/experiments/rust-normalization/phase-costs.json)
-- [Audit-only normalizer instrumentation patch](/assets/experiments/rust-normalization/phase-instrumentation.patch)
-- [Actual code excerpts used above (JSON)](/assets/experiments/rust-normalization/code-excerpts.json)
-- [Accepted inlining inventory (CSV)](/assets/experiments/rust-normalization/inlining-inventory.csv) / [JSON](/assets/experiments/rust-normalization/inlining-inventory.json)
-
-
-- [Complete derived metrics and validation summary (JSON)](/assets/experiments/rust-normalization/metrics.json)
-- [Per-file measurements and hashes (CSV)](/assets/experiments/rust-normalization/files.csv)
-- [Reproduction scripts and locked Rust meter (tar.gz)](/assets/experiments/rust-normalization/measurement-tools.tar.gz)
-- Plain-text trees: [Compendium before](/assets/experiments/rust-normalization/compendium-before-tree.txt) / [after](/assets/experiments/rust-normalization/compendium-after-tree.txt), [Tau2 before](/assets/experiments/rust-normalization/tau2-before-tree.txt) / [after](/assets/experiments/rust-normalization/tau2-after-tree.txt)
-
-To reproduce the size measurements with the four local source snapshots:
-
-```sh
-python3 measure.py COMPENDIUM_INPUT COMPENDIUM_OUTPUT \
-  TAU2_INPUT TAU2_OUTPUT RESULTS_DIRECTORY
-```
-
-The script uses `/usr/local/bin/cargo`, does not invoke Clippy or Cargo's built-in test runner, and does not edit the source snapshots. The locked meter uses `prettyplease 0.2.37` and `proc_macro2 1.0.107`; the complete dependency versions are in its `Cargo.lock`. The initial offline Cargo invocation requires those dependencies to be cached.
-
----
-
-**Bottom line:** even after the import repair, the output has larger source and loses active test coverage. Compiler-accepted inlinings do not by themselves make its generated code concise or pleasant to read. A lower file count does not offset those failures.
 
 </article>

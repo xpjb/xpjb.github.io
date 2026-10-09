@@ -16,32 +16,32 @@
       },
       "after": {
         "files": 7,
-        "physical_lines": 76716,
-        "nonblank_lines": 76682,
-        "code_lines": 75211,
-        "comment_lines": 1503,
+        "physical_lines": 67365,
+        "nonblank_lines": 67331,
+        "code_lines": 65883,
+        "comment_lines": 1480,
         "blank_lines": 0,
-        "formatted_lines": 76709,
-        "formatted_nonblank_lines": 76675,
-        "tokens": 547344,
-        "bytes": 3530167
+        "formatted_lines": 67358,
+        "formatted_nonblank_lines": 67324,
+        "tokens": 463345,
+        "bytes": 2987593
       },
       "change_percent": {
         "files": -91.25,
-        "physical_lines": 27.289,
-        "nonblank_lines": 36.922,
-        "code_lines": 39.857,
-        "comment_lines": -33.437,
+        "physical_lines": 11.774,
+        "nonblank_lines": 20.225,
+        "code_lines": 22.511,
+        "comment_lines": -34.455,
         "blank_lines": -100.0,
-        "formatted_lines": 31.223,
-        "formatted_nonblank_lines": 31.241,
-        "tokens": 33.12,
-        "bytes": 63.883
+        "formatted_lines": 15.227,
+        "formatted_nonblank_lines": 15.235,
+        "tokens": 12.69,
+        "bytes": 38.694
       },
-      "inlined": 407,
+      "inlined": 448,
       "dead_removed": 3,
       "traits": 73,
-      "inlining_exceptions": 288,
+      "inlining_exceptions": 247,
       "packages": [
         {
           "name": "compendium",
@@ -63,15 +63,15 @@
           },
           "after": {
             "files": 7,
-            "physical_lines": 76716,
-            "nonblank_lines": 76682,
-            "code_lines": 75211,
-            "comment_lines": 1503,
+            "physical_lines": 67365,
+            "nonblank_lines": 67331,
+            "code_lines": 65883,
+            "comment_lines": 1480,
             "blank_lines": 0,
-            "formatted_lines": 76709,
-            "formatted_nonblank_lines": 76675,
-            "tokens": 547344,
-            "bytes": 3530167
+            "formatted_lines": 67358,
+            "formatted_nonblank_lines": 67324,
+            "tokens": 463345,
+            "bytes": 2987593
           }
         }
       ],
@@ -96,32 +96,32 @@
       },
       "after": {
         "files": 18,
-        "physical_lines": 95996,
-        "nonblank_lines": 95996,
-        "code_lines": 95314,
-        "comment_lines": 669,
+        "physical_lines": 91587,
+        "nonblank_lines": 91587,
+        "code_lines": 90909,
+        "comment_lines": 665,
         "blank_lines": 0,
-        "formatted_lines": 95972,
-        "formatted_nonblank_lines": 95972,
-        "tokens": 748812,
-        "bytes": 4060135
+        "formatted_lines": 91563,
+        "formatted_nonblank_lines": 91563,
+        "tokens": 710433,
+        "bytes": 3863234
       },
       "change_percent": {
         "files": -91.429,
-        "physical_lines": 107.406,
-        "nonblank_lines": 112.696,
-        "code_lines": 116.914,
-        "comment_lines": -43.876,
+        "physical_lines": 97.88,
+        "nonblank_lines": 102.927,
+        "code_lines": 106.889,
+        "comment_lines": -44.211,
         "blank_lines": -100.0,
-        "formatted_lines": 20.139,
-        "formatted_nonblank_lines": 20.139,
-        "tokens": 17.133,
-        "bytes": 62.075
+        "formatted_lines": 14.62,
+        "formatted_nonblank_lines": 14.62,
+        "tokens": 11.129,
+        "bytes": 54.215
       },
-      "inlined": 62,
+      "inlined": 70,
       "dead_removed": 2,
       "traits": 129,
-      "inlining_exceptions": 126,
+      "inlining_exceptions": 118,
       "packages": [
         {
           "name": "taud",
@@ -143,15 +143,15 @@
           },
           "after": {
             "files": 4,
-            "physical_lines": 25125,
-            "nonblank_lines": 25125,
-            "code_lines": 25026,
+            "physical_lines": 24396,
+            "nonblank_lines": 24396,
+            "code_lines": 24297,
             "comment_lines": 99,
             "blank_lines": 0,
-            "formatted_lines": 25115,
-            "formatted_nonblank_lines": 25115,
-            "tokens": 189067,
-            "bytes": 1091528
+            "formatted_lines": 24386,
+            "formatted_nonblank_lines": 24386,
+            "tokens": 182864,
+            "bytes": 1058735
           }
         },
         {
@@ -174,15 +174,15 @@
           },
           "after": {
             "files": 3,
-            "physical_lines": 1834,
-            "nonblank_lines": 1834,
-            "code_lines": 1808,
+            "physical_lines": 1739,
+            "nonblank_lines": 1739,
+            "code_lines": 1713,
             "comment_lines": 26,
             "blank_lines": 0,
-            "formatted_lines": 1831,
-            "formatted_nonblank_lines": 1831,
-            "tokens": 15062,
-            "bytes": 66419
+            "formatted_lines": 1736,
+            "formatted_nonblank_lines": 1736,
+            "tokens": 14226,
+            "bytes": 63185
           }
         },
         {
@@ -205,15 +205,15 @@
           },
           "after": {
             "files": 3,
-            "physical_lines": 4642,
-            "nonblank_lines": 4642,
-            "code_lines": 4558,
+            "physical_lines": 4356,
+            "nonblank_lines": 4356,
+            "code_lines": 4272,
             "comment_lines": 84,
             "blank_lines": 0,
-            "formatted_lines": 4639,
-            "formatted_nonblank_lines": 4639,
-            "tokens": 36517,
-            "bytes": 184911
+            "formatted_lines": 4353,
+            "formatted_nonblank_lines": 4353,
+            "tokens": 33786,
+            "bytes": 175581
           }
         },
         {
@@ -236,15 +236,15 @@
           },
           "after": {
             "files": 4,
-            "physical_lines": 1862,
-            "nonblank_lines": 1862,
-            "code_lines": 1829,
+            "physical_lines": 1822,
+            "nonblank_lines": 1822,
+            "code_lines": 1789,
             "comment_lines": 33,
             "blank_lines": 0,
-            "formatted_lines": 1858,
-            "formatted_nonblank_lines": 1858,
-            "tokens": 14991,
-            "bytes": 70720
+            "formatted_lines": 1818,
+            "formatted_nonblank_lines": 1818,
+            "tokens": 14654,
+            "bytes": 70876
           }
         },
         {
@@ -267,15 +267,15 @@
           },
           "after": {
             "files": 4,
-            "physical_lines": 62533,
-            "nonblank_lines": 62533,
-            "code_lines": 62093,
-            "comment_lines": 427,
+            "physical_lines": 59274,
+            "nonblank_lines": 59274,
+            "code_lines": 58838,
+            "comment_lines": 423,
             "blank_lines": 0,
-            "formatted_lines": 62529,
-            "formatted_nonblank_lines": 62529,
-            "tokens": 493175,
-            "bytes": 2646557
+            "formatted_lines": 59270,
+            "formatted_nonblank_lines": 59270,
+            "tokens": 464903,
+            "bytes": 2494857
           }
         }
       ],
@@ -291,12 +291,12 @@
     "compendium": {
       "commit": "7227df58674d905245672d0bcd7c78ae31ebcf73",
       "git_status": "",
-      "normalization_report_sha256": "c095edb0e657a887f00e7063c43b53783e73d28c9ef612810307d70ce2bffbad"
+      "normalization_report_sha256": "eb66d0ad9dcffec076c06df143bdfa746e8000408ee4a002a4b4f2affcde1911"
     },
     "tau2": {
       "commit": "a7ab255a87dbd4113d992f871a76a7e6716016e3",
       "git_status": "",
-      "normalization_report_sha256": "ed5627975c973af29fa116e605c9a8b36392c43a3f66d0d7565f18cb5b167359"
+      "normalization_report_sha256": "0ff34e56a82776d2d9219bd5f7e79c1c38b5ae6769e71071f96afa0bd24a276c"
     }
   },
   "versions": {
@@ -1665,120 +1665,120 @@
       "counter_line_delta": 0
     },
     {
-      "bytes": 1061,
-      "formatted_lines": 29,
-      "formatted_nonblank_lines": 29,
-      "nonblank_lines": 30,
+      "bytes": 1166,
+      "formatted_lines": 33,
+      "formatted_nonblank_lines": 33,
+      "nonblank_lines": 34,
       "package": "compendium",
       "path": "src/bin1.rs",
-      "physical_lines": 30,
+      "physical_lines": 34,
       "project": "compendium",
-      "sha256": "13edd544537eff9370fabf6b3850b69646085fc4ae0be289ddaa6946b6160c25",
+      "sha256": "4d98c6f73077d01be2198bedc81bac4f467aa433d43292355eeaf21620a122cd",
       "snapshot": "after",
-      "tokens": 235,
-      "code_lines": 29,
+      "tokens": 259,
+      "code_lines": 33,
       "comment_lines": 1,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 2561711,
-      "formatted_lines": 53067,
-      "formatted_nonblank_lines": 53033,
-      "nonblank_lines": 53034,
+      "bytes": 2063508,
+      "formatted_lines": 44578,
+      "formatted_nonblank_lines": 44544,
+      "nonblank_lines": 44545,
       "package": "compendium",
       "path": "src/implementation.rs",
-      "physical_lines": 53068,
+      "physical_lines": 44579,
       "project": "compendium",
-      "sha256": "31c7d46c2166ef64b79d9378875efb476abd4423fb05d140b51390f0ceca532a",
+      "sha256": "c3abea3fea8a1a64d27f281b6fe79bdad033bc941fce68702ce3c9e4c1d713ca",
       "snapshot": "after",
-      "tokens": 366172,
-      "code_lines": 52332,
-      "comment_lines": 734,
+      "tokens": 289702,
+      "code_lines": 43864,
+      "comment_lines": 713,
       "blank_lines": 0,
       "counter_line_delta": -2
     },
     {
-      "bytes": 340826,
-      "formatted_lines": 7966,
-      "formatted_nonblank_lines": 7966,
-      "nonblank_lines": 7967,
+      "bytes": 306181,
+      "formatted_lines": 7272,
+      "formatted_nonblank_lines": 7272,
+      "nonblank_lines": 7273,
       "package": "compendium",
       "path": "src/lib.rs",
-      "physical_lines": 7967,
+      "physical_lines": 7273,
       "project": "compendium",
-      "sha256": "a656678406fbc6c52bb4766b207a53cefe9bb8bf656d5125bec93e51bd6ef97f",
+      "sha256": "94b8875e58823f07d85170417bbfdc031f079e2a67d3ff6add1c1934de0ff3ad",
       "snapshot": "after",
-      "tokens": 57545,
-      "code_lines": 7346,
+      "tokens": 51665,
+      "code_lines": 6652,
       "comment_lines": 621,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 547115,
-      "formatted_lines": 13708,
-      "formatted_nonblank_lines": 13708,
-      "nonblank_lines": 13709,
+      "bytes": 547696,
+      "formatted_lines": 13712,
+      "formatted_nonblank_lines": 13712,
+      "nonblank_lines": 13713,
       "package": "compendium",
       "path": "src/tests.rs",
-      "physical_lines": 13709,
+      "physical_lines": 13713,
       "project": "compendium",
-      "sha256": "6e88e29aa06c1051d4432d333b6144b786dfcdfc1db48f6d4a5e2b8fbbff1277",
+      "sha256": "750e916b4315826d7b97866bc3069702e068e83599fd4ef9b2823ead6802bd34",
       "snapshot": "after",
-      "tokens": 110193,
-      "code_lines": 13621,
+      "tokens": 110301,
+      "code_lines": 13625,
       "comment_lines": 88,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 2614,
-      "formatted_lines": 55,
-      "formatted_nonblank_lines": 55,
-      "nonblank_lines": 56,
+      "bytes": 2719,
+      "formatted_lines": 59,
+      "formatted_nonblank_lines": 59,
+      "nonblank_lines": 60,
       "package": "compendium",
       "path": "examples/markdown_preview.rs",
-      "physical_lines": 56,
+      "physical_lines": 60,
       "project": "compendium",
-      "sha256": "f27caf47968fc942fc3f2ef90470caecb87b1435b4119634e7f8d549bc8b5db8",
+      "sha256": "d42b870760b9517fe8157747d3a43e284e04f1ff14220817c9fd23aa86446e1c",
       "snapshot": "after",
-      "tokens": 403,
-      "code_lines": 54,
+      "tokens": 427,
+      "code_lines": 58,
       "comment_lines": 2,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 62278,
-      "formatted_lines": 1538,
-      "formatted_nonblank_lines": 1538,
-      "nonblank_lines": 1539,
+      "bytes": 52795,
+      "formatted_lines": 1368,
+      "formatted_nonblank_lines": 1368,
+      "nonblank_lines": 1369,
       "package": "compendium",
       "path": "examples/perf_scenarios.rs",
-      "physical_lines": 1539,
+      "physical_lines": 1369,
       "project": "compendium",
-      "sha256": "a9fadab6ccdf1e59354b3797275bb4c783ba7cdc73b6cfd86afa297b49cb864d",
+      "sha256": "58146b0090b9a23907a3502f1b0f0255c3b044768c5214ba3d5d0fe16878b6ec",
       "snapshot": "after",
-      "tokens": 10367,
-      "code_lines": 1528,
-      "comment_lines": 11,
+      "tokens": 8735,
+      "code_lines": 1360,
+      "comment_lines": 9,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 14562,
-      "formatted_lines": 346,
-      "formatted_nonblank_lines": 346,
-      "nonblank_lines": 347,
+      "bytes": 13528,
+      "formatted_lines": 336,
+      "formatted_nonblank_lines": 336,
+      "nonblank_lines": 337,
       "package": "compendium",
       "path": "examples/render_smoke.rs",
-      "physical_lines": 347,
+      "physical_lines": 337,
       "project": "compendium",
-      "sha256": "31ca21de9f28246c6f05094fe7b443eca8d434a1b44317680bb6b8d7702032a9",
+      "sha256": "be8caf331d66d30b4fe90d85fcd706d5d71b47756fb2e41c5b25b360383650cf",
       "snapshot": "after",
-      "tokens": 2429,
-      "code_lines": 301,
+      "tokens": 2256,
+      "code_lines": 291,
       "comment_lines": 46,
       "blank_lines": 0,
       "counter_line_delta": 0
@@ -5354,109 +5354,109 @@
       "counter_line_delta": 0
     },
     {
-      "bytes": 3235,
-      "formatted_lines": 99,
-      "formatted_nonblank_lines": 99,
-      "nonblank_lines": 100,
+      "bytes": 3286,
+      "formatted_lines": 101,
+      "formatted_nonblank_lines": 101,
+      "nonblank_lines": 102,
       "package": "taud",
       "path": "crates/daemon/src/bin1.rs",
-      "physical_lines": 100,
+      "physical_lines": 102,
       "project": "tau2",
-      "sha256": "553a29d090b1294eb92de5ba2edff5bcb56d89ce62c6e14b63528cca35239046",
+      "sha256": "4b213d2207bb903305e0bdfee5e7ef5119f93ddd7f85e542a5543d373211c18c",
       "snapshot": "after",
-      "tokens": 663,
-      "code_lines": 99,
+      "tokens": 666,
+      "code_lines": 101,
       "comment_lines": 1,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 503555,
-      "formatted_lines": 11231,
-      "formatted_nonblank_lines": 11231,
-      "nonblank_lines": 11235,
+      "bytes": 483482,
+      "formatted_lines": 10838,
+      "formatted_nonblank_lines": 10838,
+      "nonblank_lines": 10842,
       "package": "taud",
       "path": "crates/daemon/src/implementation.rs",
-      "physical_lines": 11235,
+      "physical_lines": 10842,
       "project": "tau2",
-      "sha256": "e54a058002b06b4a112e114d29300e942844621a2ed0e60ce6336ffffa07ddb0",
+      "sha256": "79a9ea029935eb0e390ce9f3d2b29fb4f5a7dd6b24d3c0f0876445756cc0ea5f",
       "snapshot": "after",
-      "tokens": 78765,
-      "code_lines": 11196,
+      "tokens": 75227,
+      "code_lines": 10803,
       "comment_lines": 39,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 92381,
-      "formatted_lines": 2197,
-      "formatted_nonblank_lines": 2197,
-      "nonblank_lines": 2201,
+      "bytes": 86793,
+      "formatted_lines": 2057,
+      "formatted_nonblank_lines": 2057,
+      "nonblank_lines": 2061,
       "package": "taud",
       "path": "crates/daemon/src/lib.rs",
-      "physical_lines": 2201,
+      "physical_lines": 2061,
       "project": "tau2",
-      "sha256": "899360b641eb89818ffb1443b32737bae6a3f6c24fb255c746dc4b385aab877d",
+      "sha256": "fdcb0160e82253dfe271014a23ce33164572651e09ba289edc4b92dfdbd07de0",
       "snapshot": "after",
-      "tokens": 17145,
-      "code_lines": 2171,
+      "tokens": 15981,
+      "code_lines": 2031,
       "comment_lines": 30,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 492357,
-      "formatted_lines": 11588,
-      "formatted_nonblank_lines": 11588,
-      "nonblank_lines": 11589,
+      "bytes": 485174,
+      "formatted_lines": 11390,
+      "formatted_nonblank_lines": 11390,
+      "nonblank_lines": 11391,
       "package": "taud",
       "path": "crates/daemon/src/tests.rs",
-      "physical_lines": 11589,
+      "physical_lines": 11391,
       "project": "tau2",
-      "sha256": "cdae265fafebf7058517b4b589224d45e895d890808962e57e05081a1c7c9e4d",
+      "sha256": "3ca6cf122945a6982d4040bf008cd45f360ea6301c2e14b1c73544c31886132b",
       "snapshot": "after",
-      "tokens": 92494,
-      "code_lines": 11560,
+      "tokens": 90990,
+      "code_lines": 11362,
       "comment_lines": 29,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 8360,
-      "formatted_lines": 252,
-      "formatted_nonblank_lines": 252,
-      "nonblank_lines": 253,
+      "bytes": 6618,
+      "formatted_lines": 185,
+      "formatted_nonblank_lines": 185,
+      "nonblank_lines": 186,
       "package": "tau-block-store",
       "path": "crates/block-store/src/implementation.rs",
-      "physical_lines": 253,
+      "physical_lines": 186,
       "project": "tau2",
-      "sha256": "738f7796d5be21c786620ede59ab6fa0debed3a0f4bf63ca5d7f05fe52e6cbab",
+      "sha256": "72c01f78bc4b14e86df14a6085f0342ff6e7a77f0a8c2e7296c905b6b10eef1a",
       "snapshot": "after",
-      "tokens": 1871,
-      "code_lines": 250,
+      "tokens": 1317,
+      "code_lines": 183,
       "comment_lines": 3,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 33607,
-      "formatted_lines": 941,
-      "formatted_nonblank_lines": 941,
-      "nonblank_lines": 942,
+      "bytes": 32097,
+      "formatted_lines": 913,
+      "formatted_nonblank_lines": 913,
+      "nonblank_lines": 914,
       "package": "tau-block-store",
       "path": "crates/block-store/src/lib.rs",
-      "physical_lines": 942,
+      "physical_lines": 914,
       "project": "tau2",
-      "sha256": "17314024fab5f0cc583ce3846ed72710e5fcc8017f76bc1cb2ca9d34ab72a1de",
+      "sha256": "f9aa723751b23e06862ed06c14c4d43ff6713547b71aa2e358d67afa02463798",
       "snapshot": "after",
-      "tokens": 7434,
-      "code_lines": 921,
+      "tokens": 7147,
+      "code_lines": 893,
       "comment_lines": 21,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 24452,
+      "bytes": 24470,
       "formatted_lines": 638,
       "formatted_nonblank_lines": 638,
       "nonblank_lines": 639,
@@ -5464,235 +5464,345 @@
       "path": "crates/block-store/src/tests.rs",
       "physical_lines": 639,
       "project": "tau2",
-      "sha256": "5d62508d55e986232822c860e320e2d046f52ad7469cd3f3773b6a25ec2a4440",
+      "sha256": "a7c8e58a3d9a697ca76ada0e924b0a4304a3eef0ca8119c03afbc22027cd71ca",
       "snapshot": "after",
-      "tokens": 5757,
+      "tokens": 5762,
       "code_lines": 637,
       "comment_lines": 2,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 86077,
-      "formatted_lines": 2092,
-      "formatted_nonblank_lines": 2092,
-      "nonblank_lines": 2093,
+      "bytes": 78188,
+      "formatted_lines": 1854,
+      "formatted_nonblank_lines": 1854,
+      "nonblank_lines": 1855,
       "package": "tau-net",
       "path": "crates/net/src/implementation.rs",
-      "physical_lines": 2093,
+      "physical_lines": 1855,
       "project": "tau2",
-      "sha256": "b7a5a83626c5e9bdbc36eaf8e5b9ae634a6ee1d2a6048f50ee2ebb66527a8594",
+      "sha256": "5f72d8eba7e3ce9d543eab5b0e7e33f2c03278ebee7533aef0ff218b2aa5620d",
       "snapshot": "after",
-      "tokens": 16373,
-      "code_lines": 2090,
+      "tokens": 14062,
+      "code_lines": 1852,
       "comment_lines": 3,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 46073,
-      "formatted_lines": 1222,
-      "formatted_nonblank_lines": 1222,
-      "nonblank_lines": 1223,
+      "bytes": 44853,
+      "formatted_lines": 1183,
+      "formatted_nonblank_lines": 1183,
+      "nonblank_lines": 1184,
       "package": "tau-net",
       "path": "crates/net/src/lib.rs",
-      "physical_lines": 1223,
+      "physical_lines": 1184,
       "project": "tau2",
-      "sha256": "53911e07491b99e55abb704a1219a87047652ffe3cab55781a29e2a9395b5366",
+      "sha256": "a1714993941a4dda66e91bd070d57471801a272a927457c46f9caa956ac90f70",
       "snapshot": "after",
-      "tokens": 8634,
-      "code_lines": 1147,
+      "tokens": 8273,
+      "code_lines": 1108,
       "comment_lines": 76,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 52761,
-      "formatted_lines": 1325,
-      "formatted_nonblank_lines": 1325,
-      "nonblank_lines": 1326,
+      "bytes": 52540,
+      "formatted_lines": 1316,
+      "formatted_nonblank_lines": 1316,
+      "nonblank_lines": 1317,
       "package": "tau-net",
       "path": "crates/net/src/tests.rs",
-      "physical_lines": 1326,
+      "physical_lines": 1317,
       "project": "tau2",
-      "sha256": "8699e5ab0ded2fa9450959b66d75d5bc70278035d0e9d2360f00fb2fc56babe1",
+      "sha256": "e77d7bb2af0483b23d63f763aeaeaa074df5bd80842a51d5bfcbd3372ff4aaf5",
       "snapshot": "after",
-      "tokens": 11510,
-      "code_lines": 1321,
+      "tokens": 11451,
+      "code_lines": 1312,
       "comment_lines": 5,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 35757,
-      "formatted_lines": 943,
-      "formatted_nonblank_lines": 943,
-      "nonblank_lines": 944,
+      "bytes": 36217,
+      "formatted_lines": 915,
+      "formatted_nonblank_lines": 915,
+      "nonblank_lines": 916,
       "package": "tau-code-viewer",
       "path": "crates/code-viewer/src/implementation.rs",
-      "physical_lines": 944,
+      "physical_lines": 916,
       "project": "tau2",
-      "sha256": "ffc61a47340cfcf2ac955eb3c0d0fced78540b68c02c73c4f56dd142271191ac",
+      "sha256": "ab7a2e0a60de34d0e7568acb543e19b45c19c0f3e173c931f0aa41d81da99251",
       "snapshot": "after",
-      "tokens": 7323,
-      "code_lines": 936,
+      "tokens": 7078,
+      "code_lines": 908,
       "comment_lines": 8,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 9135,
-      "formatted_lines": 249,
-      "formatted_nonblank_lines": 249,
-      "nonblank_lines": 250,
+      "bytes": 8975,
+      "formatted_lines": 243,
+      "formatted_nonblank_lines": 243,
+      "nonblank_lines": 244,
       "package": "tau-code-viewer",
       "path": "crates/code-viewer/src/lib.rs",
-      "physical_lines": 250,
+      "physical_lines": 244,
       "project": "tau2",
-      "sha256": "8f3aec6a2506833f29925c7a997f228ac4712ed7597b19dd7180522ae851d017",
+      "sha256": "ca59511ff0992c14e73869381360163e8f84b74c9fb5e9e35d072bfdf2eeba2e",
       "snapshot": "after",
-      "tokens": 1899,
-      "code_lines": 234,
+      "tokens": 1836,
+      "code_lines": 228,
       "comment_lines": 16,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 22455,
-      "formatted_lines": 586,
-      "formatted_nonblank_lines": 586,
-      "nonblank_lines": 587,
+      "bytes": 22233,
+      "formatted_lines": 578,
+      "formatted_nonblank_lines": 578,
+      "nonblank_lines": 579,
       "package": "tau-code-viewer",
       "path": "crates/code-viewer/src/tests.rs",
-      "physical_lines": 587,
+      "physical_lines": 579,
       "project": "tau2",
-      "sha256": "c7a74d5d269dae8c3bc93a663b3ccce4952e31b85227063407d74cdc9cb54da8",
+      "sha256": "3be4d006e26acff61e5eacfd81d3a5ceb75c7207d475b8f50d3e52e42c25ced8",
       "snapshot": "after",
-      "tokens": 5014,
-      "code_lines": 581,
+      "tokens": 4967,
+      "code_lines": 573,
       "comment_lines": 6,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 3373,
-      "formatted_lines": 80,
-      "formatted_nonblank_lines": 80,
-      "nonblank_lines": 81,
+      "bytes": 3451,
+      "formatted_lines": 82,
+      "formatted_nonblank_lines": 82,
+      "nonblank_lines": 83,
       "package": "tau-code-viewer",
       "path": "crates/code-viewer/examples/index_size.rs",
-      "physical_lines": 81,
+      "physical_lines": 83,
       "project": "tau2",
-      "sha256": "7951b61b8b5c2c1aa76d656df60045582bf0a9a2cb269611975aa6baea12229b",
+      "sha256": "f2b9d6aea0e6a29fac8f4e7862e6de86ebd5365ce79c3d19c610ec2cb8d9ac10",
       "snapshot": "after",
-      "tokens": 755,
-      "code_lines": 78,
+      "tokens": 773,
+      "code_lines": 80,
       "comment_lines": 3,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 1250,
-      "formatted_lines": 38,
-      "formatted_nonblank_lines": 38,
-      "nonblank_lines": 39,
+      "bytes": 1295,
+      "formatted_lines": 39,
+      "formatted_nonblank_lines": 39,
+      "nonblank_lines": 40,
       "package": "tau-frontend",
       "path": "crates/frontend/src/bin1.rs",
-      "physical_lines": 39,
+      "physical_lines": 40,
       "project": "tau2",
-      "sha256": "8f9feac981c6e97f31cd4bce8f75d584955e7505c24d67e6660b5692f5151413",
+      "sha256": "27854f9d96fdd5ee402322612a6252ca2c8b49879259e726560e6cb4e2a42208",
       "snapshot": "after",
       "tokens": 281,
-      "code_lines": 38,
+      "code_lines": 39,
       "comment_lines": 1,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 1486541,
-      "formatted_lines": 33445,
-      "formatted_nonblank_lines": 33445,
-      "nonblank_lines": 33446,
+      "bytes": 1382359,
+      "formatted_lines": 31519,
+      "formatted_nonblank_lines": 31519,
+      "nonblank_lines": 31520,
       "package": "tau-frontend",
       "path": "crates/frontend/src/implementation.rs",
-      "physical_lines": 33446,
+      "physical_lines": 31520,
       "project": "tau2",
-      "sha256": "626762a3a06a5d97aa0f8be8aad43693806a426cf2bfe02652511a730c1a1f4a",
+      "sha256": "5884ec64b49e656195380d86ef22889739337cf8cec3e79636a057d49da915a2",
       "snapshot": "after",
-      "tokens": 244063,
-      "code_lines": 33288,
-      "comment_lines": 158,
+      "tokens": 226287,
+      "code_lines": 31366,
+      "comment_lines": 154,
       "blank_lines": 0,
       "counter_line_delta": 0
     },
     {
-      "bytes": 188159,
-      "formatted_lines": 4650,
-      "formatted_nonblank_lines": 4650,
-      "nonblank_lines": 4651,
+      "bytes": 162963,
+      "formatted_lines": 3974,
+      "formatted_nonblank_lines": 3974,
+      "nonblank_lines": 3975,
       "package": "tau-frontend",
       "path": "crates/frontend/src/lib.rs",
-      "physical_lines": 4651,
+      "physical_lines": 3975,
       "project": "tau2",
-      "sha256": "a2b50c80eec2445cd0feb45dfacb5cf077edeff8ea6368dd01c27b221c30aeb2",
+      "sha256": "022d15dc8a252cb19e5ad0874e37dd9df21d850e250ce9e61f411e0e7709d55c",
       "snapshot": "after",
-      "tokens": 37726,
-      "code_lines": 4499,
+      "tokens": 32210,
+      "code_lines": 3823,
       "comment_lines": 151,
       "blank_lines": 0,
       "counter_line_delta": -1
     },
     {
-      "bytes": 970607,
-      "formatted_lines": 24396,
-      "formatted_nonblank_lines": 24396,
-      "nonblank_lines": 24397,
+      "bytes": 948240,
+      "formatted_lines": 23738,
+      "formatted_nonblank_lines": 23738,
+      "nonblank_lines": 23739,
       "package": "tau-frontend",
       "path": "crates/frontend/src/tests.rs",
-      "physical_lines": 24397,
+      "physical_lines": 23739,
       "project": "tau2",
-      "sha256": "33818652d463b151cb4d13fc98b0ef0de0de77f270ec15d7f26fd9a8247534db",
+      "sha256": "b40c4211d0086fd7a658d37f9c828faadb0386102595f7cdb92727bd99e4d162",
       "snapshot": "after",
-      "tokens": 211105,
-      "code_lines": 24268,
+      "tokens": 206125,
+      "code_lines": 23610,
       "comment_lines": 117,
       "blank_lines": 0,
       "counter_line_delta": -12
     }
   ],
+  "normalizer": {
+    "source_manifest_sha256": "88375702a4c8d0a25e64dc71c488a52290a60902ef320b3f6a09d29a727c2267",
+    "source_file_sha256": {
+      ".gitignore": "a2152382e6e286a810c92c54c094d33fa141de20b5bff4f4c89ef6d461fae52e",
+      "Cargo.lock": "dd8b4d5b531dc3abd2874134ce437f2e346a5808cb7dacf3d89a7b56806b4185",
+      "Cargo.toml": "e70334b8c9a0e6cdcf2ff8a5a1f08aee282453f1be5759a96d7ed0eb64aa6cdc",
+      "DESIGN.md": "a5c97d738053900b757a31fade3f08d74d515f8434babf083b438fb418f05f43",
+      "README.md": "edae097a5876f1f211ab63ec0643eb503c309b21ec2f47085db397d266e26a70",
+      "src/canonical.rs": "0af0c21290d89bae3f3b7872d4a7a824b8d04f43a41e574f29a5b2c7d41f8fcb",
+      "src/compiler.rs": "33ca241f0af836913f30d682bf9b3aad0bbbed0a665fe19e8f848dd9c7b6c523",
+      "src/inlining.rs": "bbbd56e117fc39855c40d3e421a34299870d3597f4a605e3d73334ccb1259bfc",
+      "src/inventory.rs": "d008f1732cad85315aa6bf8161467db89b215f83860128d1a0d50b905f7c9342",
+      "src/lib.rs": "8acfac16744a7717eb1d85be4cf049cc5ab083effe9d64bbd3143cf1af2bd6d5",
+      "src/main.rs": "d993826acba249f2c8f2df019b4ed500029b4fa60d3ad9c8d400e787d2bd4dc3",
+      "src/metrics.rs": "a79b43d280ccc8a983f6ee7be2658fa8b16fa63f9a0b788beb5f94813bbc4703",
+      "src/order.rs": "b6148515f2f401ec93106ebb374cd1fd55b80d2255b3ba892d22b5af23d24963",
+      "src/workspace.rs": "fc6c42545c63ff50dec84690555b0a32fb4915d1d166f62221d09c104eedc6a5",
+      "tests/canonical.rs": "6e05d8a3b7177da1a202fc3fef2c2a70c3cd462c00478d127c8192a2d71a7cd6",
+      "tests/fixtures/canonical_behaviour.rs": "1ff1d0bff1dd3dea33b446d44cba36782e616039ceed8c2fcc5c8409cb3634c7",
+      "tests/fixtures/canonical_compact.rs": "1e48c90077ecc1e234700402cf4b09ad96af334949a4fc00d35e1408828a1bfd",
+      "tests/inventory.rs": "60af365fdeb2dab92ab75f98c8fae5c3f130989a9898dc40e0fd53978d4bf196",
+      "tools/README.md": "73582f2cda6de52ef5e47dcd1075c9e9bc8f19495ff5a1a82d830679a912f96e",
+      "tools/artifacts.py": "87cc2d582eb93765db5678010e8926ec33cb692a36d8783d37f03261a7db1a97",
+      "tools/color-probe.rs": "23abea66108a0da346279a27203c498e27b7052d684170adfe9bb73673395430",
+      "tools/provenance.py": "cbf7573e22d265bf1062377c74e85f3c7a31de64172fc4bf16dc3748b97ebcdd",
+      "tools/report/measure.py": "7bdad5ecca7fb87198e378db4b48e9060cb9122105dbad8e64ea38c2a33e8e45",
+      "tools/report/meter/Cargo.lock": "0974fe976a0ed4ec33fbd1c265ffd6b6829e7da1ad8e990bc53b12c958fb67e0",
+      "tools/report/meter/Cargo.toml": "adfda624fc8eebde552d939439959961a3cd2fd05df27c099920118e95ace121",
+      "tools/report/meter/src/bin/anatomy.rs": "2a25b8b5b54b85334b0d7b424b7744e22fec92af005140e50c4fc16bb27c71c4",
+      "tools/report/meter/src/main.rs": "01fbe26669d9077089b69c03d219d1002e77de94739b08fb4c7d0ca7c4ed4bbe",
+      "tools/report/publish-report.py": "8b63ab4129464974037a52c64e136db6e4a47abe85bd68fa5b78f38eed72ff19",
+      "tools/validate.sh": "1e45eb48face26711a4d936298f3e038824cc0eb8910b6900b9d2942b5bfba01",
+      "tools/verify-canonical.py": "51c14f44ac2cc1878c84ec3bc9b0c1b1c02872c1b908646902fb9f6a4d462020",
+      "vendor/ra_ap_toolchain/Cargo.toml": "5c2f7cb5430694d56f91b0f4ceb8d6604d6ae57ecdbffb735eaa9a81c023f9a0",
+      "vendor/ra_ap_toolchain/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "vendor/ra_ap_toolchain/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "vendor/ra_ap_toolchain/PATCHES.md": "c5e7d03c2399bee51375a7704f71ebcea093db1d880a2ad0fe498b2ce3c68b19",
+      "vendor/ra_ap_toolchain/src/lib.rs": "e45b9b0fd20489e6d87dc59ea09829ba93da4f0817a6d600b7865a281e584d71"
+    },
+    "provenance": {
+      "current_source_commit": "1fac731656804da5d236af88eb255570ad0f7847",
+      "retained_output_generation_commit": "4d6a973"
+    },
+    "retained_generation": {
+      "commit": "4d6a973",
+      "status": "retained measured snapshot; current hardened regeneration is blocked before publication"
+    },
+    "retained_generation_source_sha256": {
+      ".gitignore": "a2152382e6e286a810c92c54c094d33fa141de20b5bff4f4c89ef6d461fae52e",
+      "Cargo.lock": "44ed4c87ad064e2034587a5709f70f886dc62dc9e4828c296aa13c767f707ee9",
+      "Cargo.toml": "fccce9ac2ccabd8beac719f501aa3d7ebaf31689f70e056b892086311ab26a74",
+      "DESIGN.md": "82645a5ad5e10022314c4f56cdcce0da82bd385cbfd8ae4791c77cee2628a2be",
+      "README.md": "46f9d67e4ad09e493b0496dbf24002f6b33272e14ff77283e5e4907baf41ff54",
+      "audits/color-probe.rs": "23abea66108a0da346279a27203c498e27b7052d684170adfe9bb73673395430",
+      "audits/size-report/measure.py": "7bdad5ecca7fb87198e378db4b48e9060cb9122105dbad8e64ea38c2a33e8e45",
+      "audits/size-report/meter/Cargo.lock": "0974fe976a0ed4ec33fbd1c265ffd6b6829e7da1ad8e990bc53b12c958fb67e0",
+      "audits/size-report/meter/Cargo.toml": "adfda624fc8eebde552d939439959961a3cd2fd05df27c099920118e95ace121",
+      "audits/size-report/meter/src/bin/anatomy.rs": "2a25b8b5b54b85334b0d7b424b7744e22fec92af005140e50c4fc16bb27c71c4",
+      "audits/size-report/meter/src/main.rs": "01fbe26669d9077089b69c03d219d1002e77de94739b08fb4c7d0ca7c4ed4bbe",
+      "audits/size-report/publish-report.py": "de62da18432475f719bb0ee4f5f3d94f84817ba65a13c7d4384f94c41532df0e",
+      "audits/verify-canonical.py": "51c14f44ac2cc1878c84ec3bc9b0c1b1c02872c1b908646902fb9f6a4d462020",
+      "examples/demo/Cargo.toml": "3117e9ca824c8569acef815ed15ddf2aab71138d9689dd6a2c8de4a6e0749430",
+      "examples/demo/src/bin/alternate.rs": "caa860948414cb71449e153d373ddffcec9d9bd7d46774933f5a19ada96db804",
+      "examples/demo/src/lib.rs": "463c807ef124f7cb4f575e429e3b99f7ccfa8c71222243da72d472f8a7b86af8",
+      "examples/demo/src/main.rs": "a62cd7b0445cf0578e5d1f8c4f801d927fc6b481b8474deff9c7311e235b4227",
+      "examples/demo/src/math/add.rs": "8324dfe0f78c381bcd87df68b7ca346d54774f30ada1603446effe82d04b7794",
+      "examples/demo/src/math/mod.rs": "683d5180c7e97a5a772b66ba23906dde00f6b93e7ba6f01ddbedd5e8f5c58ada",
+      "src/canonical.rs": "51405ba4af6137c271730909f538ca2edeb69c509d6dffb2dc54be60105e713f",
+      "src/flatten.rs": "0d0917bd5b165f79cf6a6e8d7027be385ca0bcd78eaa84cdc8c4a416d182c0c9",
+      "src/inventory.rs": "69bee220c4578aa9ab5bdb4aff4c805b42c0111b13f5f4de609a0bbbf0512f2d",
+      "src/lib.rs": "e253eba8116c5c1ef045258a1cb87748500f92c661b42e8e9ddae99a52ceadb9",
+      "src/macros.rs": "ddb9edad7deb2e39eb73441fbfed3cd819da13c4128bc89adfdf9cb64277d2c6",
+      "src/main.rs": "465da31fd696c6e700379dd768b2c31050ac4025746797793d5a92464516e236",
+      "src/metrics.rs": "c80f0bc7610e11e99921a02b7e7acfbbdb317daaf98d6a20ab916bf8019e3e0d",
+      "src/order.rs": "b6148515f2f401ec93106ebb374cd1fd55b80d2255b3ba892d22b5af23d24963",
+      "src/passes.rs": "e301888d19f7f517ee17b15e8cc666e48a40aa65e3f10aa100953258b8b2874b",
+      "src/project.rs": "a5f39b89139b6b633bdf6bd845991baaecc44fe6f08313f11ce64a94ac8ee474",
+      "src/semantic.rs": "071f3c4b83cf011852e7c250f83277143bdf5a0a2d17ac9c374cd8c0a7f26909",
+      "src/semantic_batch.rs": "3f7389ecbf1c9a168aec9c5da9611f736d5b75127de848593eafc902127e446d",
+      "tests/canonical.rs": "ca02ac246794bd7730cfec625a78ee4f13106b1361634f2b26fbf8e6bb64efc1",
+      "tests/fixtures/canonical_behaviour.rs": "1ff1d0bff1dd3dea33b446d44cba36782e616039ceed8c2fcc5c8409cb3634c7",
+      "tests/fixtures/canonical_compact.rs": "bcac8ba1d6a9a111ef1974ba88a1b85fab36174c0e0083777d311b9b65817573",
+      "tests/measurement.rs": "7bc18f98c13c942a12159006928f8e6decf02f1ee63a45e4db2d0c3ea0b15b58",
+      "tests/pipeline.rs": "ff7e98607d473098ec75b6fbc3e48bb7f759fe7967a21784fd2a013dacbeabf0",
+      "tests/semantic.rs": "1ce45479c8b3229d553fbaadbcf23c34f3e09fd051609e207f1e278be432d418",
+      "vendor/ra_ap_toolchain/Cargo.toml": "5c2f7cb5430694d56f91b0f4ceb8d6604d6ae57ecdbffb735eaa9a81c023f9a0",
+      "vendor/ra_ap_toolchain/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "vendor/ra_ap_toolchain/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "vendor/ra_ap_toolchain/PATCHES.md": "c5e7d03c2399bee51375a7704f71ebcea093db1d880a2ad0fe498b2ce3c68b19",
+      "vendor/ra_ap_toolchain/src/lib.rs": "e45b9b0fd20489e6d87dc59ea09829ba93da4f0817a6d600b7865a281e584d71"
+    }
+  },
+  "current_regeneration": {
+    "commit": "13e39bbbe3af4560852359d3463848216b1c07cc",
+    "projects": {
+      "compendium": {
+        "exit_code": 1,
+        "output_published": false
+      },
+      "tau2": {
+        "exit_code": 1,
+        "output_published": false
+      }
+    }
+  },
   "validation": {
-    "tool_tests_passed": 65,
-    "compendium_public_tests_passed": 83,
-    "compendium_public_tests_skipped": 2,
-    "tau2_public_tests_passed": 93,
-    "tau2_public_test_counts_by_package": {
-      "tau-block-store": 18,
-      "tau-code-viewer": 8,
-      "tau-frontend": 42,
-      "tau-net": 23,
-      "taud": 2
+    "status": "retained snapshot receipts, not validation of the current hardened transformation",
+    "scope": "host/default features; public Color differential execution and migrated public-interface suites",
+    "tool_tests_passed": 12,
+    "public_tests": {
+      "compendium": {
+        "run": 83,
+        "passed": 83,
+        "skipped": 2
+      },
+      "tau": {
+        "run": 93,
+        "passed": 93,
+        "skipped": 0
+      }
     },
     "color_samples": 65556,
     "float_channels": 262224,
     "color_bitwise_equal": true,
     "color_sha256": "8c60352d2e6c41646618968bf85c509f0106f33771fcbeb51bd8c2f10ea89384",
-    "android_build_verified": false,
     "unchanged_java_files": {
       "crates/frontend/android/java/app/tau/rust/MainActivity.java": "635879e7744a3a029a4403d27cd499e2efe69c7588b17b0bd40a9979c906d8be",
       "crates/frontend/tests/android/SelectionBridgeTest.java": "7a5cd9229385387d7e3acd03b972aacdcf6e44a2177582e9b3f04f06a8454f8f"
     },
     "original_input_integrity": {
       "compendium": {
+        "changed_files": [],
         "checked_files": 92,
-        "changed": [],
-        "git_status": ""
+        "git_status_clean": true
       },
       "tau2": {
+        "changed_files": [],
         "checked_files": 232,
-        "changed": [],
-        "git_status": ""
+        "git_status_clean": true
       }
-    }
+    },
+    "android_build_verified": false,
+    "excluded_windows_build_verified": false
   },
   "preservation": {
     "compendium": {
@@ -5732,430 +5842,5 @@
         "crates/windows/setup/build.rs"
       ]
     }
-  },
-  "import_fix": {
-    "summary": {
-      "compendium": {
-        "original_generated_output": {
-          "physical_lines": 76716,
-          "formatted_lines": 76709,
-          "tokens": 547344,
-          "anatomy": {
-            "always_false_cfg_attributes": 312,
-            "behaviour_trait_tokens": 10357,
-            "behaviour_traits": 73,
-            "empty_impl_blocks": 14,
-            "import_statements": 2156,
-            "import_tokens": 35931,
-            "module_declarations": 172,
-            "module_wrapper_tokens": 1841,
-            "other_tokens": 499215,
-            "parameterized_generated_closures": 394
-          }
-        },
-        "import_fix_output": {
-          "physical_lines": 75694,
-          "formatted_lines": 75687,
-          "tokens": 536540,
-          "anatomy": {
-            "always_false_cfg_attributes": 312,
-            "behaviour_trait_tokens": 10357,
-            "behaviour_traits": 73,
-            "empty_impl_blocks": 14,
-            "import_statements": 1521,
-            "import_tokens": 25058,
-            "module_declarations": 178,
-            "module_wrapper_tokens": 1907,
-            "other_tokens": 499218,
-            "parameterized_generated_closures": 394
-          },
-          "inlinings": 407,
-          "dead_removed": 3,
-          "same_inlined_function_set": true,
-          "same_removed_function_set": true,
-          "suspended_items": {
-            "compendium": 313
-          }
-        },
-        "reductions": {
-          "physical_lines": 1022,
-          "formatted_lines": 1022,
-          "tokens": 10804
-        }
-      },
-      "tau2": {
-        "original_generated_output": {
-          "physical_lines": 95996,
-          "formatted_lines": 95972,
-          "tokens": 748812,
-          "anatomy": {
-            "always_false_cfg_attributes": 653,
-            "behaviour_trait_tokens": 13704,
-            "behaviour_traits": 129,
-            "empty_impl_blocks": 10,
-            "import_statements": 4186,
-            "import_tokens": 73626,
-            "module_declarations": 312,
-            "module_wrapper_tokens": 5408,
-            "other_tokens": 656074,
-            "parameterized_generated_closures": 58
-          }
-        },
-        "import_fix_output": {
-          "physical_lines": 92912,
-          "formatted_lines": 92888,
-          "tokens": 722905,
-          "anatomy": {
-            "always_false_cfg_attributes": 653,
-            "behaviour_trait_tokens": 13704,
-            "behaviour_traits": 129,
-            "empty_impl_blocks": 10,
-            "import_statements": 2604,
-            "import_tokens": 47567,
-            "module_declarations": 325,
-            "module_wrapper_tokens": 5551,
-            "other_tokens": 656083,
-            "parameterized_generated_closures": 58
-          },
-          "inlinings": 62,
-          "dead_removed": 2,
-          "same_inlined_function_set": true,
-          "same_removed_function_set": true,
-          "suspended_items": {
-            "taud": 181,
-            "tau-block-store": 0,
-            "tau-net": 3,
-            "tau-code-viewer": 4,
-            "tau-frontend": 467
-          }
-        },
-        "reductions": {
-          "physical_lines": 3084,
-          "formatted_lines": 3084,
-          "tokens": 25907
-        }
-      },
-      "scope": "Full-pipeline reruns; only import generation changed. Accepted inline/dead-removal sets and suspension counts match the first outputs. Broader verbosity of inlining frames is not fixed."
-    },
-    "validation": {
-      "tool_tests_passed": 65,
-      "compendium_public_tests": {
-        "run": 83,
-        "passed": 83,
-        "skipped": 2
-      },
-      "tau2_public_tests": {
-        "run": 93,
-        "passed": 93,
-        "skipped": 0
-      },
-      "color_samples": 65556,
-      "float_channels": 262224,
-      "color_bitwise_equal": true,
-      "color_sha256": "8c60352d2e6c41646618968bf85c509f0106f33771fcbeb51bd8c2f10ea89384",
-      "unchanged_java_files": {
-        "crates/frontend/android/java/app/tau/rust/MainActivity.java": "635879e7744a3a029a4403d27cd499e2efe69c7588b17b0bd40a9979c906d8be",
-        "crates/frontend/tests/android/SelectionBridgeTest.java": "7a5cd9229385387d7e3acd03b972aacdcf6e44a2177582e9b3f04f06a8454f8f"
-      },
-      "android_build_verified": false,
-      "original_input_integrity": {
-        "compendium": {
-          "checked_files": 92,
-          "changed_files": [],
-          "git_status_clean": true
-        },
-        "tau2": {
-          "checked_files": 232,
-          "changed_files": [],
-          "git_status_clean": true
-        }
-      }
-    },
-    "provenance": {
-      "compendium": {
-        "initial": {
-          "normalization_report_sha256": "c095edb0e657a887f00e7063c43b53783e73d28c9ef612810307d70ce2bffbad"
-        },
-        "import-fix": {
-          "normalization_report_sha256": "16fbcf2bb2caeea5c628641934ee3690ac452da834b60e7f154a3ffaf5b6629f"
-        }
-      },
-      "tau2": {
-        "initial": {
-          "normalization_report_sha256": "ed5627975c973af29fa116e605c9a8b36392c43a3f66d0d7565f18cb5b167359"
-        },
-        "import-fix": {
-          "normalization_report_sha256": "aa0de06976adc91c9f318b9355e8ba593485a38bf52b44f0f15365a9afde3d64"
-        }
-      }
-    }
-  },
-  "phase_costs": {
-    "method": "isolated copy of hash-verified normalizer, instrumented to capture layout and post-test-migration then stop before semantic inlining; after is the existing validated output. Trait inventories, suspension counts match that output; tests.rs match apart from inactive imports of inlined helpers that the inliner deletes. Final delta includes inlining, dead removals, import cleanup and dependency ordering.",
-    "summary": {
-      "compendium": {
-        "before": {
-          "physical_lines": 60269,
-          "formatted_lines": 58457,
-          "tokens": 411167,
-          "anatomy": {
-            "always_false_cfg_attributes": 0,
-            "behaviour_trait_tokens": 0,
-            "behaviour_traits": 0,
-            "empty_impl_blocks": 4,
-            "import_statements": 445,
-            "import_tokens": 4665,
-            "module_declarations": 96,
-            "module_wrapper_tokens": 524,
-            "other_tokens": 405978,
-            "parameterized_generated_closures": 0
-          }
-        },
-        "layout": {
-          "physical_lines": 65674,
-          "formatted_lines": 65667,
-          "tokens": 454705,
-          "anatomy": {
-            "always_false_cfg_attributes": 0,
-            "behaviour_trait_tokens": 10357,
-            "behaviour_traits": 73,
-            "empty_impl_blocks": 4,
-            "import_statements": 1822,
-            "import_tokens": 30278,
-            "module_declarations": 172,
-            "module_wrapper_tokens": 1841,
-            "other_tokens": 412229,
-            "parameterized_generated_closures": 0
-          }
-        },
-        "tests-migrated": {
-          "physical_lines": 65987,
-          "formatted_lines": 65980,
-          "tokens": 457522,
-          "anatomy": {
-            "always_false_cfg_attributes": 313,
-            "behaviour_trait_tokens": 10357,
-            "behaviour_traits": 73,
-            "empty_impl_blocks": 4,
-            "import_statements": 1822,
-            "import_tokens": 30602,
-            "module_declarations": 172,
-            "module_wrapper_tokens": 1841,
-            "other_tokens": 414722,
-            "parameterized_generated_closures": 0
-          }
-        },
-        "after": {
-          "physical_lines": 76716,
-          "formatted_lines": 76709,
-          "tokens": 547344,
-          "anatomy": {
-            "always_false_cfg_attributes": 312,
-            "behaviour_trait_tokens": 10357,
-            "behaviour_traits": 73,
-            "empty_impl_blocks": 14,
-            "import_statements": 2156,
-            "import_tokens": 35931,
-            "module_declarations": 172,
-            "module_wrapper_tokens": 1841,
-            "other_tokens": 499215,
-            "parameterized_generated_closures": 394
-          }
-        },
-        "deltas": {
-          "layout": {
-            "physical_lines": 5405,
-            "formatted_lines": 7210,
-            "tokens": 43538,
-            "anatomy": {
-              "always_false_cfg_attributes": 0,
-              "behaviour_trait_tokens": 10357,
-              "behaviour_traits": 73,
-              "empty_impl_blocks": 0,
-              "import_statements": 1377,
-              "import_tokens": 25613,
-              "module_declarations": 76,
-              "module_wrapper_tokens": 1317,
-              "other_tokens": 6251,
-              "parameterized_generated_closures": 0
-            }
-          },
-          "test-suspension": {
-            "physical_lines": 313,
-            "formatted_lines": 313,
-            "tokens": 2817,
-            "anatomy": {
-              "always_false_cfg_attributes": 313,
-              "behaviour_trait_tokens": 0,
-              "behaviour_traits": 0,
-              "empty_impl_blocks": 0,
-              "import_statements": 0,
-              "import_tokens": 324,
-              "module_declarations": 0,
-              "module_wrapper_tokens": 0,
-              "other_tokens": 2493,
-              "parameterized_generated_closures": 0
-            }
-          },
-          "inlining-and-ordering": {
-            "physical_lines": 10729,
-            "formatted_lines": 10729,
-            "tokens": 89822,
-            "anatomy": {
-              "always_false_cfg_attributes": -1,
-              "behaviour_trait_tokens": 0,
-              "behaviour_traits": 0,
-              "empty_impl_blocks": 10,
-              "import_statements": 334,
-              "import_tokens": 5329,
-              "module_declarations": 0,
-              "module_wrapper_tokens": 0,
-              "other_tokens": 84493,
-              "parameterized_generated_closures": 394
-            }
-          }
-        }
-      },
-      "tau2": {
-        "before": {
-          "physical_lines": 46284,
-          "formatted_lines": 79884,
-          "tokens": 639286,
-          "anatomy": {
-            "always_false_cfg_attributes": 0,
-            "behaviour_trait_tokens": 0,
-            "behaviour_traits": 0,
-            "empty_impl_blocks": 6,
-            "import_statements": 982,
-            "import_tokens": 12248,
-            "module_declarations": 195,
-            "module_wrapper_tokens": 2191,
-            "other_tokens": 624847,
-            "parameterized_generated_closures": 0
-          }
-        },
-        "layout": {
-          "physical_lines": 93637,
-          "formatted_lines": 93619,
-          "tokens": 728562,
-          "anatomy": {
-            "always_false_cfg_attributes": 0,
-            "behaviour_trait_tokens": 13704,
-            "behaviour_traits": 129,
-            "empty_impl_blocks": 6,
-            "import_statements": 4135,
-            "import_tokens": 71049,
-            "module_declarations": 312,
-            "module_wrapper_tokens": 5408,
-            "other_tokens": 638401,
-            "parameterized_generated_closures": 0
-          }
-        },
-        "tests-migrated": {
-          "physical_lines": 94292,
-          "formatted_lines": 94274,
-          "tokens": 734457,
-          "anatomy": {
-            "always_false_cfg_attributes": 655,
-            "behaviour_trait_tokens": 13704,
-            "behaviour_traits": 129,
-            "empty_impl_blocks": 6,
-            "import_statements": 4135,
-            "import_tokens": 72885,
-            "module_declarations": 312,
-            "module_wrapper_tokens": 5408,
-            "other_tokens": 642460,
-            "parameterized_generated_closures": 0
-          }
-        },
-        "after": {
-          "physical_lines": 95996,
-          "formatted_lines": 95972,
-          "tokens": 748812,
-          "anatomy": {
-            "always_false_cfg_attributes": 653,
-            "behaviour_trait_tokens": 13704,
-            "behaviour_traits": 129,
-            "empty_impl_blocks": 10,
-            "import_statements": 4186,
-            "import_tokens": 73626,
-            "module_declarations": 312,
-            "module_wrapper_tokens": 5408,
-            "other_tokens": 656074,
-            "parameterized_generated_closures": 58
-          }
-        },
-        "deltas": {
-          "layout": {
-            "physical_lines": 47353,
-            "formatted_lines": 13735,
-            "tokens": 89276,
-            "anatomy": {
-              "always_false_cfg_attributes": 0,
-              "behaviour_trait_tokens": 13704,
-              "behaviour_traits": 129,
-              "empty_impl_blocks": 0,
-              "import_statements": 3153,
-              "import_tokens": 58801,
-              "module_declarations": 117,
-              "module_wrapper_tokens": 3217,
-              "other_tokens": 13554,
-              "parameterized_generated_closures": 0
-            }
-          },
-          "test-suspension": {
-            "physical_lines": 655,
-            "formatted_lines": 655,
-            "tokens": 5895,
-            "anatomy": {
-              "always_false_cfg_attributes": 655,
-              "behaviour_trait_tokens": 0,
-              "behaviour_traits": 0,
-              "empty_impl_blocks": 0,
-              "import_statements": 0,
-              "import_tokens": 1836,
-              "module_declarations": 0,
-              "module_wrapper_tokens": 0,
-              "other_tokens": 4059,
-              "parameterized_generated_closures": 0
-            }
-          },
-          "inlining-and-ordering": {
-            "physical_lines": 1704,
-            "formatted_lines": 1698,
-            "tokens": 14355,
-            "anatomy": {
-              "always_false_cfg_attributes": -2,
-              "behaviour_trait_tokens": 0,
-              "behaviour_traits": 0,
-              "empty_impl_blocks": 4,
-              "import_statements": 51,
-              "import_tokens": 741,
-              "module_declarations": 0,
-              "module_wrapper_tokens": 0,
-              "other_tokens": 13614,
-              "parameterized_generated_closures": 58
-            }
-          }
-        }
-      }
-    },
-    "inactive_import_cleanup": [
-      {
-        "project": "compendium",
-        "file": "src/tests.rs",
-        "import": "compendium::app::pane::editing::drag_autoscroll_velocity"
-      },
-      {
-        "project": "tau2",
-        "file": "crates/daemon/src/tests.rs",
-        "import": "taud::manager::safe_file_name"
-      },
-      {
-        "project": "tau2",
-        "file": "crates/frontend/src/tests.rs",
-        "import": "tau_frontend::app::ui::composer::slash_suggestions"
-      }
-    ]
   }
 }
