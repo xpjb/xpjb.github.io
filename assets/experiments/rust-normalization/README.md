@@ -1,7 +1,7 @@
 # Rust normalization measurements
 
 Only derived metrics, source paths/hashes, trees and measurement tooling are published.
-No application source or private compiler logs are included.
+Selected excerpts are shown in the article. Full application source trees and private compiler logs are not included.
 
 `measure.py COMPENDIUM_INPUT COMPENDIUM_OUTPUT TAU2_INPUT TAU2_OUTPUT OUTPUT_DIR`
 reproduces size metrics without editing those snapshots. It requires Python 3,

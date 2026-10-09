@@ -1,0 +1,38 @@
+--- src/canonical.rs
++++ src/canonical.rs
+@@ -221,6 +221,7 @@
+         }
+         ensure!(disabled.len()+sized_methods.len() > before, "canonical layout compiler errors require a concrete fix (not a silent whole-project fallback):\n{}", check.summary());
+     }
++    audit_snapshot(staging.path(), &output.join("layout"), &report)?;
+     // Inactive/private tests remain visible in tests.rs with a precise report,
+     // rather than silently widening implementation visibility or dropping them.
+     loop {
+@@ -236,6 +237,8 @@
+             check.summary()
+         );
+     }
++    audit_snapshot(staging.path(), &output.join("tests-migrated"), &report)?;
++    return Ok(report); // Audit copy only: do not run the inliner or publish output.
+     eprintln!("canonical: semantic single-call-site fixed point");
+     let paths: Vec<_> = models
+         .iter()
+@@ -312,6 +315,18 @@
+         }
+     }
+     Ok(report)
++}
++
++fn audit_snapshot(root:&Path, output:&Path, report:&CanonicalReport)->Result<()> {
++    for package in &report.packages {
++        for relative in &package.output_files {
++            let destination=output.join(relative);
++            fs::create_dir_all(destination.parent().unwrap())?;
++            fs::copy(root.join(relative),destination)?;
++        }
++    }
++    fs::write(output.join("phase-report.json"),serde_json::to_vec_pretty(report)?)?;
++    Ok(())
+ }
+ 
+ impl Model {

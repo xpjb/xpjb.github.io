@@ -21,7 +21,7 @@ for project,before,after in [('compendium',roots[0],roots[1]),('tau2',roots[2],r
 manifest=out/'meter-input-local.json';manifest.write_text(json.dumps(rows))
 meter=pathlib.Path(__file__).parent/'meter/Cargo.toml'
 with (out/'meter-build.log').open('wb') as log:
- data=subprocess.check_output(['/usr/local/bin/cargo','run','--offline','--quiet','--manifest-path',str(meter),'--',str(manifest)],stderr=log)
+ data=subprocess.check_output(['/usr/local/bin/cargo','run','--offline','--quiet','--bin','normalization_report_meter','--manifest-path',str(meter),'--',str(manifest)],stderr=log)
 measured=json.loads(data)
 # Tokei supplies conventional code/comment/blank line counts on precisely the
 # same explicit file list; there is no VCS-ignore or directory-selection drift.

@@ -5732,5 +5732,273 @@
         "crates/windows/setup/build.rs"
       ]
     }
+  },
+  "phase_costs": {
+    "method": "isolated copy of hash-verified normalizer, instrumented to capture layout and post-test-migration then stop before semantic inlining; after is the existing validated output. Trait inventories, suspension counts match that output; tests.rs match apart from inactive imports of inlined helpers that the inliner deletes. Final delta includes inlining, dead removals, import cleanup and dependency ordering.",
+    "summary": {
+      "compendium": {
+        "before": {
+          "physical_lines": 60269,
+          "formatted_lines": 58457,
+          "tokens": 411167,
+          "anatomy": {
+            "always_false_cfg_attributes": 0,
+            "behaviour_trait_tokens": 0,
+            "behaviour_traits": 0,
+            "empty_impl_blocks": 4,
+            "import_statements": 445,
+            "import_tokens": 4665,
+            "module_declarations": 96,
+            "module_wrapper_tokens": 524,
+            "other_tokens": 405978,
+            "parameterized_generated_closures": 0
+          }
+        },
+        "layout": {
+          "physical_lines": 65674,
+          "formatted_lines": 65667,
+          "tokens": 454705,
+          "anatomy": {
+            "always_false_cfg_attributes": 0,
+            "behaviour_trait_tokens": 10357,
+            "behaviour_traits": 73,
+            "empty_impl_blocks": 4,
+            "import_statements": 1822,
+            "import_tokens": 30278,
+            "module_declarations": 172,
+            "module_wrapper_tokens": 1841,
+            "other_tokens": 412229,
+            "parameterized_generated_closures": 0
+          }
+        },
+        "tests-migrated": {
+          "physical_lines": 65987,
+          "formatted_lines": 65980,
+          "tokens": 457522,
+          "anatomy": {
+            "always_false_cfg_attributes": 313,
+            "behaviour_trait_tokens": 10357,
+            "behaviour_traits": 73,
+            "empty_impl_blocks": 4,
+            "import_statements": 1822,
+            "import_tokens": 30602,
+            "module_declarations": 172,
+            "module_wrapper_tokens": 1841,
+            "other_tokens": 414722,
+            "parameterized_generated_closures": 0
+          }
+        },
+        "after": {
+          "physical_lines": 76716,
+          "formatted_lines": 76709,
+          "tokens": 547344,
+          "anatomy": {
+            "always_false_cfg_attributes": 312,
+            "behaviour_trait_tokens": 10357,
+            "behaviour_traits": 73,
+            "empty_impl_blocks": 14,
+            "import_statements": 2156,
+            "import_tokens": 35931,
+            "module_declarations": 172,
+            "module_wrapper_tokens": 1841,
+            "other_tokens": 499215,
+            "parameterized_generated_closures": 394
+          }
+        },
+        "deltas": {
+          "layout": {
+            "physical_lines": 5405,
+            "formatted_lines": 7210,
+            "tokens": 43538,
+            "anatomy": {
+              "always_false_cfg_attributes": 0,
+              "behaviour_trait_tokens": 10357,
+              "behaviour_traits": 73,
+              "empty_impl_blocks": 0,
+              "import_statements": 1377,
+              "import_tokens": 25613,
+              "module_declarations": 76,
+              "module_wrapper_tokens": 1317,
+              "other_tokens": 6251,
+              "parameterized_generated_closures": 0
+            }
+          },
+          "test-suspension": {
+            "physical_lines": 313,
+            "formatted_lines": 313,
+            "tokens": 2817,
+            "anatomy": {
+              "always_false_cfg_attributes": 313,
+              "behaviour_trait_tokens": 0,
+              "behaviour_traits": 0,
+              "empty_impl_blocks": 0,
+              "import_statements": 0,
+              "import_tokens": 324,
+              "module_declarations": 0,
+              "module_wrapper_tokens": 0,
+              "other_tokens": 2493,
+              "parameterized_generated_closures": 0
+            }
+          },
+          "inlining-and-ordering": {
+            "physical_lines": 10729,
+            "formatted_lines": 10729,
+            "tokens": 89822,
+            "anatomy": {
+              "always_false_cfg_attributes": -1,
+              "behaviour_trait_tokens": 0,
+              "behaviour_traits": 0,
+              "empty_impl_blocks": 10,
+              "import_statements": 334,
+              "import_tokens": 5329,
+              "module_declarations": 0,
+              "module_wrapper_tokens": 0,
+              "other_tokens": 84493,
+              "parameterized_generated_closures": 394
+            }
+          }
+        }
+      },
+      "tau2": {
+        "before": {
+          "physical_lines": 46284,
+          "formatted_lines": 79884,
+          "tokens": 639286,
+          "anatomy": {
+            "always_false_cfg_attributes": 0,
+            "behaviour_trait_tokens": 0,
+            "behaviour_traits": 0,
+            "empty_impl_blocks": 6,
+            "import_statements": 982,
+            "import_tokens": 12248,
+            "module_declarations": 195,
+            "module_wrapper_tokens": 2191,
+            "other_tokens": 624847,
+            "parameterized_generated_closures": 0
+          }
+        },
+        "layout": {
+          "physical_lines": 93637,
+          "formatted_lines": 93619,
+          "tokens": 728562,
+          "anatomy": {
+            "always_false_cfg_attributes": 0,
+            "behaviour_trait_tokens": 13704,
+            "behaviour_traits": 129,
+            "empty_impl_blocks": 6,
+            "import_statements": 4135,
+            "import_tokens": 71049,
+            "module_declarations": 312,
+            "module_wrapper_tokens": 5408,
+            "other_tokens": 638401,
+            "parameterized_generated_closures": 0
+          }
+        },
+        "tests-migrated": {
+          "physical_lines": 94292,
+          "formatted_lines": 94274,
+          "tokens": 734457,
+          "anatomy": {
+            "always_false_cfg_attributes": 655,
+            "behaviour_trait_tokens": 13704,
+            "behaviour_traits": 129,
+            "empty_impl_blocks": 6,
+            "import_statements": 4135,
+            "import_tokens": 72885,
+            "module_declarations": 312,
+            "module_wrapper_tokens": 5408,
+            "other_tokens": 642460,
+            "parameterized_generated_closures": 0
+          }
+        },
+        "after": {
+          "physical_lines": 95996,
+          "formatted_lines": 95972,
+          "tokens": 748812,
+          "anatomy": {
+            "always_false_cfg_attributes": 653,
+            "behaviour_trait_tokens": 13704,
+            "behaviour_traits": 129,
+            "empty_impl_blocks": 10,
+            "import_statements": 4186,
+            "import_tokens": 73626,
+            "module_declarations": 312,
+            "module_wrapper_tokens": 5408,
+            "other_tokens": 656074,
+            "parameterized_generated_closures": 58
+          }
+        },
+        "deltas": {
+          "layout": {
+            "physical_lines": 47353,
+            "formatted_lines": 13735,
+            "tokens": 89276,
+            "anatomy": {
+              "always_false_cfg_attributes": 0,
+              "behaviour_trait_tokens": 13704,
+              "behaviour_traits": 129,
+              "empty_impl_blocks": 0,
+              "import_statements": 3153,
+              "import_tokens": 58801,
+              "module_declarations": 117,
+              "module_wrapper_tokens": 3217,
+              "other_tokens": 13554,
+              "parameterized_generated_closures": 0
+            }
+          },
+          "test-suspension": {
+            "physical_lines": 655,
+            "formatted_lines": 655,
+            "tokens": 5895,
+            "anatomy": {
+              "always_false_cfg_attributes": 655,
+              "behaviour_trait_tokens": 0,
+              "behaviour_traits": 0,
+              "empty_impl_blocks": 0,
+              "import_statements": 0,
+              "import_tokens": 1836,
+              "module_declarations": 0,
+              "module_wrapper_tokens": 0,
+              "other_tokens": 4059,
+              "parameterized_generated_closures": 0
+            }
+          },
+          "inlining-and-ordering": {
+            "physical_lines": 1704,
+            "formatted_lines": 1698,
+            "tokens": 14355,
+            "anatomy": {
+              "always_false_cfg_attributes": -2,
+              "behaviour_trait_tokens": 0,
+              "behaviour_traits": 0,
+              "empty_impl_blocks": 4,
+              "import_statements": 51,
+              "import_tokens": 741,
+              "module_declarations": 0,
+              "module_wrapper_tokens": 0,
+              "other_tokens": 13614,
+              "parameterized_generated_closures": 58
+            }
+          }
+        }
+      }
+    },
+    "inactive_import_cleanup": [
+      {
+        "project": "compendium",
+        "file": "src/tests.rs",
+        "import": "compendium::app::pane::editing::drag_autoscroll_velocity"
+      },
+      {
+        "project": "tau2",
+        "file": "crates/daemon/src/tests.rs",
+        "import": "taud::manager::safe_file_name"
+      },
+      {
+        "project": "tau2",
+        "file": "crates/frontend/src/tests.rs",
+        "import": "tau_frontend::app::ui::composer::slash_suggestions"
+      }
+    ]
   }
 }
